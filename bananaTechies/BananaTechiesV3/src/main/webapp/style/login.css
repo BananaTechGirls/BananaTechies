@@ -1,0 +1,154 @@
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(../fonts/MaterialIcons-Regular.eot); /* For IE6-8 */
+  src: local('Material Icons'),
+       local('MaterialIcons-Regular'),
+       url(../fonts/MaterialIcons-Regular.woff2) format('woff2'),
+       url(../fonts/MaterialIcons-Regular.woff) format('woff'),
+       url(../fonts/MaterialIcons-Regular.ttf) format('truetype');
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+}
+/* 
+
+icofont */
+
+
+*{
+	margin:0;
+	padding: 0;	
+}
+body{
+	font-family: 'Roboto', sans-serif;
+	color:#595959;
+	background: #336699;
+}
+body>#containerId{
+	max-width: 960px;
+}
+header{
+	width:220px;
+	border-bottom: 2px solid  #8cb3d9;
+	padding: 15px;
+	text-align: left;
+}
+
+header h1{
+	font-size: 20px;
+	padding:5px;
+	text-align: center;
+	font-family: 'Rock Salt', cursive;
+	color: #e6e600;
+	text-shadow: 1px 1px 2px rgba(2, 2, 2, 0.22);
+}
+header h2{
+	font-size: 16px;
+	padding:3px;
+}
+section{
+	padding: 15px;
+	border-bottom: 2px solid  #8cb3d9;
+	margin-bottom: 80px;
+}
+section a{
+	font-size: 12px;
+	color:#6699cc;
+}
+section a:hover{
+	color:#8cb3d9;
+}
+label{
+	font-size: 14px;
+	font-weight: 300;
+}
+input{
+	margin: 10px 0;
+	padding: 5px;
+	width: 200px;
+	border: none;
+	border-radius: 2px;
+	background-color:#fff;
+	-webkit-box-shadow: 0px 1px 1px 0px rgba(0,0,0,0.9);
+    -moz-box-shadow: 0px 1px 1px 0px rgba(0,0,0,0.9);
+    box-shadow: 0px 1px 1px 0px rgba(0,0,0,0.9);
+	
+}
+input::placeholder{
+	color:#cccccc;
+}
+.errorInput{
+	-webkit-box-shadow: 0px 1px 1px 0px rgba(204,0,0,0.9);
+    -moz-box-shadow: 0px 1px 1px 0px rgba(204,0,0,0.9);
+    box-shadow: 0px 1px 1px 0px rgba(204,0,0,0.9);
+}
+
+.errorP{
+	font-size: 10px;
+	font-weight: 300;
+	color: #e60000;
+	padding-bottom: 5px;
+}
+.box1{
+	width: 250px;
+	padding:30px 20px;
+	margin:30px auto;
+	border-radius: 4px;
+	background-color:#fff;
+	-webkit-box-shadow: 0px 1px 1px 0px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0px 1px 1px 0px rgba(0,0,0,0.5);
+    box-shadow: 0px 1px 1px 0px rgba(0,0,0,0.5);	
+}
+.btnLogin{
+	width: 60px;
+	border: none;
+	color:#fff;
+    background: #336699;
+    background: -webkit-linear-gradient(#336699,#2d5986);
+    background: -o-linear-gradient(#336699,#2d5986);
+    background: -moz-linear-gradient(#336699,#2d5986);
+    background: linear-gradient(#336699,#2d5986);
+    padding: 5px 0;
+    margin: 5px 0 20px 0;
+    font-size: 14px;
+    border-radius: 2px;
+
+}
+
+.btnLogin:hover{
+	color:#e6e600;
+}
+article p{
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+/*mensajes de error*/
+.mensajes_error div{display: none;}
+.mensajes_error div.show{display: block;}
+
+.mensajes_error_fPass div{display: none;}
+.mensajes_error_fPass div.show{display: block;}
+

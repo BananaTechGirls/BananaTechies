@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Context>
+<Context>
+    <!-- Specify a JDBC datasource -->
+    <Resource 
+    	name="jdbc/" 
+    	auth="Container"
+        type="javax.sql.DataSource" 
+        username="maq_user" 
+        password="maq123"
+        driverClassName="com.mysql.jdbc.Driver"
+        url="jdbc:mysql://localhost/maquillajes?SSL=false"
+        maxActive="10" 
+        maxIdle="4" />
+     
+</Context>
