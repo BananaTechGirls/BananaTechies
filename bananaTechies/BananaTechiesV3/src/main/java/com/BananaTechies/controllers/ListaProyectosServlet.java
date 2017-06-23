@@ -26,10 +26,10 @@ public class ListaProyectosServlet extends HttpServlet {
 		
 		if( misession.getAttribute("usuario")!=null ){
 			Usuario elUsuario=(Usuario) misession.getAttribute("usuario");
-			ProyectoDAO pDAO=(ProyectoDAO)ProyectoDAOImpl.getInstance();
+/*			ProyectoDAO pDAO=(ProyectoDAO)ProyectoDAOImpl.getInstance();
 			
 			List<Proyecto> listaMaquillajes = pDAO.getUserMaquillajes(elUsuario.getUid() );
-			request.setAttribute("listaProyectosAMostrar", listaMaquillajes);
+			request.setAttribute("listaProyectosAMostrar", listaProyectos);*/
 			
 			request.getRequestDispatcher("plantilla_listaProyectos.jsp").forward(request, response);
 		}else{
