@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"	pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
@@ -14,7 +13,9 @@
 	rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700"
 	rel="stylesheet">
+
 <link rel="stylesheet" href="./style/login.css">
+
 
 </head>
 <body>
@@ -32,13 +33,11 @@
 			<form action="login" method="post" id="loginForm" novalidate>
 				<div>
 
-					<label for="email">Email: </label> 
-					<input type="email" name="Email" id="email" placeholder="email@ejemplo.com" required>
+					<label for="email">Email: </label> <input type="email" name="Email"
+						id="email" placeholder="email@ejemplo.com" required>
 					<div class="mensajes_error">
-						<div id="email[valueMissing]" class="${errorclass}">Introduzca
-							sus datos.</div>
-						<div id="email[typeMismatch]" class="${errorclass}">El
-							formato no se corresponde con un email.</div>
+						<div id="email[valueMissing]" class="${errorclass}">Introduzca sus datos.</div>
+						<div id="email[typeMismatch]" class="${errorclass}">El formato no se corresponde con un email.</div>
 					</div>
 				</div>
 				<div>
@@ -46,15 +45,12 @@
 					<input type="password" name="Password" id="password" placeholder="password" minlength="6"
 						pattern="[a-z 0-9]*" required>
 					<div class="mensajes_error">
-						<div id="pass[valueMissing]" class="${errorclass}">Introduzca
-							sus datos.</div>
-						<div id="pass[tooShort]" class="${errorclass}">El password
-							debe contener como minimo 6 caracteres.</div>
+						<div id="pass[valueMissing]" class="${errorclass}">Introduzca sus datos.</div>
+						<div id="pass[tooShort]" class="${errorclass}">El password debe contener como minimo 6 caracteres.</div>
 					</div>
 				</div>
 				<div>
-					<input class="btnLogin" type="submit" form="loginForm"
-						value="Login" id="btnLoginId">
+					<input class="btnLogin" type="submit" form="loginForm" value="Login" id="btnLoginId"/>
 				</div>
 			</form>
 			<a href="forgotPass.html">Has olvidado tu Password?</a>

@@ -1,5 +1,11 @@
 package com.BananaTechies.models;
+
 import com.BananaTechies.models.Progreso;
+
+
+import com.BananaTechies.models.Usuario;
+
+
 public class Proyecto {
 	private int idp;
 	private String titulo;
@@ -15,8 +21,8 @@ public class Proyecto {
 	
 
 	
-	public Proyecto(int idp, String titulo, Usuario responsable , boolean status,Progreso progreso, java.util.Date fechaInicio,
-			java.util.Date fechaFinal, Tarea tarea,String descripcion,String notas) {
+
+	public Proyecto(int idp, String titulo, Usuario responsable , boolean status, Progreso progreso, java.util.Date fechaInicio, java.util.Date fechaFinal, Tarea tarea,String descripcion,String notas) {
 		this.idp=idp;
 		this.titulo=titulo;
 		this.responsable=responsable;
