@@ -6,10 +6,10 @@
     	name="jdbc/" 
     	auth="Container"
         type="javax.sql.DataSource" 
-        username="maq_user" 
-        password="maq123"
+        username="bananaApp" 
+        password="aaa123"
         driverClassName="com.mysql.jdbc.Driver"
-        url="jdbc:mysql://localhost/maquillajes?SSL=false"
+        url="jdbc:mysql://localhost/bananatechies?SSL=false"
         maxActive="10" 
         maxIdle="4" />
      
