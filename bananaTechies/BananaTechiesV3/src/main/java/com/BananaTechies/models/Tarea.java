@@ -1,5 +1,5 @@
 package com.BananaTechies.models;
-
+import com.BananaTechies.models.Progreso;
 public class Tarea {
 		private int idt;
 		private String titulo;

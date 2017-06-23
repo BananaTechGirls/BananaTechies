@@ -1,6 +1,8 @@
 package com.BananaTechies.controllers;
 
 import java.io.IOException;
+import java.util.logging.Logger;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,11 +11,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+
+
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static Logger logger=Logger.getLogger("LoginServlet");
        
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
 		HttpSession misession= (HttpSession)request.getSession();
 		
 		if( misession.getAttribute("idUsuario")!=null ){
@@ -28,29 +34,23 @@ public class LoginServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String contrasena = request.getParameter("password");
 		
-		System.out.println("***"+email+":"+contrasena+":"+ email.equals("ricardo@r.es") +":"+ contrasena.equals("qwerty") );
+		
 				
-		if( email.equals("ricardo@r.es") && contrasena.equals("qwerty") ){
-			
+	//DBConnector dbc= DBConnector.getInstance();
+		
+/*		UsuarioDAO userDAO = (UsuarioDAO)  DAOFactory.getInstance().getDAO("idusuario");
+		
+		Usuario elUsuario = userDAO.getUsuario(email, contrasena);
+		
+		if( elUsuario!=null ){
 			HttpSession misession= (HttpSession)request.getSession();
-			misession.setAttribute("idUsuario", "ricardo@r.es");
+			misession.setAttribute("idUsuario", elUsuario);
 			
 			request.getRequestDispatcher("/lista_proyectos").forward(request, response);
-			
-		 }else if ( email.equals("juana@j.es") && contrasena.equals("qwerty") ){
-				HttpSession misession= (HttpSession)request.getSession();
-				misession.setAttribute("idUsuario", "juana@j.es");
-				
-				request.getRequestDispatcher("/lista_proyectos").forward(request, response);
-		 }else if ( email.equals("luis@l.es") && contrasena.equals("qwerty") ){
-				HttpSession misession= (HttpSession)request.getSession();
-				misession.setAttribute("idUsuario", "luis@l.es");
-				
-				request.getRequestDispatcher("/lista_proyectos").forward(request, response);
 		}else{
 			request.setAttribute("mierror", "Email y contraseña erroneos");
 			doGet(request, response);
-		}
+		}*/
 		
 	}
 

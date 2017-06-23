@@ -1,11 +1,11 @@
 package com.BananaTechies.models;
-
+import com.BananaTechies.models.Progreso;
 public class Proyecto {
 	private int idp;
 	private String titulo;
-	private int responsable;
+	private Usuario responsable;
 	private boolean status;
-	private String progreso;
+	private Progreso progreso;
 	private java.util.Date fechaInicio;
 	private java.util.Date fechaFinal;
 	private Tarea tarea;
@@ -15,7 +15,7 @@ public class Proyecto {
 	
 
 	
-	public Proyecto(int idp, String titulo, int responsable , boolean status,String progreso, java.util.Date fechaInicio,
+	public Proyecto(int idp, String titulo, Usuario responsable , boolean status,Progreso progreso, java.util.Date fechaInicio,
 			java.util.Date fechaFinal, Tarea tarea,String descripcion,String notas) {
 		this.idp=idp;
 		this.titulo=titulo;
@@ -60,14 +60,14 @@ public class Proyecto {
 
 
 
-	public int getResponsable() {
+	public Usuario getResponsable() {
 		return responsable;
 	}
 
 
 
 
-	public void setResponsable(int responsable) {
+	public void setResponsable(Usuario responsable) {
 		this.responsable = responsable;
 	}
 
@@ -88,14 +88,14 @@ public class Proyecto {
 
 
 
-	public String getProgreso() {
+	public Progreso getProgreso() {
 		return progreso;
 	}
 
 
 
 
-	public void setProgreso(String progreso) {
+	public void setProgreso(Progreso progreso) {
 		this.progreso = progreso;
 	}
 
@@ -167,6 +167,11 @@ public class Proyecto {
 
 	public void setNotas(String notas) {
 		this.notas = notas;
-	}	
+	}
+
+
+
+
+	
 
 }	

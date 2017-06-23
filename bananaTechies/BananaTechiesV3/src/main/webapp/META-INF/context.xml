@@ -3,7 +3,7 @@
 <Context>
     <!-- Specify a JDBC datasource -->
     <Resource 
-    	name="jdbc/" 
+    	name="jdbc/bananaApp" 
     	auth="Container"
         type="javax.sql.DataSource" 
         username="bananaApp" 

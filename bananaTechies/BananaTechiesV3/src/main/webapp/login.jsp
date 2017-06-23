@@ -14,7 +14,7 @@
 	rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700"
 	rel="stylesheet">
-<link rel="stylesheet" href="css/login.css">
+<link rel="stylesheet" href="./style/login.css">
 
 </head>
 <body>
@@ -42,8 +42,8 @@
 					</div>
 				</div>
 				<div>
-					<label for="pass">Password: </label> 
-					<input type="password" name="Password" id="pass" placeholder="password" minlength="6"
+					<label for="password">Password: </label> 
+					<input type="password" name="Password" id="password" placeholder="password" minlength="6"
 						pattern="[a-z 0-9]*" required>
 					<div class="mensajes_error">
 						<div id="pass[valueMissing]" class="${errorclass}">Introduzca
