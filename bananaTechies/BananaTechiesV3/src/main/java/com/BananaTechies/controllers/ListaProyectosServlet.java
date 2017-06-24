@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.BananaTechies.db.ProyectoDAO;
+import com.BananaTechies.db.ProyectoDAOImpl;
 import com.BananaTechies.models.Proyecto;
 import com.BananaTechies.models.Usuario;
 
@@ -26,10 +28,10 @@ public class ListaProyectosServlet extends HttpServlet {
 		
 		if( misession.getAttribute("usuario")!=null ){
 			Usuario elUsuario=(Usuario) misession.getAttribute("usuario");
-/*			ProyectoDAO pDAO=(ProyectoDAO)ProyectoDAOImpl.getInstance();
+			ProyectoDAO pDAO=(ProyectoDAO)ProyectoDAOImpl.getInstance();
 			
-			List<Proyecto> listaMaquillajes = pDAO.getUserMaquillajes(elUsuario.getUid() );
-			request.setAttribute("listaProyectosAMostrar", listaProyectos);*/
+			List<Proyecto> listaProyectos = pDAO.getUserProyecto(elUsuario.getUid() );
+			request.setAttribute("listaProyectosAMostrar", listaProyectos);
 			
 			request.getRequestDispatcher("plantilla_listaProyectos.jsp").forward(request, response);
 		}else{

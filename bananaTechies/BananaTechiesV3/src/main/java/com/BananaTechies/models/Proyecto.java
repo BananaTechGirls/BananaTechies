@@ -1,6 +1,5 @@
 package com.BananaTechies.models;
 
-import com.BananaTechies.models.Progreso;
 
 
 import com.BananaTechies.models.Usuario;
@@ -11,10 +10,10 @@ public class Proyecto {
 	private String titulo;
 	private Usuario responsable;
 	private boolean status;
-	private Progreso progreso;
+	private String progreso;
 	private java.util.Date fechaInicio;
 	private java.util.Date fechaFinal;
-	private Tarea tarea;
+	//private Tarea tarea;
 	private String descripcion;
 	private String notas;
 	
@@ -22,7 +21,7 @@ public class Proyecto {
 
 	
 
-	public Proyecto(int idp, String titulo, Usuario responsable , boolean status, Progreso progreso, java.util.Date fechaInicio, java.util.Date fechaFinal, Tarea tarea,String descripcion,String notas) {
+	public Proyecto(int idp, String titulo, Usuario responsable , boolean status, String progreso, java.util.Date fechaInicio, java.util.Date fechaFinal,/* Tarea tarea,*/String descripcion,String notas) {
 		this.idp=idp;
 		this.titulo=titulo;
 		this.responsable=responsable;
@@ -30,7 +29,7 @@ public class Proyecto {
 		this.progreso=progreso;
 		this.fechaInicio=fechaInicio;
 		this.fechaFinal=fechaFinal;
-		this.tarea=tarea;
+		//this.tarea=tarea;
 		this.descripcion=descripcion;
 		this.notas=notas;
 	}
@@ -94,14 +93,14 @@ public class Proyecto {
 
 
 
-	public Progreso getProgreso() {
+	public String getProgreso() {
 		return progreso;
 	}
 
 
 
 
-	public void setProgreso(Progreso progreso) {
+	public void setProgreso(String progreso) {
 		this.progreso = progreso;
 	}
 
@@ -136,7 +135,7 @@ public class Proyecto {
 
 
 
-	public Tarea getTarea() {
+	/*public Tarea getTarea() {
 		return tarea;
 	}
 
@@ -145,7 +144,7 @@ public class Proyecto {
 
 	public void setTarea(Tarea tarea) {
 		this.tarea = tarea;
-	}
+	}*/
 
 
 

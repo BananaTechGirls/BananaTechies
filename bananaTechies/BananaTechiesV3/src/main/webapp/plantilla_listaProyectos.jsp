@@ -16,7 +16,7 @@
 				Listado de proyectos de <span>${userId}</span>
 			</h1>
 			<div class="row">
-				<form action="resultsP.html" method="post" id="searchPForm"
+				<form  method="post" id="searchPForm"
 					novalidate>
 					<div class="row">
 						<div class="col-xs-12 col-sm-4 col-sm-offset-8 searchBox">
@@ -60,27 +60,27 @@
 									<th>ID</th>
 									<th>Titulo</th>
 									<th>Responsable</th>
-									<th>Fecha inicio</th>
 									<th>Status</th>
 									<th>Progreso</th>
+									<th>Fecha inicio</th>
+									
 								</tr>
 							</thead>
 							<tbody>
 								<tr>
-									<td class="buttons"><a href="project.html"
-										class="btn glyphicon glyphicon-eye-open" aria-label="Tareas"></a>
-
-										<a href="#"
-										class="btn_del_Project btn glyphicon glyphicon-trash"
-										data_Id="project1Id" aria-label="botonBorrarP"></a> <a
-										href="taskList.html" class="btn glyphicon glyphicon-tasks"
-										aria-label="Tareas"></a></td>
-									<td>4</td>
-									<td>5</td>
-									<td>6</td>
-									<td>7</td>
-									<td>8</td>
-									<td>9</td>
+									<td class="buttons">
+										<a href="project.html"class="btn glyphicon glyphicon-eye-open" aria-label="Tareas"></a>
+										<a href="#"class="btn_del_Project btn glyphicon glyphicon-trash"
+										data_Id="project1Id" aria-label="botonBorrarP"></a> 
+										<a href="taskList.html" class="btn glyphicon glyphicon-tasks" aria-label="Tareas"></a>
+									</td>
+									<td>${pro.idp}</td>
+									<td>${pro.titulo}</td>
+									<td>${pro.responsable}</td>
+									<td>${pro.status}</td>
+									<td>${pro.progreso}</td>
+									<td>${pro.fechaInicio}</td>
+									
 								</tr>
 							</tbody>
 						</table>

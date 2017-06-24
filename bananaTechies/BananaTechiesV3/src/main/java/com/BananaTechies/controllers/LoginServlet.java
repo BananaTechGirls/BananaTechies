@@ -11,6 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.BananaTechies.db.DAOFactory;
+import com.BananaTechies.db.UsuarioDAO;
+import com.BananaTechies.models.Usuario;
+
 
 
 @WebServlet("/login")
@@ -38,9 +42,9 @@ public class LoginServlet extends HttpServlet {
 				
 	//DBConnector dbc= DBConnector.getInstance();
 		
-/*		UsuarioDAO userDAO = (UsuarioDAO)  DAOFactory.getInstance().getDAO("idusuario");
+		UsuarioDAO userDAO = (UsuarioDAO)  DAOFactory.getInstance().getDAO("idusuario");
 		
-		Usuario elUsuario = userDAO.getUsuario(email, contrasena);
+		Usuario elUsuario = userDAO.getUsuario(email, contrasena);//null point exeption
 		
 		if( elUsuario!=null ){
 			HttpSession misession= (HttpSession)request.getSession();
@@ -50,7 +54,7 @@ public class LoginServlet extends HttpServlet {
 		}else{
 			request.setAttribute("mierror", "Email y contraseña erroneos");
 			doGet(request, response);
-		}*/
+		}
 		
 	}
 

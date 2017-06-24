@@ -1,6 +1,6 @@
 package com.BananaTechies.models;
 
-import java.util.List;
+//import java.util.List;
 
 public class Usuario {
 	private	int	uid;
@@ -10,21 +10,21 @@ public class Usuario {
 	private String password;
     
 	
-	private List<Proyecto> proyectoAsignado;
-	private List<Tarea> tareaAsignada;
+	//private List<Proyecto> proyectoAsignado;
+	//private List<Tarea> tareaAsignada;
 	
 	public Usuario(){
 		
 	}
 	
-	public Usuario(int	uid, String nombre, String apellido, String email, String password, List<Proyecto> proyectoAsignado, List<Tarea>tareaAsignada) {
+	public Usuario(int	uid, String nombre, String apellido, String email, String password/*, List<Proyecto> proyectoAsignado, List<Tarea>tareaAsignada*/) {
 		this.uid=uid;
 		this.nombre=nombre;
 		this.apellido=apellido;
 		this.email=email;
 		this.password = password;
-		this.proyectoAsignado = proyectoAsignado;
-		this.tareaAsignada=tareaAsignada;
+		//this.proyectoAsignado = proyectoAsignado;
+		//this.tareaAsignada=tareaAsignada;
 		
 	}
 
@@ -76,7 +76,7 @@ public class Usuario {
 		this.password = password;
 	}
 
-	public List<Proyecto> getProyectoAsignado() {
+	/*public List<Proyecto> getProyectoAsignado() {
 		return proyectoAsignado;
 	}
 
@@ -90,5 +90,5 @@ public class Usuario {
 
 	public void setTareaAsignada(List<Tarea> tareaAsignada) {
 		this.tareaAsignada = tareaAsignada;
-	}
+	}*/
 }

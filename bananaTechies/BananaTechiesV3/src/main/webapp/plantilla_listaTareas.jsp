@@ -17,7 +17,7 @@
 				Tareas del proyecto <span></span>
 			</h1>
 			<div class="row">
-				<form action="resultsT.html" method="get" id="searchTForm"
+				<form  method="post" id="searchTForm"
 					novalidate>
 					<div class="row">
 						<div class="col-xs-12 col-sm-4 col-sm-offset-8 searchBox">
