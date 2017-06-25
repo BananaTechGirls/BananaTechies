@@ -22,38 +22,43 @@ public final class UsuarioDAOImpl extends UsuarioDAO {
 	@Override
 	public Usuario getUsuario(String email, String password) {
 		Usuario usuarioADevolver = null;
-
+		logger.info("!--------------->>>>> getUsuario");
 		try {
+			
 			Connection conn = datasource.getConnection();
 			// ordenes sql
-			String sql = "SELECT u.* FROM usuario u WHERE u.email=? AND password=? LIMIT 1";
+			String sql = "SELECT u.* FROM bananatechies.usuario u WHERE u.email=? AND password=? LIMIT 1;";
 			PreparedStatement pstm = conn.prepareStatement(sql);
 			pstm.setString(1, email);
-			pstm.setString(2, password);
-			
-			
-			
+			pstm.setString(2, password);	
 			ResultSet rs = pstm.executeQuery();
 
+			int rowcount = 0;
+			if (rs.last()) {
+			  rowcount = rs.getRow();
+			  rs.beforeFirst(); // not rs.first() because the rs.next() below will move on, missing the first element
+			}
+			
+			logger.info("!--------------->>>>> executeQuery >>>> numero de lineas: "+ rowcount);
+			
 			if (rs.next()) {
-
 				usuarioADevolver = new Usuario(
-						rs.getInt("uid"),
+						rs.getInt("idu"),
 						rs.getString("nombre"),
 						rs.getString("apellido"),
 						rs.getString("email"), 
-						rs.getString("password")
+						rs.getString("foto"),
+						rs.getString("video")
 						);
-						
 			}
 
 			pstm.close();
 			conn.close();
 
-			logger.info("Conexi髇 exitosa");
+			logger.info("Conexi贸n exitosa");
 
 		} catch (Exception e) {
-			logger.severe("Error en la conexi髇 de BBDD:" + e);
+			logger.severe("Error en la conexi贸n de BBDD:" + e);
 			usuarioADevolver = null;
 		}
 
@@ -85,7 +90,7 @@ public final class UsuarioDAOImpl extends UsuarioDAO {
 		try {
 			Connection conn = datasource.getConnection();
 			// ordenes sql
-			String sql = "SELECT u.* FROM usuario u WHERE u.uid=?LIMIT 1";
+			String sql = "SELECT u.* FROM bananatechies.usuario u WHERE u.uid=?LIMIT 1";
 			PreparedStatement pstm = conn.prepareStatement(sql);
 			pstm.setInt(1, uid);
 
@@ -94,21 +99,22 @@ public final class UsuarioDAOImpl extends UsuarioDAO {
 			if (rs.next()) {
 
 				usuarioADevolver = new Usuario(
-						rs.getInt("uid"),
+						rs.getInt("idu"),
 						rs.getString("nombre"),
 						rs.getString("apellido"),
 						rs.getString("email"), 
-						rs.getString("password")
+						rs.getString("foto"),
+						rs.getString("video")
 						);
 			}
 
 			pstm.close();
 			conn.close();
 
-			logger.info("Conexi髇 exitosa");
+			logger.info("Conexi贸n exitosa");
 
 		} catch (Exception e) {
-			logger.severe("Error en la conexi髇 de BBDD:" + e);
+			logger.severe("Error en la conexi贸n de BBDD:" + e);
 			usuarioADevolver = null;
 		}
 

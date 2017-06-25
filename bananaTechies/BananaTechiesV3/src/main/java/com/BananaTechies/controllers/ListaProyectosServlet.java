@@ -26,12 +26,12 @@ public class ListaProyectosServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession misession= (HttpSession)request.getSession();
 		
-		if( misession.getAttribute("usuario")!=null ){
-			Usuario elUsuario=(Usuario) misession.getAttribute("usuario");
-			ProyectoDAO pDAO=(ProyectoDAO)ProyectoDAOImpl.getInstance();
+		if( misession.getAttribute("idUsuario")!=null ){
+			Usuario elUsuario=(Usuario) misession.getAttribute("idUsuario");
+			/* ProyectoDAO pDAO=(ProyectoDAO)ProyectoDAOImpl.getInstance();
 			
 			List<Proyecto> listaProyectos = pDAO.getUserProyecto(elUsuario.getUid() );
-			request.setAttribute("listaProyectosAMostrar", listaProyectos);
+			request.setAttribute("listaProyectosAMostrar", listaProyectos);*/
 			
 			request.getRequestDispatcher("plantilla_listaProyectos.jsp").forward(request, response);
 		}else{
@@ -42,7 +42,6 @@ public class ListaProyectosServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("ESTOY EN POST!!");
 		doGet(request, response);
 	}
 

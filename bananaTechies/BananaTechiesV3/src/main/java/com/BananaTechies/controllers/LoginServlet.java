@@ -35,16 +35,15 @@ public class LoginServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String email = request.getParameter("email");
-		String contrasena = request.getParameter("password");
+		String email = request.getParameter("Email");
+		String contrasena = request.getParameter("Password");
+		Usuario elUsuario = null;
+
+		//DBConnector dbc= DBConnector.getInstance();
 		
+		UsuarioDAO userDAO = (UsuarioDAO)  DAOFactory.getInstance().getDAO("usuario");	
 		
-				
-	//DBConnector dbc= DBConnector.getInstance();
-		
-		UsuarioDAO userDAO = (UsuarioDAO)  DAOFactory.getInstance().getDAO("idusuario");
-		
-		Usuario elUsuario = userDAO.getUsuario(email, contrasena);//null point exeption
+		elUsuario = userDAO.getUsuario(email, contrasena);//null point exeption
 		
 		if( elUsuario!=null ){
 			HttpSession misession= (HttpSession)request.getSession();
