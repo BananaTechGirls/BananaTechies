@@ -11,11 +11,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.BananaTechies.db.DAOFactory;
+import com.BananaTechies.db.UsuarioDAO;
+import com.BananaTechies.models.Usuario;
+
 
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
 	private static Logger logger=Logger.getLogger("LoginServlet");
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
@@ -31,16 +36,15 @@ public class LoginServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String email = request.getParameter("email");
-		String contrasena = request.getParameter("password");
+		String email = request.getParameter("Email");
+		String contrasena = request.getParameter("Password");
+		Usuario elUsuario = null;
+
+		//DBConnector dbc= DBConnector.getInstance();
 		
+		UsuarioDAO userDAO = (UsuarioDAO)  DAOFactory.getInstance().getDAO("usuario");	
 		
-				
-	//DBConnector dbc= DBConnector.getInstance();
-		
-/*		UsuarioDAO userDAO = (UsuarioDAO)  DAOFactory.getInstance().getDAO("idusuario");
-		
-		Usuario elUsuario = userDAO.getUsuario(email, contrasena);
+		elUsuario = userDAO.getUsuario(email, contrasena);//null point exeption
 		
 		if( elUsuario!=null ){
 			HttpSession misession= (HttpSession)request.getSession();
@@ -50,8 +54,16 @@ public class LoginServlet extends HttpServlet {
 		}else{
 			request.setAttribute("mierror", "Email y contraseña erroneos");
 			doGet(request, response);
-		}*/
+		}
 		
+	}
+
+	public static Logger getLogger() {
+		return logger;
+	}
+
+	public static void setLogger(Logger logger) {
+		LoginServlet.logger = logger;
 	}
 
 }

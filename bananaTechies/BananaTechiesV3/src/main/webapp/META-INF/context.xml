@@ -11,6 +11,5 @@
         driverClassName="com.mysql.jdbc.Driver"
         url="jdbc:mysql://localhost/bananatechies?SSL=false"
         maxActive="10" 
-        maxIdle="4" />
-     
+        maxIdle="4" />   
 </Context>
