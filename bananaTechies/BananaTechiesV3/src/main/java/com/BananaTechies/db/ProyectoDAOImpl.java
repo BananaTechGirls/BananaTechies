@@ -30,7 +30,7 @@ public final class ProyectoDAOImpl extends ProyectoDAO {
 		try {
 			Connection conn = this.datasource.getConnection();
 			// ordenes sql
-			String sql = "SELECT p.* FROM proyecto p WHERE p.idp=? LIMIT 1";
+			String sql = "SELECT p.* FROM bananatechies.proyecto p WHERE p.idp=? LIMIT 1";
 			PreparedStatement pstm = conn.prepareStatement(sql);
 			pstm.setInt(1, idp);
 			
@@ -93,7 +93,7 @@ public final class ProyectoDAOImpl extends ProyectoDAO {
 			Connection conn = this.datasource.getConnection();
 
 			// ordenes sql
-			String sql = "SELECT m.* FROM maquillaje m INNER JOIN compra c ON c.cosmetico=m.mid WHERE c.usuario=?";
+			String sql = "SELECT p.* FROM bananatechies.proyecto p INNER JOIN bananatechies.usuario u ON u.uid=p.idp WHERE u.uid=?";
 			PreparedStatement pstm = conn.prepareStatement(sql);
 			pstm.setInt(1, uid);
 
@@ -140,7 +140,7 @@ public final class ProyectoDAOImpl extends ProyectoDAO {
 			Connection conn = this.datasource.getConnection();
 
 			// ordenes sql
-			String sql = "SELECT m.* FROM maquillaje m WHERE 1";
+			String sql = "SELECT p.* FROM bananatechies.proyecto p WHERE 1";
 			PreparedStatement pstm = conn.prepareStatement(sql);
 			UsuarioDAO uDAO=(UsuarioDAO)UsuarioDAOImpl.getInstance();
 

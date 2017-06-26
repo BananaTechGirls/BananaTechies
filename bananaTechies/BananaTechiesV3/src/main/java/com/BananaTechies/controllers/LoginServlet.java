@@ -20,6 +20,7 @@ import com.BananaTechies.models.Usuario;
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
 	private static Logger logger=Logger.getLogger("LoginServlet");
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
@@ -55,6 +56,14 @@ public class LoginServlet extends HttpServlet {
 			doGet(request, response);
 		}
 		
+	}
+
+	public static Logger getLogger() {
+		return logger;
+	}
+
+	public static void setLogger(Logger logger) {
+		LoginServlet.logger = logger;
 	}
 
 }

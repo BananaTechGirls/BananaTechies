@@ -21,17 +21,17 @@ import com.BananaTechies.models.Usuario;
 @WebServlet("/lista_proyectos")
 public class ListaProyectosServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static Logger logger=Logger.getLogger("ListaMaquillajesServlet");
+	private static Logger logger=Logger.getLogger("ListaProyectosServlet");
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession misession= (HttpSession)request.getSession();
 		
 		if( misession.getAttribute("idUsuario")!=null ){
 			Usuario elUsuario=(Usuario) misession.getAttribute("idUsuario");
-			/* ProyectoDAO pDAO=(ProyectoDAO)ProyectoDAOImpl.getInstance();
+			 ProyectoDAO pDAO=(ProyectoDAO)ProyectoDAOImpl.getInstance();
 			
 			List<Proyecto> listaProyectos = pDAO.getUserProyecto(elUsuario.getUid() );
-			request.setAttribute("listaProyectosAMostrar", listaProyectos);*/
+			request.setAttribute("listaProyectosAMostrar", listaProyectos);
 			
 			request.getRequestDispatcher("plantilla_listaProyectos.jsp").forward(request, response);
 		}else{
@@ -43,6 +43,14 @@ public class ListaProyectosServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
+	}
+
+	public static Logger getLogger() {
+		return logger;
+	}
+
+	public static void setLogger(Logger logger) {
+		ListaProyectosServlet.logger = logger;
 	}
 
 }

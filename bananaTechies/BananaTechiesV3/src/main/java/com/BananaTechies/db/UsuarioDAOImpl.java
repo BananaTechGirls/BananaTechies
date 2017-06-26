@@ -47,8 +47,9 @@ public final class UsuarioDAOImpl extends UsuarioDAO {
 						rs.getString("nombre"),
 						rs.getString("apellido"),
 						rs.getString("email"), 
-						rs.getString("foto"),
-						rs.getString("video")
+						rs.getString("password")
+						//rs.getString("foto"),
+						//rs.getString("video")
 						);
 			}
 
@@ -102,9 +103,10 @@ public final class UsuarioDAOImpl extends UsuarioDAO {
 						rs.getInt("idu"),
 						rs.getString("nombre"),
 						rs.getString("apellido"),
-						rs.getString("email"), 
-						rs.getString("foto"),
-						rs.getString("video")
+						rs.getString("email"),
+						rs.getString("password")
+						//rs.getString("foto"),
+						//rs.getString("video")
 						);
 			}
 

@@ -13,7 +13,7 @@
 				<li class="active">Home</li>
 			</ol>
 			<h1>
-				Listado de proyectos de <span>${userId}</span>
+				Listado de proyectos de <span>${responsable.nombre}</span>
 			</h1>
 			<div class="row">
 				<form  method="post" id="searchPForm"
