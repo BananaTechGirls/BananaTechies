@@ -3,5 +3,16 @@
 		 http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 	version="3.1">
 	<display-name>BananaTechies</display-name>
+	<servlet>
+		<description>
+		</description>
+		<display-name>DetalleProyectoServlet</display-name>
+		<servlet-name>DetalleProyectoServlet</servlet-name>
+		<servlet-class>com.BananaTechies.controllers.DetalleProyectoServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DetalleProyectoServlet</servlet-name>
+		<url-pattern>/DetalleProyectoServlet</url-pattern>
+	</servlet-mapping>
 
 </web-app>

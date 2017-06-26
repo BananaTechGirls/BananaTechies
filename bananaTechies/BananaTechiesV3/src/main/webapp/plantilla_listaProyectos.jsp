@@ -16,8 +16,7 @@
 				Listado de proyectos de <span>${idUsuario.nombre}</span>
 			</h1>
 			<div class="row">
-				<form  method="post" id="searchPForm"
-					novalidate>
+				<form method="post" id="searchPForm" novalidate>
 					<div class="row">
 						<div class="col-xs-12 col-sm-4 col-sm-offset-8 searchBox">
 							<div class="input-group ">
@@ -49,44 +48,48 @@
 				</div>
 			</div>
 			<div class="container-fluid">
-				<c:forEach var="pro" items="${listaProyectosAMostrar}"
-					varStatus="counter">
 
-					<div class="table-responsive">
-						<table class="table table-hover">
-							<thead>
-								<tr>
-									<th>Ver - Borrar - Tareas</th>
-									<th>ID</th>
-									<th>Titulo</th>
-									<th>Responsable</th>
-									<th>Status</th>
-									<th>Progreso</th>
-									<th>Fecha inicio</th>
-									
-								</tr>
-							</thead>
+				<div class="table-responsive">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>Ver - Borrar - Tareas</th>
+								<th>ID</th>
+								<th>Titulo</th>
+								<th>Responsable</th>
+								<th>Status</th>
+								<th>Progreso</th>
+								<th>Fecha inicio</th>
+
+							</tr>
+						</thead>
+						<c:forEach var="pro" items="${listaProyectosAMostrar}"
+							varStatus="counter">
 							<tbody>
 								<tr>
 									<td class="buttons">
-										<a href="project.html"class="btn glyphicon glyphicon-eye-open" aria-label="Tareas"></a>
-										<a href="#"class="btn_del_Project btn glyphicon glyphicon-trash"
+										<a href="/DetalleProyectoServlet?idp=${pro.idp}"
+										class="btn glyphicon glyphicon-eye-open" aria-label="Tareas"></a>
+										<a href="#"
+										class="btn_del_Project btn glyphicon glyphicon-trash"
 										data_Id="project1Id" aria-label="botonBorrarP"></a> 
-										<a href="taskList.html" class="btn glyphicon glyphicon-tasks" aria-label="Tareas"></a>
+										<a
+										href="/ListaTareasServlet?idt=" class="btn glyphicon glyphicon-tasks"
+										aria-label="Tareas"></a>
 									</td>
 									<td>${pro.idp}</td>
 									<td>${pro.titulo}</td>
-									<td>${pro.responsable}</td>
+									<td>${idUsuario.nombre}</td>
 									<td>${pro.status}</td>
 									<td>${pro.progreso}</td>
 									<td>${pro.fechaInicio}</td>
-									
+
 								</tr>
 							</tbody>
-						</table>
-					</div>
-
-				</c:forEach>
+							
+						</c:forEach>
+					</table>
+				</div>
 			</div>
 		</section>
 		<jsp:include page="footer.jsp"></jsp:include>

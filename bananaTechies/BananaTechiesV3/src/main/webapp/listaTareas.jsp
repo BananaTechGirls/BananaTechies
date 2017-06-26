@@ -14,11 +14,10 @@
 				<li class="active">Lista de Tareas</li>
 			</ol>
 			<h1>
-				Tareas del proyecto <span></span>
+				Listado de Tareas 
 			</h1>
 			<div class="row">
-				<form  method="post" id="searchTForm"
-					novalidate>
+				<form method="post" id="searchTForm" novalidate>
 					<div class="row">
 						<div class="col-xs-12 col-sm-4 col-sm-offset-8 searchBox">
 							<div class="input-group">
@@ -46,41 +45,47 @@
 				</div>
 			</div>
 			<div class="container-fluid">
-				<c:forEach var="pro" items="${listaTareasAMostrar}"
-					varStatus="counter">
 
-					<div class="table-responsive">
-						<table class="table table-hover">
-							<thead>
-								<tr>
-									<th>Ver - Borrar</th>
-									<th>ID</th>
-									<th>Titulo</th>
-									<th>Proyecto</th>
-									<th>Responsable</th>
-									<th>Fecha inicio</th>
-									<th>Status</th>
-									<th>Progreso</th>
-								</tr>
-							</thead>
+
+				<div class="table-responsive">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>Ver - Borrar</th>
+								<th>ID</th>
+								<th>Titulo</th>
+								<th>Proyecto</th>
+								<th>Responsable</th>
+								<th>Fecha inicio</th>
+								<th>Status</th>
+								<th>Progreso</th>
+							</tr>
+						</thead>
+						<c:forEach var="t" items="${listaTareasAMostrar}"
+							varStatus="counter">
 							<tbody>
 								<tr>
-									<td class="buttons"><a href="task.html"
+									<td class="buttons">
+										<a href="/DetalleTareaServlet?idp=${t.idt}"
 										class="btn glyphicon glyphicon-eye-open"
-										aria-label="viewTaskBtn" data_Id="task1Id"></a> <a href="#"
+										aria-label="viewTaskBtn" data_Id="${t.idt}"></a> 
+										<a href="#"
 										class="btn btn_del_Task glyphicon glyphicon-trash"
-										aria-label="deleteTaskBtn" data_Id="task1Id"></a></td>
-									<td>4</td>
-									<td>5</td>
-									<td>6</td>
-									<td>7</td>
-									<td>8</td>
-									<td>9</td>
+										aria-label="deleteTaskBtn" data_Id="${t.idt}"></a>
+									</td>
+									<td>${t.idt}</td>
+									<td>${t.titulo}</td>
+									<td>${t.proyecto}</td>
+									<td>${idUsuario.nombre}</td>
+									<td>${t.fechaInicio}</td>
+									<td>${t.status}</td>
+									<td>${t.progreso}</td>
 								</tr>
 							</tbody>
-						</table>
-					</div>
-				</c:forEach>
+						</c:forEach>
+					</table>
+				</div>
+
 			</div>
 		</section>
 		<jsp:include page="footer.jsp"></jsp:include>
