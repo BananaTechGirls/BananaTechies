@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import com.BananaTechies.db.DAOFactory;
 import com.BananaTechies.db.UsuarioDAO;
-import com.BananaTechies.models.Proyecto;
+
 import com.BananaTechies.models.Usuario;
 
 
