@@ -18,7 +18,6 @@ public class Proyecto {
 	private String notas;
 	
 	
-
 	
 
 	public Proyecto(int idp, String titulo, Usuario responsable , boolean status, String progreso, java.util.Date fechaInicio, java.util.Date fechaFinal,/* Tarea tarea,*/String descripcion,String notas) {

@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import com.BananaTechies.db.DAOFactory;
 import com.BananaTechies.db.UsuarioDAO;
+import com.BananaTechies.models.Proyecto;
 import com.BananaTechies.models.Usuario;
 
 
@@ -38,11 +39,10 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String email = request.getParameter("Email");
 		String contrasena = request.getParameter("Password");
-		Usuario elUsuario = null;
-
-		//DBConnector dbc= DBConnector.getInstance();
+		Usuario elUsuario = new Usuario();
 		
-		UsuarioDAO userDAO = (UsuarioDAO)  DAOFactory.getInstance().getDAO("usuario");	
+		//DBConnector dbc= DBConnector.getInstance();
+		UsuarioDAO userDAO = (UsuarioDAO)  DAOFactory.getInstance().getDAO(elUsuario);	
 		
 		elUsuario = userDAO.getUsuario(email, contrasena);//null point exeption
 		

@@ -12,11 +12,11 @@ public class DAOFactory {
 	
 	
 	
-	public Object getDAO(String daoType) {
-		switch(daoType){
-		case "usuario":return(Object)UsuarioDAOImpl.getInstance();
-		case "proyecto":return(Object)ProyectoDAOImpl.getInstance();
-		/*case "tarea":return(Object)TareaDAOImpl.getInstance();*/
+	public Object getDAO(Object daoType) {
+		switch(daoType.getClass().getSimpleName()){
+		case "Usuario":return(Object)UsuarioDAOImpl.getInstance();
+		case "Proyecto":return(Object)ProyectoDAOImpl.getInstance();
+		/*case "Tarea":return(Object)TareaDAOImpl.getInstance();*/
 		default : return null;
 		}
 	}
