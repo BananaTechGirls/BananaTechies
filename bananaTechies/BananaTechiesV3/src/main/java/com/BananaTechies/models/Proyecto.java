@@ -11,16 +11,26 @@ public class Proyecto {
 	private Usuario responsable;
 	private boolean status;
 	private String progreso;
-	private java.util.Date fechaInicio;
-	private java.util.Date fechaFinal;
-	//private Tarea tarea;
+	private String fechaInicio;
+	private String fechaFinal;
 	private String descripcion;
 	private String notas;
 	
 	
-	
 
-	public Proyecto(int idp, String titulo, Usuario responsable , boolean status, String progreso, java.util.Date fechaInicio, java.util.Date fechaFinal,/* Tarea tarea,*/String descripcion,String notas) {
+	public Proyecto() {
+		this.idp=0;
+		this.titulo="";
+		this.responsable=null;
+		this.status=false;
+		this.progreso="";
+		this.fechaInicio=null;
+		this.fechaFinal=null;
+		this.descripcion="";
+		this.notas="";
+	}
+
+	public Proyecto(int idp, String titulo, Usuario responsable , boolean status, String progreso, String fechaInicio, String fechaFinal, String descripcion,String notas) {
 		this.idp=idp;
 		this.titulo=titulo;
 		this.responsable=responsable;
@@ -28,7 +38,6 @@ public class Proyecto {
 		this.progreso=progreso;
 		this.fechaInicio=fechaInicio;
 		this.fechaFinal=fechaFinal;
-		//this.tarea=tarea;
 		this.descripcion=descripcion;
 		this.notas=notas;
 	}
@@ -106,45 +115,30 @@ public class Proyecto {
 
 
 
-	public java.util.Date getFechaInicio() {
+	public String getFechaInicio() {
 		return fechaInicio;
 	}
 
 
 
 
-	public void setFechaInicio(java.util.Date fechaInicio) {
+	public void setFechaInicio(String fechaInicio) {
 		this.fechaInicio = fechaInicio;
 	}
 
 
 
 
-	public java.util.Date getFechaFinal() {
+	public String getFechaFinal() {
 		return fechaFinal;
 	}
 
 
 
 
-	public void setFechaFinal(java.util.Date fechaFinal) {
+	public void setFechaFinal(String fechaFinal) {
 		this.fechaFinal = fechaFinal;
 	}
-
-
-
-
-	/*public Tarea getTarea() {
-		return tarea;
-	}
-
-
-
-
-	public void setTarea(Tarea tarea) {
-		this.tarea = tarea;
-	}*/
-
 
 
 

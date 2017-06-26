@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import com.BananaTechies.models.Proyecto;
+import com.BananaTechies.models.Usuario;
 import com.BananaTechies.db.UsuarioDAO;
 import com.BananaTechies.db.UsuarioDAOImpl;
 
@@ -47,8 +48,8 @@ public final class ProyectoDAOImpl extends ProyectoDAO {
 						uDAO.getUsuario(rs.getInt("usuario")),											
 						rs.getBoolean("status"),
 						rs.getString("Progreso"),
-						rs.getDate("fechaInicio"),
-						rs.getDate("fechaFinal"),
+						rs.getString("fechaInicio"),
+						rs.getString("fechaFinal"),
 						rs.getString("descripcion"),
 						rs.getString("notas")
 						);
@@ -86,35 +87,30 @@ public final class ProyectoDAOImpl extends ProyectoDAO {
 	}
 
 	@Override
-	public List<Proyecto> getUserProyecto(int uid) {
+	public List<Proyecto> getUserProyecto(Usuario unUsuario) {
 		List<Proyecto> listADevolver = new ArrayList<Proyecto>();
 
 		try {
 			Connection conn = this.datasource.getConnection();
 
 			// ordenes sql
-			String sql = "SELECT p.* FROM bananatechies.proyecto p INNER JOIN bananatechies.usuario u ON u.uid=p.idp WHERE u.uid=?";
+			String sql = "SELECT p.idp, p.titulo, DATE_FORMAT(p.fechaInicio, '%m/%d/%Y') as fechaInicio, DATE_FORMAT(p.fechaFinal, '%m/%d/%Y') as fechaFinal, p.descripcion, p.nota, p.status, o.estado As progreso FROM bananatechies.proyecto p left join bananatechies.progreso o on p.progreso=o.idpro where p.responsable=? order by p.status;";
 			PreparedStatement pstm = conn.prepareStatement(sql);
-			pstm.setInt(1, uid);
-
-			UsuarioDAO uDAO=(UsuarioDAO)UsuarioDAOImpl.getInstance();
+			pstm.setInt(1, unUsuario.getUid());
 			
 			ResultSet rs = pstm.executeQuery();
 
 			while (rs.next()) {
-				listADevolver.add(new Proyecto(
-						
+				listADevolver.add(new Proyecto(					
 						rs.getInt("idp"), 
 						rs.getString("titulo"),
-						uDAO.getUsuario(rs.getInt("usuario")),											
+						unUsuario,											
 						rs.getBoolean("status"),
 						rs.getString("Progreso"),
-						rs.getDate("fechaInicio"),
-						rs.getDate("fechaFinal"),
+						rs.getString("fechaInicio"),
+						rs.getString("fechaFinal"),
 						rs.getString("descripcion"),
-						rs.getString("notas")
-						
-						
+						rs.getString("nota")					
 						));
 			}
 
@@ -152,12 +148,10 @@ public final class ProyectoDAOImpl extends ProyectoDAO {
 						uDAO.getUsuario(rs.getInt("usuario")),											
 						rs.getBoolean("status"),
 						rs.getString("Progreso"),
-						rs.getDate("fechaInicio"),
-						rs.getDate("fechaFinal"),
+						rs.getString("fechaInicio"),
+						rs.getString("fechaFinal"),
 						rs.getString("descripcion"),
 						rs.getString("notas")
-						
-						
 						));
 			}
 

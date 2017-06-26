@@ -11,8 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.BananaTechies.db.DAOFactory;
 import com.BananaTechies.db.ProyectoDAO;
 import com.BananaTechies.db.ProyectoDAOImpl;
+import com.BananaTechies.db.UsuarioDAO;
 import com.BananaTechies.models.Proyecto;
 import com.BananaTechies.models.Usuario;
 
@@ -25,12 +27,14 @@ public class ListaProyectosServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession misession= (HttpSession)request.getSession();
+		Proyecto elProyecto = new Proyecto();
 		
 		if( misession.getAttribute("idUsuario")!=null ){
 			Usuario elUsuario=(Usuario) misession.getAttribute("idUsuario");
-			 ProyectoDAO pDAO=(ProyectoDAO)ProyectoDAOImpl.getInstance();
 			
-			List<Proyecto> listaProyectos = pDAO.getUserProyecto(elUsuario.getUid() );
+			ProyectoDAO pDAO=(ProyectoDAO) DAOFactory.getInstance().getDAO(elProyecto);
+						
+			List<Proyecto> listaProyectos = pDAO.getUserProyecto(elUsuario);
 			request.setAttribute("listaProyectosAMostrar", listaProyectos);
 			
 			request.getRequestDispatcher("plantilla_listaProyectos.jsp").forward(request, response);
