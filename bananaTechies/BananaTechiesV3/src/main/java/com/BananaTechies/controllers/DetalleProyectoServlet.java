@@ -32,9 +32,9 @@ public class DetalleProyectoServlet extends HttpServlet {
 		if( elUsuario!=null ){				
 			ProyectoDAO pDAO=(ProyectoDAO) DAOFactory.getInstance().getDAO(elProyecto);
 
-			System.out.println(elUsuario.getNombre() +"IdP ->"+request.getParameter("idp"));
+			//System.out.println(elUsuario.getNombre() +"IdP ->"+request.getParameter("idp"));
 			
-			elProyecto= pDAO.getProyecto(Integer.parseInt(request.getParameter("idp")));
+			elProyecto= pDAO.getProyecto(Integer.parseInt(request.getParameter("idp")), elUsuario);
 						
 			//List<Tarea> listaTareas = pDAO.getProyectoTarea(elProyecto);
 			
@@ -42,6 +42,9 @@ public class DetalleProyectoServlet extends HttpServlet {
 			logger.info("+++++++++++++++ >> titulo");
 			
 			//request.setAttribute("listaProyectosAMostrar", listaTareas);
+			
+			
+			
 			
 			request.getRequestDispatcher("detalleProyecto.jsp").forward(request, response);
 		}else{
