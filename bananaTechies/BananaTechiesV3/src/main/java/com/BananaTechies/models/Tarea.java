@@ -11,6 +11,7 @@ public class Tarea {
 		private String fechaInicio;
 		private String fechaFinal;
 		
+		public Tarea(){}
 	
 		
 		public Tarea(int idt,String titulo,Proyecto proyecto,String responsable,boolean status,String progreso,String fechaInicio,String fechaFinal){
@@ -54,14 +55,15 @@ public class Tarea {
 			this.proyecto = proyecto;
 		}
 
-
-
-
 		public void setResponsable(String responsable) {
 			this.responsable = responsable;
 		}
 
+		public String getResponsable() {
+			 return this.responsable;
+		}
 
+		
 		public boolean isStatus() {
 			return status;
 		}

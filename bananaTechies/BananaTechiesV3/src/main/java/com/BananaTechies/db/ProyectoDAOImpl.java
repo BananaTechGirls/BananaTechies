@@ -31,12 +31,22 @@ public final class ProyectoDAOImpl extends ProyectoDAO {
 		try {
 			Connection conn = this.datasource.getConnection();
 			// ordenes sql
-			String sql = "SELECT p.* FROM bananatechies.proyecto p WHERE p.idp=? LIMIT 1";
+			String sql = "SELECT p.idp, p.titulo, p.status, p.Progreso, DATE_FORMAT(p.fechaInicio, '%m/%d/%Y') as fechaInicio, DATE_FORMAT(p.fechaFinal, '%m/%d/%Y') as fechaFinal, p.descripcion, p.nota FROM bananatechies.proyecto p WHERE p.idp=? LIMIT 1";
 			PreparedStatement pstm = conn.prepareStatement(sql);
 			pstm.setInt(1, idp);
 
 			ResultSet rs = pstm.executeQuery();
 
+			/*//Obtenet lineas RS
+			int rowcount = 0;
+			if (rs.last()) {
+			  rowcount = rs.getRow();
+			  rs.beforeFirst(); // not rs.first() because the rs.next() below will move on, missing the first element
+			}
+
+			logger.info("!---------------getProyecto >>>>> executeQuery >>>> numero de lineas: "+ rowcount);*/
+		
+			
 			if (rs.next()) {
 
 				ProyectoADevolver = new Proyecto(
@@ -48,14 +58,12 @@ public final class ProyectoDAOImpl extends ProyectoDAO {
 						rs.getString("fechaInicio"),
 						rs.getString("fechaFinal"),
 						rs.getString("descripcion"),
-						rs.getString("notas")
+						rs.getString("nota")
 						);
 			}
 
 			pstm.close();
 			conn.close();
-
-			logger.info("Conexión exitosa");
 
 		} catch (Exception e) {
 			logger.severe("Error en la conexión de BBDD:" + e);

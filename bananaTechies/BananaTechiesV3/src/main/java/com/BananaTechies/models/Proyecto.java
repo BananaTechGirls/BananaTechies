@@ -60,7 +60,7 @@ public class Proyecto {
 
 
 	public String getTitulo() {
-		return titulo;
+		return this.titulo;
 	}
 
 

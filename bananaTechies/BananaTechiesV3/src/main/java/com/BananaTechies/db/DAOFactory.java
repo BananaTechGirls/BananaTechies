@@ -16,7 +16,7 @@ public class DAOFactory {
 		switch(daoType.getClass().getSimpleName()){
 		case "Usuario":return(Object)UsuarioDAOImpl.getInstance();
 		case "Proyecto":return(Object)ProyectoDAOImpl.getInstance();
-		/*case "Tarea":return(Object)TareaDAOImpl.getInstance();*/
+		case "Tarea":return(Object)TareaDAOImpl.getInstance();
 		default : return null;
 		}
 	}

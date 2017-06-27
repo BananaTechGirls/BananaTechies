@@ -29,12 +29,11 @@
 
 					<ul class="pInfo">
 
-						<li class="pageTitle "><h1>Titulo
-								${DetalleProyecto.titulo}</h1></li>
+						<li class="pageTitle "><h1>Titulo: ${DetalleProyecto.titulo}</h1></li>
 
-						<li>Fecha de inicio:${DetalleProyecto.fechaInicio}</li>
+						<li>Fecha de inicio: ${DetalleProyecto.fechaInicio}</li>
 
-						<li>Fecha de Fin:${DetalleProyecto.fechaFin}</li>
+						<li>Fecha de Fin:${DetalleProyecto.fechaFinal}</li>
 
 						<li>Asignado a: ${idUsuario.nombre}</li>
 
@@ -51,7 +50,7 @@
 					</div>
 					<div class="panel-body">
 						<div class="box1 textBox">
-							<p>${DetalleProyecto.Descripcion}</p>
+							<p>${DetalleProyecto.descripcion}</p>
 						</div>
 					</div>
 				</div>
@@ -61,7 +60,7 @@
 					</div>
 					<div class="panel-body">
 						<div class="box1 textBox">
-							<p>${DetalleProyecto.Notas}</p>
+							<p>${DetalleProyecto.notas}</p>
 						</div>
 					</div>
 				</div>
@@ -73,17 +72,13 @@
 					</div>
 					<div class="panel-body">
 						<ul class="taskList">
-							<c:forEach var="t" items="${listaTareaAMostrar}"
-								varStatus="counter">
-								<li class="row" id="${t.idt}">
+							<c:forEach var="tar" items="${listaTareaAMostrar}" varStatus="counter">
+								<li class="row" id="${tar.idt}">${tar.idt}
 									<div class="col-xs-6">
-										<a href="task.html">${t.titulo}</a>
+										<a href="task.html">${tar.titulo}</a>
 									</div>
 									<div class="col-xs-6">
-										<button aria-label="deleteTask"
-											class="btn_del_Task glyphicon glyphicon-trash"
-											data_Id="${t.idt}"></button>
-									</div>
+										<button aria-label="deleteTask" class="btn_del_Task glyphicon glyphicon-trash" data_Id="${tar.idt}"></button>									</div>
 								</li>
 							</c:forEach>
 						</ul>

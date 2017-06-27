@@ -32,17 +32,14 @@ public final class TareaDAOImpl extends TareaDAO {
 			// ordenes sql
 			String sql = "SELECT t.* FROM bananatechies.tarea t WHERE t.idt=? LIMIT 1";
 			PreparedStatement pstm = conn.prepareStatement(sql);
-			pstm.setInt(1, idt);
-			
-			ProyectoDAO pDAO=(ProyectoDAO)ProyectoDAOImpl.getInstance();
-			
+			pstm.setInt(1, idt);	
 			
 			
 			ResultSet rs = pstm.executeQuery();
 
 			if (rs.next()) {
 
-				TareaADevolver = new Tarea(
+/*				TareaADevolver = new Tarea(
 						rs.getInt("idt"), 
 						rs.getString("titulo"),
 						pDAO.getProyecto(rs.getInt("proyecto ")),
@@ -51,7 +48,7 @@ public final class TareaDAOImpl extends TareaDAO {
 						rs.getString("Progreso"),
 						rs.getString("fechaInicio"),
 						rs.getString("fechaFinal")
-						);
+						);*/
 			}
 
 			pstm.close();
@@ -70,7 +67,7 @@ public final class TareaDAOImpl extends TareaDAO {
 
 	
 	@Override
-	public List<Tarea> getTareasList() {
+	public List<Tarea> getTareasList(Proyecto elProyecto) {
 		List<Tarea> listADevolver = new ArrayList<Tarea>();
 		
 		try {
@@ -78,22 +75,18 @@ public final class TareaDAOImpl extends TareaDAO {
 			
 
 			// ordenes sql
-			String sql = "SELECT t.idt,t.proyecto,u.nombre,t.status,o.estado As progreso,DATE_FORMAT(p.fechaInicio, '%m/%d/%Y') as fechaInicio, DATE_FORMAT(p.fechaFinal, '%m/%d/%Y') as fechaFinal,FROM bananatechies.tarea t left join bananatechies.progreso o on t.progreso= o.idpro, left join bananatechies.usuario u on t.responsable=u.idu WHERE t.responsable=1,order by p.status desc;";  
+			String sql = "SELECT t.idt,t.proyecto,u.nombre,t.status,o.estado As progreso,DATE_FORMAT(p.fechaInicio, '%m/%d/%Y') as fechaInicio, DATE_FORMAT(p.fechaFinal, '%m/%d/%Y') as fechaFinal,FROM bananatechies.tarea t left join bananatechies.progreso o on t.progreso= o.idpro, left join bananatechies.usuario u on t.responsable=u.idu WHERE t.responsable=?,order by p.status desc;";  
 			PreparedStatement pstm = conn.prepareStatement(sql);
-			
-			ProyectoDAO pDAO=(ProyectoDAO)ProyectoDAOImpl.getInstance();
-			
+			pstm.setInt(1, elProyecto.getIdp());
 			
 			
-			
-
 			ResultSet rs = pstm.executeQuery();
 
 			while (rs.next()) {
 				listADevolver.add(new Tarea(
 						rs.getInt("idt"), 
 						rs.getString("titulo"),
-						pDAO.getProyecto(rs.getInt("proyecto ")),
+						elProyecto,
 						rs.getString("responsable"),										
 						rs.getBoolean("status"),
 						rs.getString("Progreso"),

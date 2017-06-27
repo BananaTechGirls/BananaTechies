@@ -1,6 +1,7 @@
 package com.BananaTechies.controllers;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
@@ -12,8 +13,9 @@ import javax.servlet.http.HttpSession;
 
 import com.BananaTechies.db.DAOFactory;
 import com.BananaTechies.db.ProyectoDAO;
-
+import com.BananaTechies.db.TareaDAO;
 import com.BananaTechies.models.Proyecto;
+import com.BananaTechies.models.Tarea;
 import com.BananaTechies.models.Usuario;
 
 
@@ -25,9 +27,9 @@ public class DetalleProyectoServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession misession= (HttpSession)request.getSession();
 		Proyecto elProyecto = new Proyecto();
-		System.out.println("*************************************************************");
+		Tarea laTarea = new Tarea();
+		
 		Usuario elUsuario=(Usuario) misession.getAttribute("idUsuario");
-		System.out.println(elUsuario.getNombre());
 				
 		if( elUsuario!=null ){				
 			ProyectoDAO pDAO=(ProyectoDAO) DAOFactory.getInstance().getDAO(elProyecto);
@@ -35,16 +37,14 @@ public class DetalleProyectoServlet extends HttpServlet {
 			//System.out.println(elUsuario.getNombre() +"IdP ->"+request.getParameter("idp"));
 			
 			elProyecto= pDAO.getProyecto(Integer.parseInt(request.getParameter("idp")), elUsuario);
-						
-			//List<Tarea> listaTareas = pDAO.getProyectoTarea(elProyecto);
+			
+			TareaDAO tDAO=(TareaDAO) DAOFactory.getInstance().getDAO(laTarea);
+			
+			
+			List<Tarea> listaTareas = tDAO.getTareasList(elProyecto);
 			
 			request.setAttribute("DetalleProyecto", elProyecto);
-			logger.info("+++++++++++++++ >> titulo");
-			
-			//request.setAttribute("listaProyectosAMostrar", listaTareas);
-			
-			
-			
+			request.setAttribute("listaTareaAMostrar", listaTareas);
 			
 			request.getRequestDispatcher("detalleProyecto.jsp").forward(request, response);
 		}else{
