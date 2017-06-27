@@ -26,7 +26,7 @@
 							<span class="profile">Perfil</span>
 					</a></li>
 					<li id="logOutBtn"><a class="navItems glyphicon glyphicon-of"
-						href="index.html"></a></li>
+						href="index.html"><span class="profile">Logout</span></a></li>
 				</ul>
 			</div>
 		</div>

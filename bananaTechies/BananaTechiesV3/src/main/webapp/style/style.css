@@ -75,9 +75,16 @@ video{
 #profileBtn a, #logOutBtn a{
   line-height: 18px;
 }
+#logOutBtn{
+	position:relative;
+}
  #logOutBtn a{
   font-family:'glyphicons';
   top:18px;
+ }
+ #logOutBtn>a>span{
+ 		position:relative;
+ 		bottom:10px;
  }
 .menu .burgerMenu .burgerIcon{
   background-color:#e6e600;

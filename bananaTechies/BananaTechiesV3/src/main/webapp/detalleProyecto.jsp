@@ -44,7 +44,7 @@
 							<c:forEach var="t" items="${listaTareasAMostrar}" varStatus="counter">
 								<li class="row" id="${t.idt}">
 									<div class="col-xs-6">
-										<a href="task.html">${t.idt}</a>
+										<a href="task.html">${t.titulo}</a>
 									</div>
 									<div class="col-xs-6">
 										<button aria-label="deleteTask"
