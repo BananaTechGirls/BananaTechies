@@ -1,7 +1,6 @@
 package com.BananaTechies.controllers;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
@@ -13,16 +12,14 @@ import javax.servlet.http.HttpSession;
 
 import com.BananaTechies.db.DAOFactory;
 import com.BananaTechies.db.ProyectoDAO;
-import com.BananaTechies.db.ProyectoDAOImpl;
-import com.BananaTechies.db.UsuarioDAO;
+
 import com.BananaTechies.models.Proyecto;
-import com.BananaTechies.models.Tarea;
 import com.BananaTechies.models.Usuario;
 
 
 
 @WebServlet("/DetalleProyectoServlet")
-public class DetallesProyectosServlet extends HttpServlet {
+public class DetalleProyectoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static Logger logger=Logger.getLogger("DetalleProyectoServlet");
 	
@@ -59,7 +56,7 @@ public class DetallesProyectosServlet extends HttpServlet {
 	}
 
 	public static void setLogger(Logger logger) {
-		DetallesProyectosServlet.logger = logger;
+		DetalleProyectoServlet.logger = logger;
 	}
 
 }
