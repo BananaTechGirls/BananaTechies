@@ -68,7 +68,7 @@
 							<tbody>
 								<tr>
 									<td class="buttons">
-										<a href="/DetalleProyectoServlet?idp=${pro.idp}"
+										<a href="DetalleProyectoServlet?idp=${pro.idp}"
 										class="btn glyphicon glyphicon-eye-open" aria-label="Tareas"></a>
 										<a href="#"
 										class="btn_del_Project btn glyphicon glyphicon-trash"

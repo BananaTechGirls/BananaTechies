@@ -38,7 +38,7 @@ public final class UsuarioDAOImpl extends UsuarioDAO {
 			  rowcount = rs.getRow();
 			  rs.beforeFirst(); // not rs.first() because the rs.next() below will move on, missing the first element
 			}
-			
+
 			logger.info("!--------------->>>>> executeQuery >>>> numero de lineas: "+ rowcount);
 			
 			if (rs.next()) {

@@ -17,7 +17,6 @@ import com.BananaTechies.models.Proyecto;
 import com.BananaTechies.models.Usuario;
 
 
-
 @WebServlet("/DetalleProyectoServlet")
 public class DetalleProyectoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -26,12 +25,15 @@ public class DetalleProyectoServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession misession= (HttpSession)request.getSession();
 		Proyecto elProyecto = new Proyecto();
-		
+		System.out.println("*************************************************************");
 		Usuario elUsuario=(Usuario) misession.getAttribute("idUsuario");
+		System.out.println(elUsuario.getNombre());
 				
 		if( elUsuario!=null ){				
 			ProyectoDAO pDAO=(ProyectoDAO) DAOFactory.getInstance().getDAO(elProyecto);
 
+			System.out.println(elUsuario.getNombre() +"IdP ->"+request.getParameter("idp"));
+			
 			elProyecto= pDAO.getProyecto(Integer.parseInt(request.getParameter("idp")));
 						
 			//List<Tarea> listaTareas = pDAO.getProyectoTarea(elProyecto);
