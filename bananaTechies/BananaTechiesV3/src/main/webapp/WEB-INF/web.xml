@@ -3,4 +3,15 @@
 		 http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 	version="3.1">
 	<display-name>BananaTechies</display-name>
+	<servlet>
+		<description>
+		</description>
+		<display-name>TareaServlet</display-name>
+		<servlet-name>TareaServlet</servlet-name>
+		<servlet-class>com.BananaTechies.controllers.TareaServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>TareaServlet</servlet-name>
+		<url-pattern>/TareaServlet</url-pattern>
+	</servlet-mapping>
 </web-app>

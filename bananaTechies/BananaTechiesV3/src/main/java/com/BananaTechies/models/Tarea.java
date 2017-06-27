@@ -1,17 +1,19 @@
 package com.BananaTechies.models;
-import com.BananaTechies.models.Progreso;
+
+
 public class Tarea {
 		private int idt;
 		private String titulo;
 		private Proyecto proyecto;
-		private Usuario responsable;
+		private String responsable;
 		private boolean status;
-		private Progreso progreso;
-		private java.util.Date fechaInicio;
-		private java.util.Date fechaFinal;
+		private String progreso;
+		private String fechaInicio;
+		private String fechaFinal;
 		
+	
 		
-		public Tarea(int idt,String titulo,Proyecto proyecto,Usuario responsable,boolean status,Progreso progreso,java.util.Date fechaInicio,java.util.Date fechaFinal){
+		public Tarea(int idt,String titulo,Proyecto proyecto,String responsable,boolean status,String progreso,String fechaInicio,String fechaFinal){
 			this.idt=idt;
 			this.titulo=titulo;
 			this.proyecto=proyecto;
@@ -53,12 +55,9 @@ public class Tarea {
 		}
 
 
-		public Usuario getResponsable() {
-			return responsable;
-		}
 
 
-		public void setResponsable(Usuario responsable) {
+		public void setResponsable(String responsable) {
 			this.responsable = responsable;
 		}
 
@@ -73,32 +72,32 @@ public class Tarea {
 		}
 
 
-		public Progreso getProgreso() {
+		public String getProgreso() {
 			return progreso;
 		}
 
 
-		public void setProgreso(Progreso progreso) {
+		public void setProgreso(String progreso) {
 			this.progreso = progreso;
 		}
 
 
-		public java.util.Date getFechaInicio() {
+		public String getFechaInicio() {
 			return fechaInicio;
 		}
 
 
-		public void setFechaInicio(java.util.Date fechaInicio) {
+		public void setFechaInicio(String fechaInicio) {
 			this.fechaInicio = fechaInicio;
 		}
 
 
-		public java.util.Date getFechaFinal() {
+		public String getFechaFinal() {
 			return fechaFinal;
 		}
 
 
-		public void setFechaFinal(java.util.Date fechaFinal) {
+		public void setFechaFinal(String fechaFinal) {
 			this.fechaFinal = fechaFinal;
 		}
 		
