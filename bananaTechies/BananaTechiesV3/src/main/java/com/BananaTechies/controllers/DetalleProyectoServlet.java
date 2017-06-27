@@ -39,6 +39,8 @@ public class DetalleProyectoServlet extends HttpServlet {
 			//List<Tarea> listaTareas = pDAO.getProyectoTarea(elProyecto);
 			
 			request.setAttribute("DetalleProyecto", elProyecto);
+			logger.info("+++++++++++++++ >> titulo");
+			
 			//request.setAttribute("listaProyectosAMostrar", listaTareas);
 			
 			request.getRequestDispatcher("detalleProyecto.jsp").forward(request, response);
