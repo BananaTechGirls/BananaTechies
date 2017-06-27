@@ -87,7 +87,7 @@ public class Proyecto {
 
 
 
-	public boolean isStatus() {
+	public boolean getStatus() {
 		return status;
 	}
 

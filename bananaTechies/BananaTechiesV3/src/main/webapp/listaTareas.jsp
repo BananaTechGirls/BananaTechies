@@ -61,7 +61,7 @@
 								<th>Progreso</th>
 							</tr>
 						</thead>
-						<c:forEach var="t" items="${listaTareasAMostrar}"
+						<c:forEach var="t" items="${listaTareaAMostrar}"
 							varStatus="counter">
 							<tbody>
 								<tr>
