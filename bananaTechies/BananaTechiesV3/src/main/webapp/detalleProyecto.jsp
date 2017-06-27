@@ -24,50 +24,48 @@
 				</div>
 			</article>
 
-			<aside class="col-xs-12 col-sm-3">
+			<aside class="col-xs-12 col-sm-12">
 				<div class="col-xs-12">
-					<c:forEach var="dp" items="${DetalleProyecto}" varStatus="counter">
-						<ul class="pInfo">
 
-							<li class="pageTitle "><h1>Titulo ${dp.getTitulo}</h1></li>
+					<ul class="pInfo">
 
-							<li>Fecha de inicio:${dp.getFechaInicio}</li>
+						<li class="pageTitle "><h1>Titulo
+								${DetalleProyecto.titulo}</h1></li>
 
-							<li>Fecha de Fin:${dp.getFechaFin}</li>
+						<li>Fecha de inicio:${DetalleProyecto.fechaInicio}</li>
 
-							<li>Asignado a: ${idUsuario.nombre}</li>
+						<li>Fecha de Fin:${DetalleProyecto.fechaFin}</li>
 
-							<li>Status: ${dp.getStatus}</li>
+						<li>Asignado a: ${idUsuario.nombre}</li>
 
-							<li>Progreso: ${dp.getProgreso}</li>
+						<li>Status: ${DetalleProyecto.status}</li>
+
+						<li>Progreso: ${DetalleProyecto.progreso}</li>
 
 
-						</ul>
-					</c:forEach>
-
+					</ul>
 				</div>
-				<c:forEach var="dp" items="${DetalleProyecto}" varStatus="counter">
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h3 class="panel-title">Descripción</h3>
-						</div>
-						<div class="panel-body">
-							<div class="box1 textBox">
-								<p>${dp.getDescripcion}</p>
-							</div>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">Descripción</h3>
+					</div>
+					<div class="panel-body">
+						<div class="box1 textBox">
+							<p>${DetalleProyecto.Descripcion}</p>
 						</div>
 					</div>
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h3 class="panel-title">Notas y comentarios</h3>
-						</div>
-						<div class="panel-body">
-							<div class="box1 textBox">
-								<p>${dp.getNotas}</p>
-							</div>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">Notas y comentarios</h3>
+					</div>
+					<div class="panel-body">
+						<div class="box1 textBox">
+							<p>${DetalleProyecto.Notas}</p>
 						</div>
 					</div>
-				</c:forEach>
+				</div>
+
 
 				<div class="panel panel-default col-xs-12">
 					<div class="panel-heading">

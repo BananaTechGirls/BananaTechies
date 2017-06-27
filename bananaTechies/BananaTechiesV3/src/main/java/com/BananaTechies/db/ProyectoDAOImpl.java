@@ -25,7 +25,7 @@ public final class ProyectoDAOImpl extends ProyectoDAO {
 	}
 	
 	@Override
-	public Proyecto getProyecto(int idp) {
+	public Proyecto getProyecto(int idp, Usuario elUsuario) {
 		Proyecto ProyectoADevolver = null;
 
 		try {
@@ -34,10 +34,7 @@ public final class ProyectoDAOImpl extends ProyectoDAO {
 			String sql = "SELECT p.* FROM bananatechies.proyecto p WHERE p.idp=? LIMIT 1";
 			PreparedStatement pstm = conn.prepareStatement(sql);
 			pstm.setInt(1, idp);
-			
-			
-			UsuarioDAO uDAO=(UsuarioDAO)UsuarioDAOImpl.getInstance();
-			//TareaDAO=(TareaDAO)TareaDAOImpl.getInstance();
+
 			ResultSet rs = pstm.executeQuery();
 
 			if (rs.next()) {
@@ -45,7 +42,7 @@ public final class ProyectoDAOImpl extends ProyectoDAO {
 				ProyectoADevolver = new Proyecto(
 						rs.getInt("idp"), 
 						rs.getString("titulo"),
-						uDAO.getUsuario(rs.getInt("usuario")),											
+						elUsuario,											
 						rs.getBoolean("status"),
 						rs.getString("Progreso"),
 						rs.getString("fechaInicio"),
