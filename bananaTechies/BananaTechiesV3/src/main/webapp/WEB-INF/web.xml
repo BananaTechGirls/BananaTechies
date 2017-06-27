@@ -10,8 +10,19 @@
 		<servlet-name>TareaServlet</servlet-name>
 		<servlet-class>com.BananaTechies.controllers.TareaServlet</servlet-class>
 	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>ListaTareaServlet</display-name>
+		<servlet-name>ListaTareaServlet</servlet-name>
+		<servlet-class>com.BananaTechies.controllers.ListaTareaServlet</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>TareaServlet</servlet-name>
 		<url-pattern>/TareaServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ListaTareaServlet</servlet-name>
+		<url-pattern>/ListaTareaServlet</url-pattern>
 	</servlet-mapping>
 </web-app>
