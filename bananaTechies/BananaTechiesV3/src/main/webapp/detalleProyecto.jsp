@@ -30,17 +30,17 @@
 					<ul class="pInfo">
 
 						<li class="pageTitle "><h1>Titulo
-								${DetalleProyecto.getTitulo}</h1></li>
+								${DetalleProyecto.titulo}</h1></li>
 
-						<li>Fecha de inicio:${DetalleProyecto.FechaInicio}</li>
+						<li>Fecha de inicio:${DetalleProyecto.fechaInicio}</li>
 
-						<li>Fecha de Fin:${DetalleProyecto.FechaFin}</li>
+						<li>Fecha de Fin:${DetalleProyecto.fechaFin}</li>
 
 						<li>Asignado a: ${idUsuario.nombre}</li>
 
-						<li>Status: ${DetalleProyecto.Status}</li>
+						<li>Status: ${DetalleProyecto.status}</li>
 
-						<li>Progreso: ${DetalleProyecto.Progreso}</li>
+						<li>Progreso: ${DetalleProyecto.progreso}</li>
 
 
 					</ul>
