@@ -30,7 +30,6 @@ public class DetalleProyectoServlet extends HttpServlet {
 		Tarea laTarea = new Tarea();
 		
 		Usuario elUsuario=(Usuario) misession.getAttribute("idUsuario");
-		logger.info("!---------------<<<<< 0 >>>>>");
 				
 		if( elUsuario!=null ){
 			// Pasamos el proyecto selecionada

@@ -29,7 +29,8 @@
 
 					<ul class="pInfo">
 
-						<li class="pageTitle "><h1>Titulo: ${DetalleProyecto.titulo}</h1></li>
+						<li class="pageTitle "><h1>Titulo:
+								${DetalleProyecto.titulo}</h1></li>
 
 						<li>Fecha de inicio: ${DetalleProyecto.fechaInicio}</li>
 
@@ -66,24 +67,41 @@
 				</div>
 
 
-				<div class="panel panel-default col-xs-12">
 					<div class="panel-heading">
 						<h3 class="panel-title">Tareas</h3>
 					</div>
 					<div class="panel-body">
-						<ul class="taskList">
-							<c:forEach var="tar" items="${listaTareaAMostrar}" varStatus="counter">
-								<li class="row" id="${tar.idt}">${tar.idt}
-									<div class="col-xs-6">
-										<a href="task.html">${tar.titulo}</a>
-									</div>
-									<div class="col-xs-6">
-										<button aria-label="deleteTask" class="btn_del_Task glyphicon glyphicon-trash" data_Id="${tar.idt}"></button>									</div>
-								</li>
-							</c:forEach>
-						</ul>
+					<div class="container-fluid">
+						<div class="table-responsive">
+							<table class="table table-hover">
+								<thead>
+									<tr>
+										<th>Titulo</th>
+										<th>Responsable</th>
+										<th>Progreso</th>
+										<th>Fecha inicio</th>
+										<th>Borrar</th>
+									</tr>
+								</thead>
+								<tbody>
+									<c:forEach var="tar" items="${listaTareaAMostrar}" varStatus="counter">
+										<tr>
+											<td>${tar.titulo}</td>
+											<td>${tar.responsable}</td>
+											<td>${tar.progreso}</td>
+											<td>${tar.fechaInicio}</td>
+											<td class="buttons">
+												<button aria-label="deleteTask"	class="btn_del_Task glyphicon glyphicon-trash" data_Id="${tar.idt}">
+												</button>							
+											</td>
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table>
+						</div>
+					</div>					
 					</div>
-				</div>
+				
 			</aside>
 
 		</section>

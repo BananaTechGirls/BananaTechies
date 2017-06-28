@@ -81,14 +81,14 @@ public final class TareaDAOImpl extends TareaDAO {
 			
 			ResultSet rs = pstm.executeQuery();
 			
-			//Obtenet lineas RS
+			/*//Obtenet lineas RS
 			int rowcount = 0;
 			if (rs.last()) {
 			  rowcount = rs.getRow();
 			  rs.beforeFirst(); // not rs.first() because the rs.next() below will move on, missing the first element
 			}
 
-			logger.info("!---------------getTareasList >>>>> executeQuery >>>> numero de lineas: "+ rowcount);
+			logger.info("!---------------getTareasList >>>>> executeQuery >>>> numero de lineas: "+ rowcount);*/
 
 			while (rs.next()) {
 				listADevolver.add(new Tarea(
