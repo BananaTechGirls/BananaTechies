@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Banana GEST Edit a Task</title>
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Rock+Salt" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+	<link rel="stylesheet" href="./style/bootstrap.css">
+	<link rel="stylesheet" href="./style/style.css">
+</head>
+<body>
+	<div class="container">
+		<header>
+			<nav class="navbar navbar-default menu">
+				<div class="row">			
+					<a class="navbar-brand" href="home.html">
+						<h1 class="logo">Banana GEST</h1>
+					</a>
+				</div>
+				<div class="row">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle burgerMenu" data-toggle="collapse" data-target="#myNavbar">
+							<span class="icon-bar burgerIcon"></span>
+							<span class="icon-bar burgerIcon"></span>
+							<span class="icon-bar burgerIcon"></span>
+						</button>
+						
+					</div>
+					<div class="collapse navbar-collapse submenu" id="myNavbar">
+						<ul class="nav navbar-nav navList navbar-right">
+							<li><a class="navItems" href="home.html">Proyects</a></li>
+							<li><a class="navItems" href="taskList.html">Tasks</a></li>
+							<li id="profileBtn"><a class="navItems glyphicon glyphicon-user" href="profile.html"><span class="profile">Profile</span></a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</header>
+		<section class="container-fluid">
+			<ol class="breadcrumb">
+				<li><a href="home.html">Home</a></li>
+				<li><a href="project.html">Project</a></li>
+				<li><a href="task.html">Task</a></li>
+				<li class="active">Edit Task</li>
+			</ol>
+			<div class="pageTitle">
+				<h1>Edit Task</h1>
+			</div>
+			<div class="row">
+				<div class="buttons col-xs-12 col-sm-4 col-sm-offset-8">
+					<a href="home.html" id="btnCancelEditT" class="btn" role="button">Cancel</a>
+					<a href="task.html" id="btnSaveEditT" class="btn" role="button">Save Changes</a>
+				</div>
+			</div>
+			<article class="col-xs-12 col-sm-6">
+				<form>
+					<div class="form-group">
+					    <label for="taskTitle">Title:
+					    	<span id="taskTitleLabel" >Task x</span>
+					    </label>
+					    <input class="form-control elemEditado" type="text" name="title" placeholder="Task title" aria-describedby="basic-addon1" value="" id="taskTitle">
+					</div>
+					<div class="buttons">
+					    <button class="btn  glyphicon glyphicon-ok" data_Id="taskTitleLabel"></button>
+					    <button class="btn  glyphicon glyphicon-remove"></button>
+					</div>
+  					<div class="form-group">
+    					<label for="date">Start Date: <span id="taskStartDate" >00/00/00</span></label>
+    					<input class="form-control elemEditado" type="date" name="date" placeholder="Task Start Date" aria-describedby="basic-addon1" value="" id="sDateET">
+					</div>
+					<div class="buttons">
+					    <button class="btn  glyphicon glyphicon-ok" data_Id="taskStartDate"></button>
+					    <button class="btn  glyphicon glyphicon-remove"></button>
+					</div>
+					<div class="form-group">
+    					<label for="date">End Date: <span id="taskEndDate">00/00/00</span></label>
+    					<input class="form-control elemEditado" type="date" name="date" placeholder="Task Start Date" aria-describedby="basic-addon1" value="" id="endDateET">
+					</div>
+					<div class="buttons">
+					    <button class="btn  glyphicon glyphicon-ok" data_Id="taskEndDate"></button>
+					    <button class="btn  glyphicon glyphicon-remove"></button>
+					</div>
+				</form>
+				<div class="inCharge">
+					<h3>Asign Person in charge</h3>
+					<select class="form-control">
+						<option>Asigned to Pepito</option>
+						<option>David Romero</option>
+						<option>Maria Ruíz</option>
+						<option>Andrés Blum</option>
+						<option>Karla Garcia</option>
+						<option>Zhanna Andrade</option>
+						<option>Carlos Peréz</option>
+						<option>Karla Garcia</option>
+						<option>Maria Ruíz</option>
+						<option>Andrés Blum</option>
+						<option>Karla Garcia</option>
+					</select>
+				</div>
+				<div class="panel panel-default col-xs-12 col-sm-3">
+					<div class="panel-heading">
+						<h3 class="panel-title">Files</h3>
+					</div>
+					<div class="panel-body">
+						<ul class="taskList col-sm-12">
+							<li><a href="task.html">File1</a></li>
+							<li><a href="task.html">File2</a></li>
+							<li><a href="task.html">File3</a></li>
+							<li><a href="task.html">File4</a></li>
+							<li><a href="task.html">File5</a></li>
+							<li><a href="task.html">File6</a></li>
+						</ul>
+					</div>
+				</div>	
+				<form class="fileForm col-xs-12 col-sm-8 col-sm-offset-1">
+					<div class="form-group">
+	    				<label id="taskAddFile" for="addFile">Add New File</label>
+	    				<input type="file" id="addFile" name="file" placeholder="Select file" value="file">
+	    				<p class="help-block">You can add docs or images.</p>
+					</div>
+				</form>								
+			</article>
+			<article class="col-xs-12 col-sm-6">
+				<div class="projectTitle">
+					<h3>Project Title</h3>
+					<select class="form-control">
+						<option>Current: Proyect x</option>
+						<option>Project 1</option>
+						<option>Project 2</option>
+						<option>Project 3</option>
+						<option>Project 4</option>
+						<option>Project 5</option>
+						<option>Project 6</option>
+						<option>Project 7</option>
+						<option>Project 8</option>
+						<option>Project 9</option>
+						<option>Project 10</option>
+					</select>
+				</div>
+				<div class="status">
+					<h3>Edit Status</h3>
+					<select class="form-control">
+						<option>Current Status: In Progress</option>
+						<option>Done</option>
+						<option>In Progress</option>
+						<option>Feedback</option>
+						<option>Rejected</option>
+					</select>
+				</div>
+				<form>
+					<div class="form-group">
+					    <label for="tDescription">Task Description</label>
+					    <p id="taskDescriptionLabel" >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero similique dolorum delectus vitae quis. Corrupti voluptas ex ullam, maiores vero architecto similique. Praesentium qui, dolores! Praesentium impedit hic possimus ipsam.
+					    </p>
+					    <textarea class="form-control elemEditado" type="text" name="tDescription" placeholder="Add Task description" value="" id="tDescription"></textarea>
+					    <div class="buttons">
+					    	<button class="btn  glyphicon glyphicon-ok" data_Id="taskDescriptionLabel"></button>
+					    	<button class="btn  glyphicon glyphicon-remove"></button>
+						</div>
+					</div>
+  					<div class="form-group">
+    					<label for="taskNotes">Notes</label>
+    					<p id="taskNotesLabel">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis iste voluptas, aut distinctio recusandae eligendi iusto pariatur obcaecati natus commodi, deleniti modi maiores? Ea ducimus optio animi corporis, sapiente assumenda.
+    					</p>
+    					<textarea class="form-control elemEditado" type="text" name="Notes" placeholder="Add Task Notes" value="" id="taskNotes"></textarea>
+    					<div class="buttons">
+					    	<button class="btn  glyphicon glyphicon-ok" data_Id="taskNotesLabel"></button>
+					    	<button class="btn  glyphicon glyphicon-remove"></button>
+						</div>
+					</div>
+				</form>
+				
+			</article>
+			
+			
+		</section>
+		<footer class="col-xs-12">
+			<p class="rights col-xs-12 col-sm-6 col-sm-offset-3">©2017 <span class="t echG">Tech Girls </span> All Rights Reserved.</p>
+		</footer>
+
+	</div>
+</body>
+<script src="./js/home.js"></script>
+<script src="./js/editT.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+</html>

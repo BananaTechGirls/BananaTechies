@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Banana GEST Profile</title>
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Rock+Salt" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+	<link rel="stylesheet" href="./style/bootstrap.css">
+	<link rel="stylesheet" href="./style/style.css">
+</head>
+<body>
+	<div class="container">
+		<header>
+			<nav class="navbar navbar-default menu">
+				<div class="row">			
+					<a class="navbar-brand" href="home.html">
+						<h1 class="logo">Banana GEST</h1>
+					</a>
+				</div>
+				<div class="row">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle burgerMenu" data-toggle="collapse" data-target="#myNavbar">
+							<span class="icon-bar burgerIcon"></span>
+							<span class="icon-bar burgerIcon"></span>
+							<span class="icon-bar burgerIcon"></span>
+						</button>
+						
+					</div>
+					<div class="collapse navbar-collapse submenu" id="myNavbar">
+						<ul class="nav navbar-nav navList navbar-right">
+							<li><a class="navItems" href="home.html">Proyects</a></li>
+							<li><a class="navItems" href="taskList.html">Tasks</a></li>
+							<li class="projectListActive" id="profileBtn"><a class="navItems glyphicon glyphicon-user" href="profile.html"><span class="profile">Profile</span></a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</header>
+		<section class="container-fluid">
+			<ol class="breadcrumb">
+				<li><a href="home.html">Home</a></li>
+				<li class="active">Profile</li>
+			</ol>
+			<h1 class="profileh1">User Profile </h1>
+			<div class="col-xs-12 ">
+				<div class="box col-xs-12">
+					<div class="col-xs-4 col-sm-2" id="personalImgId">
+						<img src="./img/android-girl.jpg" class="icono profile" alt="profileImg">
+					</div>
+					<div class="col-xs-8 col-sm-4 infoProfile" id="personalInfoId" >
+						<p class="nombre">Name: Diana Peréz</p>
+						<p class="Password">Password: *******</p>
+						<p class= "email">Email: diana@bananagest.com</p>
+					</div>
+				</div>
+				<figure class="col-xs-12 infoProfile">
+					<video controls>
+						<source src="./Videos/profileVideo.mp4" type="video/mp4" >
+					</video>
+				</figure>
+			</div>
+			<div class="caja col-xs-12 col-sm-8">
+				<div class="dropdown col-xs-12">
+	  				<button class="dropBtn btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Tareas Asignadas
+	  					<span class="caret"></span>
+	  				</button>
+	  				<ul class="dropdown-menu">
+					    <li><a href="#">Task 1</a></li>
+					    <li><a href="#">Task 2</a></li>
+					    <li><a href="#">Task 3</a></li>
+					    <li><a href="#">Task 4</a></li>
+					    <li><a href="#">Task 5</a></li>
+					    <li><a href="#">Task 6</a></li>
+					</ul>
+				</div>
+				<div class="dropdown col-xs-12">
+	  				<button class="dropBtn btn btn-primary dropdown-toggle" type=
+	  				"button" data-toggle="dropdown">Proyectos Asignados
+	  					<span class="caret"></span>
+	  				</button>
+	  				<ul class="dropdown-menu">
+					    <li><a href="#">Project 1</a></li>
+					    <li><a href="#">Project 2</a></li>
+					    <li><a href="#">Project 3</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="row">
+				<div class="buttons col-xs-12 col-sm-4 col-sm-offset-7">
+					<a href="index.html" class="btn" role="button">logOut</a>
+					<a href="#" class="btn" role="button">Edit Profile</a>
+				</div>
+			</div>
+		</section>
+		<footer class="col-xs-12">
+			<p class="rights col-xs-12 col-sm-6 col-sm-offset-3">©2017 <span class="t echG">Tech Girls </span> All Rights Reserved.</p>
+		</footer>
+	</div>
+</body>
+<script src="./js/home.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Banana GEST Error LogIn</title>
+	<link href="https://fonts.googleapis.com/css?family=Rock+Salt" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
+	<link rel="stylesheet" href="./style/login.css">
+</head>
+<body>
+	<div class="box1">
+		<header>
+			<h1>Banana GEST</h1>
+			<h2>Log In</h2>
+		</header>
+		<section>
+			<form action="home.html" target="_blank" method="post" id="loginForm">
+				<label for="email">Email: </label>
+				<input class="errorInput" type="email" name="Email" id="email" placeholder="johndoe@johndoe.com" >
+					<p class="errorP">Enter an email address in the correct format</p>
+				</input>
+				<label for="pass">Password: </label>
+				<input class="errorInput" type="Password" name="Password" id="pass" placeholder="******">
+					<p class="errorP">Minimum of 7 characters (letters and numbers)</p>
+				</input>
+				<button class="btnLogin" type="submit" form="loginForm" value="Submit">Log In</button>
+			</form>
+			<a href="forgotPass.html">Forgot Password?</a>
+		</section>
+	</div>
+</body>
+</html>

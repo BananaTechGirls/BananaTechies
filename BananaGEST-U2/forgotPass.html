@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Banana GEST Forgot password</title>
+	<link href="https://fonts.googleapis.com/css?family=Rock+Salt" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
+	<link rel="stylesheet" href="./style/login.css">
+</head>
+<body>
+	<div class="box1">
+		<header>
+			<h1>Banana GEST</h1>
+			<h2>Did you forget your password?</h2>
+		</header>
+		<section>
+			<form action="index.html"  method="get" id="fPassForm" novalidate>
+				<div>
+					<label for="emailFPass">Email: </label>
+					<input type="email" name="Email" id="emailFPass" placeholder="johndoe@johndoe.com" required>
+					<div class="mensajes_error_fPass">
+						<div id="emailFPass[valueMissing]" class="errorP">Introduzca sus datos.</div>
+						<div id="emailFPass[typeMismatch]" class="errorP">El formato no se corresponde con un email.</div>
+					</div>
+				</div>
+				<div>
+					<input class="btnLogin" type="submit" form="fPassForm" value="Send" id="btnSendId">
+				</div>
+			</form>
+		</section>
+	</div>
+</body>
+<!-- <script src="./js/login.js"></script> -->
+<script src="./js/forgotPass.js"></script>
+</html>
