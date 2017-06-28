@@ -75,19 +75,27 @@ public final class TareaDAOImpl extends TareaDAO {
 			
 
 			// ordenes sql
-			String sql = "SELECT t.idt,t.proyecto,u.nombre,t.status,o.estado As progreso,DATE_FORMAT(p.fechaInicio, '%m/%d/%Y') as fechaInicio, DATE_FORMAT(p.fechaFinal, '%m/%d/%Y') as fechaFinal,FROM bananatechies.tarea t left join bananatechies.progreso o on t.progreso= o.idpro, left join bananatechies.usuario u on t.responsable=u.idu WHERE t.responsable=?,order by p.status desc;";  
+			String sql = "SELECT t.idt, t.titulo, t.proyecto, concat(u.nombre, ' ' , u.apellido) As Responsable, t.status, o.estado As Progreso, DATE_FORMAT(t.fechaInicio, '%m/%d/%Y') as fechaInicio, DATE_FORMAT(t.fechaFinal, '%m/%d/%Y') as fechaFinal FROM bananatechies.tarea t left join bananatechies.progreso o on t.progreso= o.idpro left join bananatechies.usuario u on t.responsable=u.idu WHERE t.proyecto=? order by t.status desc;";
 			PreparedStatement pstm = conn.prepareStatement(sql);
 			pstm.setInt(1, elProyecto.getIdp());
 			
-			
 			ResultSet rs = pstm.executeQuery();
+			
+			//Obtenet lineas RS
+			int rowcount = 0;
+			if (rs.last()) {
+			  rowcount = rs.getRow();
+			  rs.beforeFirst(); // not rs.first() because the rs.next() below will move on, missing the first element
+			}
+
+			logger.info("!---------------getTareasList >>>>> executeQuery >>>> numero de lineas: "+ rowcount);
 
 			while (rs.next()) {
 				listADevolver.add(new Tarea(
 						rs.getInt("idt"), 
 						rs.getString("titulo"),
 						elProyecto,
-						rs.getString("responsable"),										
+						rs.getString("Responsable"),										
 						rs.getBoolean("status"),
 						rs.getString("Progreso"),
 						rs.getString("fechaInicio"),
@@ -99,7 +107,7 @@ public final class TareaDAOImpl extends TareaDAO {
 
 			conn.close();
 
-			logger.info("Conexi�n exitosa");
+			logger.info("Conexi�n exitosa <getTareasList>");
 
 		} catch (Exception e) {
 			logger.severe("Error en la conexi�n de BBDD:" + e);

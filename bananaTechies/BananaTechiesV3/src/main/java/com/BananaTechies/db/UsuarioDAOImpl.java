@@ -22,7 +22,7 @@ public final class UsuarioDAOImpl extends UsuarioDAO {
 	@Override
 	public Usuario getUsuario(String email, String password) {
 		Usuario usuarioADevolver = null;
-		logger.info("!--------------->>>>> getUsuario");
+
 		try {
 			
 			Connection conn = datasource.getConnection();
@@ -33,13 +33,13 @@ public final class UsuarioDAOImpl extends UsuarioDAO {
 			pstm.setString(2, password);	
 			ResultSet rs = pstm.executeQuery();
 
-			int rowcount = 0;
+			/*int rowcount = 0;
 			if (rs.last()) {
 			  rowcount = rs.getRow();
 			  rs.beforeFirst(); // not rs.first() because the rs.next() below will move on, missing the first element
 			}
 
-			logger.info("!--------------->>>>> executeQuery >>>> numero de lineas: "+ rowcount);
+			logger.info("!---------------getUsuario >>>>> executeQuery >>>> numero de lineas: "+ rowcount);*/
 			
 			if (rs.next()) {
 				usuarioADevolver = new Usuario(
@@ -55,8 +55,6 @@ public final class UsuarioDAOImpl extends UsuarioDAO {
 
 			pstm.close();
 			conn.close();
-
-			logger.info("Conexión exitosa");
 
 		} catch (Exception e) {
 			logger.severe("Error en la conexión de BBDD:" + e);
@@ -112,8 +110,6 @@ public final class UsuarioDAOImpl extends UsuarioDAO {
 
 			pstm.close();
 			conn.close();
-
-			logger.info("Conexión exitosa");
 
 		} catch (Exception e) {
 			logger.severe("Error en la conexión de BBDD:" + e);

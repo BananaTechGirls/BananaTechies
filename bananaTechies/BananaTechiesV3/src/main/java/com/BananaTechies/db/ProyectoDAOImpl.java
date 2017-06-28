@@ -99,7 +99,7 @@ public final class ProyectoDAOImpl extends ProyectoDAO {
 			Connection conn = this.datasource.getConnection();
 
 			// ordenes sql
-			String sql = "SELECT p.idp, p.titulo, DATE_FORMAT(p.fechaInicio, '%m/%d/%Y') as fechaInicio, DATE_FORMAT(p.fechaFinal, '%m/%d/%Y') as fechaFinal, p.descripcion, p.nota, p.status, o.estado As progreso FROM bananatechies.proyecto p left join bananatechies.progreso o on p.progreso=o.idpro where p.responsable=? order by p.status;";
+			String sql = "SELECT p.idp, p.titulo, DATE_FORMAT(p.fechaInicio, '%m/%d/%Y') as fechaInicio, DATE_FORMAT(p.fechaFinal, '%m/%d/%Y') as fechaFinal, p.descripcion, p.nota, p.status, o.estado As progreso FROM bananatechies.proyecto p left join bananatechies.progreso o on p.progreso=o.idpro where p.responsable=? order by p.status desc;";
 			PreparedStatement pstm = conn.prepareStatement(sql);
 			pstm.setInt(1, unUsuario.getUid());
 			
@@ -123,7 +123,7 @@ public final class ProyectoDAOImpl extends ProyectoDAO {
 
 			conn.close();
 
-			logger.info("Conexión exitosa");
+			logger.info("Conexión exitosa getUserProyecto");
 
 		} catch (Exception e) {
 			logger.severe("Error en la conexión de BBDD:" + e);
@@ -164,7 +164,7 @@ public final class ProyectoDAOImpl extends ProyectoDAO {
 
 			conn.close();
 
-			logger.info("Conexión exitosa");
+			logger.info("Conexión exitosa <getProyectosList>");
 
 		} catch (Exception e) {
 			logger.severe("Error en la conexión de BBDD:" + e);
