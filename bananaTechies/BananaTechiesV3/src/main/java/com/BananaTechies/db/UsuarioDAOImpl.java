@@ -33,13 +33,6 @@ public final class UsuarioDAOImpl extends UsuarioDAO {
 			pstm.setString(2, password);	
 			ResultSet rs = pstm.executeQuery();
 
-			/*int rowcount = 0;
-			if (rs.last()) {
-			  rowcount = rs.getRow();
-			  rs.beforeFirst(); // not rs.first() because the rs.next() below will move on, missing the first element
-			}
-
-			logger.info("!---------------getUsuario >>>>> executeQuery >>>> numero de lineas: "+ rowcount);*/
 			
 			if (rs.next()) {
 				usuarioADevolver = new Usuario(
@@ -48,8 +41,6 @@ public final class UsuarioDAOImpl extends UsuarioDAO {
 						rs.getString("apellido"),
 						rs.getString("email"), 
 						rs.getString("password")
-						//rs.getString("foto"),
-						//rs.getString("video")
 						);
 			}
 
@@ -103,8 +94,7 @@ public final class UsuarioDAOImpl extends UsuarioDAO {
 						rs.getString("apellido"),
 						rs.getString("email"),
 						rs.getString("password")
-						//rs.getString("foto"),
-						//rs.getString("video")
+						
 						);
 			}
 

@@ -37,14 +37,6 @@ public final class ProyectoDAOImpl extends ProyectoDAO {
 
 			ResultSet rs = pstm.executeQuery();
 
-			/*//Obtenet lineas RS
-			int rowcount = 0;
-			if (rs.last()) {
-			  rowcount = rs.getRow();
-			  rs.beforeFirst(); // not rs.first() because the rs.next() below will move on, missing the first element
-			}
-
-			logger.info("!---------------getProyecto >>>>> executeQuery >>>> numero de lineas: "+ rowcount);*/
 		
 			
 			if (rs.next()) {

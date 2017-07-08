@@ -9,14 +9,13 @@ public class Usuario {
 	private String email;
 	private String password;
 	
-	//private String foto;
-	//private String video;
+
 
 	// CONSTRUCTOR SIN PARAMETROS
 	public Usuario(){}
 	
 	// CONSTRUCTOR CON TODOS PARAMETROS (no password)
-	public Usuario(int uid, String nombre, String apellido, String email,String password/*, String foto, String video*/) {
+	public Usuario(int uid, String nombre, String apellido, String email,String password) {
 		this.uid=uid;
 		this.nombre=nombre;
 		this.apellido=apellido;
@@ -26,7 +25,6 @@ public class Usuario {
 	}
 
 	// CONSTRUCTOR CON PARAMETROS (creado por el cliente)
-	// ??????????????????????????????????????????????????
 	public Usuario(int uid, String nombre, String apellido) {
 		this.uid=uid;
 		this.nombre=nombre;
@@ -73,36 +71,4 @@ public class Usuario {
 		this.password = password;
 	}
 
-	/*public String getVideo() {
-		return video;
-	}
-
-	public void setVideo(String video) {
-		this.video = video;
-	}
-
-	public String getFoto() {
-		return foto;
-	}
-
-	public void setFoto(String foto) {
-		this.foto = foto;
-	}*/
-	
-
-	/*public List<Proyecto> getProyectoAsignado() {
-		return proyectoAsignado;
-	}
-
-	public void setProyectoAsignado(List<Proyecto> proyectoAsignado) {
-		this.proyectoAsignado = proyectoAsignado;
-	}
-
-	public List<Tarea> getTareaAsignada() {
-		return tareaAsignada;
-	}
-
-	public void setTareaAsignada(List<Tarea> tareaAsignada) {
-		this.tareaAsignada = tareaAsignada;
-	}*/
 }

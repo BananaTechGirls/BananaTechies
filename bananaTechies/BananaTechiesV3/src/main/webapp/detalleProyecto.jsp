@@ -67,41 +67,65 @@
 				</div>
 
 
-					<div class="panel-heading">
-						<h3 class="panel-title">Tareas</h3>
-					</div>
-					<div class="panel-body">
+				<div class="panel-heading">
+					<h3 class="panel-title">Tareas</h3>
+				</div>
+				<div class="table-responsive">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>Ver - Borrar</th>
+								<th>Titulo</th>
+								<th>Responsable</th>
+								<th>Progreso</th>
+
+							</tr>
+						</thead>
+							<c:forEach var="tar" items="${listaTareaAMostrar}"
+								varStatus="counter">
+							<tbody>
+								<tr>
+									<td class="buttons"><a
+										href="${tar.idt}"
+										class="btn glyphicon glyphicon-eye-open" aria-label="Tareas"></a>
+										<a href="#"
+										class="btn_del_Task btn glyphicon glyphicon-trash"
+										data_Id="${tar.idt}" aria-label="botonBorrarP"></a> 						</td>
+									<td>${tar.titulo}</td>
+									<td>${idUsuario.nombre}</td>
+									<td>${tar.progreso}</td>
+
+								</tr>
+							</tbody>
+
+						</c:forEach>
+					</table>
+				</div>
+
+
+				<div class="panel-body">
 					<div class="container-fluid">
-						<div class="table-responsive">
-							<table class="table table-hover">
-								<thead>
-									<tr>
-										<th>Titulo</th>
-										<th>Responsable</th>
-										<th>Progreso</th>
-										<th>Fecha inicio</th>
-										<th>Borrar</th>
-									</tr>
-								</thead>
-								<tbody>
-									<c:forEach var="tar" items="${listaTareaAMostrar}" varStatus="counter">
-										<tr>
-											<td>${tar.titulo}</td>
-											<td>${tar.responsable}</td>
-											<td>${tar.progreso}</td>
-											<td>${tar.fechaInicio}</td>
-											<td class="buttons">
-												<button aria-label="deleteTask"	class="btn_del_Task glyphicon glyphicon-trash" data_Id="${tar.idt}">
-												</button>							
-											</td>
-										</tr>
-									</c:forEach>
-								</tbody>
-							</table>
-						</div>
-					</div>					
+						<ul class="taskList">
+
+							<c:forEach var="tar" items="${listaTareaAMostrar}"
+								varStatus="counter">
+								<li class="row" id="${tar.idt}">
+									<div class="col-xs-6">
+										<a href="task.html">${tar.titulo}</a>
+									</div>
+									<div class="col-xs-6">
+
+										<button aria-label="deleteTask"
+											class="btn_del_Task glyphicon glyphicon-trash"
+											data_Id="${tar.idt}"></button>
+									</div>
+								</li>
+							</c:forEach>
+
+						</ul>
 					</div>
-				
+				</div>
+
 			</aside>
 
 		</section>
