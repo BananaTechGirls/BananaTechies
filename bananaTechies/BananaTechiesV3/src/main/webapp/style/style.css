@@ -80,11 +80,11 @@ video{
 }
  #logOutBtn a{
   font-family:'glyphicons';
-  top:18px;
+  top:12px;
  }
  #logOutBtn>a>span{
  		position:relative;
- 		bottom:10px;
+ 		bottom:11px;
  }
 .menu .burgerMenu .burgerIcon{
   background-color:#e6e600;
@@ -459,3 +459,11 @@ textarea.form-control{
 
 .mensajes_error_EditT div{display: none;}
 .mensajes_error_EditT div.show{display: block;}
+
+
+
+
+tbody>tr>td, thead>tr>th{
+	color:#595959;
+	font-size: 14px;
+}
