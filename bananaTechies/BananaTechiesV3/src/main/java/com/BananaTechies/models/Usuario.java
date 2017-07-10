@@ -1,7 +1,5 @@
 package com.BananaTechies.models;
 
-//import java.util.List;
-
 public class Usuario {
 	private	int	uid;
 	private String nombre;
@@ -12,10 +10,13 @@ public class Usuario {
 
 
 	// CONSTRUCTOR SIN PARAMETROS
-	public Usuario(){}
+	public Usuario(){
+		super();
+	}
 	
 	// CONSTRUCTOR CON TODOS PARAMETROS (no password)
 	public Usuario(int uid, String nombre, String apellido, String email,String password) {
+		super();
 		this.uid=uid;
 		this.nombre=nombre;
 		this.apellido=apellido;
@@ -26,11 +27,23 @@ public class Usuario {
 
 	// CONSTRUCTOR CON PARAMETROS (creado por el cliente)
 	public Usuario(int uid, String nombre, String apellido) {
+		super();
 		this.uid=uid;
 		this.nombre=nombre;
 		this.apellido=apellido;		
 	}
 
+	// CONSTRUCTOR COPIA
+	public Usuario(Usuario copia){
+		super();
+		this.uid=copia.uid;
+		this.nombre=copia.nombre;
+		this.apellido=copia.apellido;
+		this.email=copia.email;
+		this.password = copia.password;
+	}
+	
+	
 	public int getUid() {
 		return uid;
 	}
