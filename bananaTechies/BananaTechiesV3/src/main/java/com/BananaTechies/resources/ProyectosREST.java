@@ -42,10 +42,11 @@ public class ProyectosREST implements ProyectosAPI {
 	
 	@Override
 	@GET
-	@Path("/{uid}") //Identificador Usuario
+	@Path("/") 
 	@Produces(MediaType.APPLICATION_JSON)
 	//public List<Proyecto> listaProyectoResponsables (@PathParam("uid") int uid){
-	public Object listaProyectoResponsables (@PathParam("uid") int uid){
+	public Object listaProyectoResponsables (){
+		int uid =1; //mock de token
 		Mensaje resp = new Mensaje(0,"");
 		try {
 			//obtener el objeto usuario completo
@@ -70,19 +71,39 @@ public class ProyectosREST implements ProyectosAPI {
 	}
 
 	@Override
+	public Mensaje addProyectoLista(JSONObject newProyecto) throws JSONException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Proyecto ProyectoID(int pid) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+	@Override
 	public Mensaje upDateProyectoLista(int uid, JSONObject modificadoProyecto) throws JSONException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Mensaje addProyectoLista(int uid, JSONObject nuevoProyecto) throws JSONException {
+	public Mensaje upDateTareaListaP(int pid, JSONObject nuevaTarea) throws JSONException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+	@Override
+	public Mensaje borrarProyectoLista(int uid) throws JSONException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Mensaje borrarProyectoLista(int uid) throws JSONException {
+	public Object listaTareasProyecto(int pid) {
 		// TODO Auto-generated method stub
 		return null;
 	}

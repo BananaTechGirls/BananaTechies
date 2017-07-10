@@ -20,32 +20,53 @@ import com.BananaTechies.models.Proyecto;
 
 public interface ProyectosAPI {
 	
-	//curl -X GET http://localhost:8080/BananaTechiesV3/rest/Proyectos/2
-	@GET
-	@Path("/{uid}") //Identificador Usuario
-	@Produces(MediaType.APPLICATION_JSON)
-	public Object listaProyectoResponsables (@PathParam("uid") int uid);
-	//Mostrar lista de Proyectos de un Responsable
 
+	@GET
+	@Path("/") 
+	@Produces(MediaType.APPLICATION_JSON)
+	public Object listaProyectoResponsables ();
+	//Mostrar lista de Proyectos de un Responsable por Token
+	
 	@POST
-	@Path("/{uid}") 
+	@Path("/") 
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Mensaje upDateProyectoLista (@PathParam("uid") int uid, JSONObject modificadoProyecto) throws JSONException;
-	//Actualizar un Proyecto de la lista   (NO LO USAREMOS)
+	public Mensaje addProyectoLista (JSONObject newProyecto) throws JSONException;
+	//Añadir un nuevo Proyecto de la lista de un Responsable por Token
+
+	@GET
+	@Path("/{pid}") //Identificador Proyecto
+	@Produces(MediaType.APPLICATION_JSON)
+	public Proyecto ProyectoID (@PathParam("pid") int pid);
+	//Mostrar Detalles de Proyecto por el identificador de la lista proyectos
+
 
 	@PUT
-	@Path("/{uid}")
+	@Path("/{pid}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Mensaje addProyectoLista (@PathParam("uid") int uid, JSONObject nuevoProyecto) throws JSONException;
-	//Añadir un Proyecto en liata          (NO LO USAREMOS)
+	public Mensaje upDateProyectoLista (@PathParam("pid") int pid, JSONObject UpdateProyecto) throws JSONException;
+	//Actualizar/Modificar un Proyecto en liata de un Responsable por Token
+
+	@POST
+	@Path("/{pid}") 
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Mensaje upDateTareaListaP (@PathParam("pid") int pid, JSONObject nuevaTarea) throws JSONException;
+	//Añadir una tarea aun Proyecto de la lista de un Responsable por Token
+
 
 	@DELETE
-	@Path("/{uid}")
+	@Path("/{pid}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Mensaje borrarProyectoLista (@PathParam("uid") int uid) throws JSONException;
-	//Borrar un proyecto de lista
+	public Mensaje borrarProyectoLista (@PathParam("pid") int pid) throws JSONException;
+	//Borrar un proyecto de lista de un Responsable por Token
+	
+	@GET
+	@Path("/{pid}/tareas") //Identificador Tarea
+	@Produces(MediaType.APPLICATION_JSON)
+	public Object listaTareasProyecto (@PathParam("pid") int pid);
+	//Mostrar lista de Tareas de un proyecto
 	
 }

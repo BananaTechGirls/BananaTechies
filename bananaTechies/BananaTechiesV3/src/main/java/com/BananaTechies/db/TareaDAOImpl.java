@@ -30,7 +30,7 @@ public final class TareaDAOImpl extends TareaDAO {
 		try {
 			Connection conn = this.datasource.getConnection();
 			// ordenes sql
-			String sql = "SELECT t.* FROM bananatechies.tarea t WHERE t.idt=? LIMIT 1";
+			String sql = "SELECT t.idt, t.titulo, t.proyecto, t.responsable, t.status, o.estado As Progreso, DATE_FORMAT(t.fechaInicio, '%m/%d/%Y') as fechaInicio, DATE_FORMAT(t.fechaFinal, '%m/%d/%Y') as fechaFinal FROM bananatechies.tarea t left join bananatechies.progreso o on t.progreso= o.idpro WHERE t.idt=1 LIMIT 1";
 			PreparedStatement pstm = conn.prepareStatement(sql);
 			pstm.setInt(1, idt);	
 			
@@ -39,16 +39,16 @@ public final class TareaDAOImpl extends TareaDAO {
 
 			if (rs.next()) {
 
-/*				TareaADevolver = new Tarea(
+				TareaADevolver = new Tarea(
 						rs.getInt("idt"), 
 						rs.getString("titulo"),
-						pDAO.getProyecto(rs.getInt("proyecto ")),
-						rs.getString("responsable"),											
+						null,
+						rs.getString("Responsable"),										
 						rs.getBoolean("status"),
 						rs.getString("Progreso"),
 						rs.getString("fechaInicio"),
 						rs.getString("fechaFinal")
-						);*/
+						);
 			}
 
 			pstm.close();

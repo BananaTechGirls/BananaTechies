@@ -46,6 +46,6 @@ http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
 
 	<servlet-mapping>
 		<servlet-name>jersey-servlet</servlet-name>
-		<url-pattern>/v4/*</url-pattern>
+		<url-pattern>/apiApp/*</url-pattern>
 	</servlet-mapping>
 </web-app>

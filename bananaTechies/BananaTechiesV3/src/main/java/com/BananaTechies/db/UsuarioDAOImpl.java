@@ -80,11 +80,22 @@ public final class UsuarioDAOImpl extends UsuarioDAO {
 		try {
 			Connection conn = datasource.getConnection();
 			// ordenes sql
-			String sql = "SELECT u.* FROM bananatechies.usuario u WHERE u.uid=?LIMIT 1";
+			String sql = "SELECT u.* FROM bananatechies.usuario u WHERE u.idu=? LIMIT 1";
 			PreparedStatement pstm = conn.prepareStatement(sql);
 			pstm.setInt(1, uid);
 
 			ResultSet rs = pstm.executeQuery();
+			
+			//Obtenet lineas RS
+			System.out.println(" ********** getUsuario("+uid+")");
+			System.out.println(" ********************************");
+			int rowcount = 0;
+			if (rs.last()) {
+			  rowcount = rs.getRow();
+			  rs.beforeFirst(); // not rs.first() because the rs.next() below will move on, missing the first element
+			}
+
+			logger.info("!---------------getTareasList >>>>> executeQuery >>>> numero de lineas: "+ rowcount);
 
 			if (rs.next()) {
 
