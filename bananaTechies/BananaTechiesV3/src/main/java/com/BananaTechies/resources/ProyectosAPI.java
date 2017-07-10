@@ -40,7 +40,6 @@ public interface ProyectosAPI {
 	public Proyecto ProyectoID (@PathParam("pid") int pid);
 	//Mostrar Detalles de Proyecto por el identificador de la lista proyectos
 
-
 	@PUT
 	@Path("/{pid}")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -52,9 +51,8 @@ public interface ProyectosAPI {
 	@Path("/{pid}") 
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Mensaje upDateTareaListaP (@PathParam("pid") int pid, JSONObject nuevaTarea) throws JSONException;
+	public Mensaje addTareaListaP (@PathParam("pid") int pid, JSONObject nuevaTarea) throws JSONException;
 	//Añadir una tarea aun Proyecto de la lista de un Responsable por Token
-
 
 	@DELETE
 	@Path("/{pid}")

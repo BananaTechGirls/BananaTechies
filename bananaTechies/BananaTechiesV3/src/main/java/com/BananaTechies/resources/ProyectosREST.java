@@ -90,7 +90,7 @@ public class ProyectosREST implements ProyectosAPI {
 	}
 
 	@Override
-	public Mensaje upDateTareaListaP(int pid, JSONObject nuevaTarea) throws JSONException {
+	public Mensaje addTareaListaP(int pid, JSONObject nuevaTarea) throws JSONException {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -171,7 +171,10 @@ public class ProyectosREST implements ProyectosAPI {
 			Field[] fieldsProyecto = Proyecto.class.getFields();
 			
 			//Dar formato de JSON a usuario sin usar JErsey para Verificar el objeto entrante
-			Proyecto elProyecto = new Proyecto(nuevoProyecto.getInt(fieldsProyecto[0].getName()), nuevoProyecto.getString(fieldsProyecto[1].getName()), nuevoProyecto.getString(fieldsProyecto[2].getName()), nuevoProyecto.getInt(fieldsProyecto[3].getName()));
+			Proyecto elProyecto = new Proyecto(nuevoProyecto.getInt(fieldsProyecto[0].getName()), 
+											   nuevoProyecto.getString(fieldsProyecto[1].getName()), 
+											   nuevoProyecto.getString(fieldsProyecto[2].getName()),
+											   nuevoProyecto.getInt(fieldsProyecto[3].getName()));
 
 			return elProyecto;
 		} catch (Exception e) {
