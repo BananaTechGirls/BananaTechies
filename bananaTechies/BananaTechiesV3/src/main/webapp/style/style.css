@@ -297,12 +297,14 @@ td>.btn{
 }
 div.panel>div.panel-heading>.panel-title{
   color: #595959;
+  font-weight: 600;
 }
 div.panel-body{
   padding:8px; 
 }
 .panel-default > .panel-heading{
   background: #fff;
+  margin-top:10px;
 }
 
 .pInfo {

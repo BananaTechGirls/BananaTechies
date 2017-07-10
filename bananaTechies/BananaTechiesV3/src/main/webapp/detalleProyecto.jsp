@@ -17,7 +17,7 @@
 
 			<article class="row">
 				<div class="buttons pull-xs-right">
-					<a href="plantilla_listaProyectos.jsp" class="btn"><span
+					<a href="plantilla_listaProyectos" class="btn"><span
 						class="glyphicon glyphicon-trash"></span> Borrar Proyecto</a> <a
 						href="editP.html" class="btn">Editar Proyecto</a> <a
 						href="createT.html" class="btn">Crear Tarea</a>
@@ -46,51 +46,54 @@
 					</ul>
 				</div>
 				<div class="panel panel-default">
+				<!-- tareas -->
+					<div class="panel-heading">
+						<h3 class="panel-title">Tareas</h3>
+					</div>
+					<div class="table-responsive">
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th>Ver - Borrar</th>
+									<th>Titulo</th>
+									<th>Responsable</th>
+									<th>Progreso</th>
+
+								</tr>
+							</thead>
+							<c:forEach var="tar" items="${listaTareaAMostrar}"
+								varStatus="counter">
+								<tbody>
+									<tr>
+										<td class="buttons"><a href="${tar.idt}"
+											class="btn glyphicon glyphicon-eye-open" aria-label="Tareas"></a>
+											<a href="#"
+											class="btn_del_Task btn glyphicon glyphicon-trash"
+											data_Id="${tar.idt}" aria-label="botonBorrarP"></a></td>
+										<td>${tar.titulo}</td>
+										<td>${idUsuario.nombre}</td>
+										<td>${tar.progreso}</td>
+									</tr>
+								</tbody>
+							</c:forEach>
+						</table>
+					</div>
+					
+					
+					
+					<!-- descripcion -->
 					<div class="panel-heading">
 						<h3 class="panel-title">Descripción</h3>
 					</div>
+
 					<div class="panel-body">
 						<div class="box1 textBox">
 							<p>${DetalleProyecto.descripcion}</p>
 						</div>
 					</div>
-				</div>
-				<div class="panel-heading">
-					<h3 class="panel-title">Tareas</h3>
-				</div>
-				<div class="table-responsive">
-					<table class="table table-hover">
-						<thead>
-							<tr>
-								<th>Ver - Borrar</th>
-								<th>Titulo</th>
-								<th>Responsable</th>
-								<th>Progreso</th>
 
-							</tr>
-						</thead>
-							<c:forEach var="tar" items="${listaTareaAMostrar}"
-								varStatus="counter">
-							<tbody>
-								<tr>
-									<td class="buttons"><a
-										href="${tar.idt}"
-										class="btn glyphicon glyphicon-eye-open" aria-label="Tareas"></a>
-										<a href="#"
-										class="btn_del_Task btn glyphicon glyphicon-trash"
-										data_Id="${tar.idt}" aria-label="botonBorrarP"></a> 						</td>
-									<td>${tar.titulo}</td>
-									<td>${idUsuario.nombre}</td>
-									<td>${tar.progreso}</td>
+					<!-- Notas y comentarios -->
 
-								</tr>
-							</tbody>
-
-						</c:forEach>
-					</table>
-				</div>
-				
-				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h3 class="panel-title">Notas y comentarios</h3>
 					</div>
@@ -102,9 +105,9 @@
 				</div>
 
 
-				
 
-				
+
+
 			</aside>
 
 		</section>
