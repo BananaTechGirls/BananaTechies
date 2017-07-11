@@ -5,11 +5,11 @@
     "description": "Gestiona proyectos como bananas",
     "version": "1.0.0"
   },
-  "host": "api.banangest.com",
+  "host": "localhost:8080",
   "schemes": [
     "http"
   ],
-  "basePath": "/apiApp",
+  "basePath": "/BananaTechies/apiApp",
   "produces": [
     "application/json",
     "application/xml"
