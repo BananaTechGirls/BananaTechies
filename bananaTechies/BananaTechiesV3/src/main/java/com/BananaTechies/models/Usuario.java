@@ -1,6 +1,16 @@
 package com.BananaTechies.models;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "usuario")
 public class Usuario {
+	
 	private	int	uid;
 	private String nombre;
 	private String apellido;
@@ -43,7 +53,9 @@ public class Usuario {
 		this.password = copia.password;
 	}
 	
-	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name = "idu")
 	public int getUid() {
 		return uid;
 	}

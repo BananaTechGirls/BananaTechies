@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8'?>  
+<!DOCTYPE hibernate-mapping PUBLIC  
+ "-//Hibernate/Hibernate Mapping DTD 3.0//EN"  
+ "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.BananaTechies.models.Proyecto" table="empleado">
+		<id name="idp" column="idp">
+			<generator class="identity"></generator>
+		</id>
+
+		<property name="titulo"></property>
+		
+		<many-to-one name="responsable" cascade="all"
+			class="com.BananaTechies.models.Usuario" column="responsable" unique="true" not-null="true" /> <!-- crea relacione que tienen que ver con las foreign keys. cascade como 
+			tiene que tratar las relaciones -->
+		<property name="status"></property>
+		<property name="progreso"></property>
+		<property name="fechaInicio" type="date" column="fechaInicio"></property>
+		<property name="fechaFinal" type="date" column="fechaFinal" ></property>
+		<property name="descripcion"></property>
+		<property name="notas"></property>
+  
+	</class>
+
+</hibernate-mapping>  
