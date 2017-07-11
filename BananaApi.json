@@ -9,21 +9,21 @@
   "schemes": [
     "http"
   ],
-  "basePath": "/v4",
+  "basePath": "/apiApp",
   "produces": [
     "application/json",
     "application/xml"
   ],
   "paths": {
-    "/proyectos": {
+    "/Proyectos": {
       "get": {
-        "summary": "Lista de proyectos",
+        "summary": "Lista de proyectos de un responsable",
         "tags": [
           "Proyectos"
         ],
         "responses": {
           "200": {
-            "description": "lista de proyectos",
+            "description": "lista de proyectos de un responsable",
             "schema": {
               "type": "array",
               "items": {
@@ -40,7 +40,7 @@
         }
       },
       "post": {
-        "summary": "añadir proyecto",
+        "summary": "añadir proyecto de la lista de un responsable",
         "parameters": [
           {
             "name": "proyecto",
@@ -62,9 +62,9 @@
         }
       }
     },
-    "/proyectos/{pid}": {
+    "/Proyectos/{pid}": {
       "get": {
-        "summary": "Detalle de proyecto",
+        "summary": "Detalle de proyecto por id",
         "tags": [
           "Proyecto"
         ],
@@ -75,8 +75,11 @@
             "required": true,
             "type": "integer",
             "minimum": 1,
-            "description": "ID del proyecto."
+            "description": "Detalle de proyecto por id."
           }
+        ],
+        "produces": [
+          "application/json"
         ],
         "responses": {
           "200": {
@@ -94,7 +97,7 @@
         }
       },
       "put": {
-        "summary": "Actualizar proyecto",
+        "summary": "Actualizar proyecto en la lista del responsable",
         "tags": [
           "Actualiza Proyecto"
         ],
@@ -117,12 +120,48 @@
             "description": "actualizar por ID del proyecto."
           }
         ],
+        "produces": [
+          "application/json"
+        ],
         "consumes": [
           "application/json"
         ],
         "responses": {
           "200": {
             "description": "proyecto actualizado",
+            "schema": {
+              "$ref": "#/definitions/Mensaje"
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Añadir una tarea a proyecto en la lista de un responsable",
+        "parameters": [
+          {
+            "name": "pid",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "minimum": 1,
+            "description": "Añadir tarea a un proyecto"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "tarea añadida",
             "schema": {
               "$ref": "#/definitions/Mensaje"
             }
@@ -163,19 +202,32 @@
         }
       }
     },
-    "/tareas": {
+    "/Proyectos/{pid}/Tarea": {
       "get": {
-        "summary": "Lista de tareas",
+        "summary": "Obtener Lista de tareas de un proyecto",
         "tags": [
-          "Tareas"
+          "Proyecto"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "pid",
+            "required": true,
+            "type": "integer",
+            "minimum": 1,
+            "description": "Detalle de proyecto por id."
+          }
+        ],
+        "produces": [
+          "application/json"
         ],
         "responses": {
           "200": {
-            "description": "lista de tareas",
+            "description": "Lista de tareas de un proyecto",
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/Tarea"
+                "$ref": "#/definitions/Proyecto"
               }
             }
           },
@@ -186,31 +238,9 @@
             }
           }
         }
-      },
-      "post": {
-        "summary": "añadir tarea",
-        "parameters": [
-          {
-            "name": "tarea",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Tarea"
-            }
-          }
-        ],
-        "consumes": [
-          "application/json",
-          "application/xml"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
       }
     },
-    "/tareas/{idt}": {
+    "/Tarea/{idt}": {
       "get": {
         "summary": "Detalle de tarea",
         "tags": [
@@ -225,6 +255,9 @@
             "minimum": 1,
             "description": "ID del tarea."
           }
+        ],
+        "produces": [
+          "application/json"
         ],
         "responses": {
           "200": {
@@ -265,6 +298,9 @@
             "description": "ID de la Tarea."
           }
         ],
+        "produces": [
+          "application/json"
+        ],
         "consumes": [
           "application/json"
         ],
@@ -294,6 +330,12 @@
             "minimum": 1,
             "description": "ID de la Tarea"
           }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
         ],
         "responses": {
           "200": {
@@ -420,7 +462,10 @@
     "Mensaje": {
       "type": "object",
       "properties": {
-        "mensaje": {
+        "tipo": {
+          "type": "string"
+        },
+        "cuerpo": {
           "type": "string"
         }
       }
