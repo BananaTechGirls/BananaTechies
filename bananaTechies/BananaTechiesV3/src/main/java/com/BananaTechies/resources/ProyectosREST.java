@@ -6,8 +6,10 @@ import java.util.List;
 import java.util.ListIterator;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -21,6 +23,7 @@ import com.BananaTechies.db.ProyectoDAO;
 import com.BananaTechies.db.UsuarioDAO;
 import com.BananaTechies.models.Mensaje;
 import com.BananaTechies.models.Proyecto;
+import com.BananaTechies.models.Tarea;
 import com.BananaTechies.models.Usuario;
 import com.BananaTechies.resources.ProyectosAPI;
 
@@ -30,14 +33,6 @@ public class ProyectosREST implements ProyectosAPI {
 	
 	static {
 		ProyectosREST.misProyectos = new ArrayList<Proyecto>();
-		//MOCKEAR LOS DATOS ENTRADA EN VEZ DE LA BBDD < MYSQL >
-		/*for (int i=0; i < 10; i++){
-			Proyecto nuevo= new Proyecto (i+1);
-			nuevo.setEdad(nuevo.getEdad()-(i*3));
-			nuevo.setName(nuevo.getName()+(char)(65+i));
-			ProyectosREST.misUsuarios.add(nuevo);
-		}*/
-		
 	}
 	
 	@Override
@@ -65,61 +60,72 @@ public class ProyectosREST implements ProyectosAPI {
 			return ProyectosREST.misProyectos;
 		} catch (Exception e) {
 			resp.setCuerpo(e.getMessage() +"\n- Formato erroneo en el cuerpo del objeto USUARIO.\nLease API");
-			return resp;
-			
+			return resp;			
 		}
 	}
 
 	@Override
-	public Mensaje addProyectoLista(JSONObject newProyecto) throws JSONException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Proyecto ProyectoID(int pid) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	
-	@Override
-	public Mensaje upDateProyectoLista(int uid, JSONObject modificadoProyecto) throws JSONException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Mensaje addTareaListaP(int pid, JSONObject nuevaTarea) throws JSONException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	
-	@Override
-	public Mensaje borrarProyectoLista(int uid) throws JSONException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Object listaTareasProyecto(int pid) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	
-	
-	
-	
-	/*@GET
-	@Path("/")
+	@POST
+	@Path("/") 
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Proyecto> listaUsuarios (){
-		//Obtener DAO FACTORY La lista TODOS los USUARIOS
-		return ProyectosREST.misUsuarios;
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Mensaje addProyectoLista (JSONObject newProyecto) throws JSONException{
+		return new Mensaje(0, "Añadido un nuevo Proyecto de la lista.");
 	}
 
+	@Override
+	@GET
+	@Path("/{pid}") //Identificador Proyecto
+	@Produces(MediaType.APPLICATION_JSON)
+	public Proyecto ProyectoID (@PathParam("pid") int pid){
+		// TODO Auto-generated method stub
+		return new Proyecto();
+	}
+
+	
+	@Override
+	@PUT
+	@Path("/{pid}")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Mensaje upDateProyectoLista (@PathParam("pid") int pid, JSONObject UpdateProyecto) throws JSONException{
+		// TODO Auto-generated method stub
+		return new Mensaje(0, "Actualizar/Modificar los detalles Proyecto de liata");
+	}
+
+	@Override
+	@POST
+	@Path("/{pid}") 
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Mensaje addTareaListaP (@PathParam("pid") int pid, JSONObject nuevaTarea) throws JSONException{
+		// TODO Auto-generated method stub
+		return new Mensaje(0, "Añadido la tarea al Proyecto");
+	}
+
+	
+	@Override
+	@DELETE
+	@Path("/{pid}")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Mensaje borrarProyectoLista (@PathParam("pid") int pid) throws JSONException{
+		// TODO Auto-generated method stub
+		return new Mensaje(0, "Borrado un proyecto de lista ");
+	}
+
+	@Override
+	@GET
+	@Path("/{pid}/tareas") //Identificador Tarea
+	@Produces(MediaType.APPLICATION_JSON)
+	public Object listaTareasProyecto (@PathParam("pid") int pid){
+		// TODO Auto-generated method stub
+		return new ArrayList<Tarea>();
+	}
+	
+	
+	
+	/*
 	@POST
 	@Path("/")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -181,36 +187,9 @@ public class ProyectosREST implements ProyectosAPI {
 			Mensaje resp = new Mensaje(e.getMensaje() +"\n- Formato erroneo en el cuerpo del objeto USUARIO.\nLease API");
 			return resp;
 		}
-	}
-
-	
-	
-	//---------------------------------------------------------
-	
-	
-	
-	
-	@POST
-	@Path("/login")
-	public boolean esProyecto(){
-		return true;
-	}
-	
-	//curl -X GET http://localhost:8080/BananaApp/rest/usuario/pepe/ruiz/33
-	@GET
-	@Path("/{nom}/{ape}/{edad}")
-	@Produces(MediaType.APPLICATION_JSON)
-	public boolean addu (@PathParam("nom") String nom, @PathParam("ape") String ape, @PathParam("edad") int edad){
-		Proyecto nuevo= new Proyecto (ProyectosREST.misUsuarios.get(ProyectosREST.misUsuarios.size() - 1).getUid()+1, nom, ape, edad);
-		ProyectosREST.misUsuarios.add(nuevo);		
-		return true;
-	}
-	
-	public boolean addProyecto (String nom, String ape, int edad){
-		Proyecto nuevo= new Proyecto (ProyectosREST.misUsuarios.get(ProyectosREST.misUsuarios.size() - 1).getUid()+1, nom, ape, edad);
-		ProyectosREST.misUsuarios.add(nuevo);		
-		return true;
 	}*/
+	
+	
 }
 
 
