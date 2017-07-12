@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Banana GEST Edit a Project</title>
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Rock+Salt" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+	<link rel="stylesheet" href="./style/bootstrap.css">
+	<link rel="stylesheet" href="./style/style.css">
+</head>
+<body>
+	<div class="container">
+		<header>
+			<nav class="navbar navbar-default menu">
+				<div class="row">			
+					<a class="navbar-brand" href="home.html">
+						<h1 class="logo">Banana GEST</h1>
+					</a>
+				</div>
+				<div class="row">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle burgerMenu" data-toggle="collapse" data-target="#myNavbar">
+							<span class="icon-bar burgerIcon"></span>
+							<span class="icon-bar burgerIcon"></span>
+							<span class="icon-bar burgerIcon"></span>
+						</button>
+						
+					</div>
+					<div class="collapse navbar-collapse submenu" id="myNavbar">
+						<ul class="nav navbar-nav navList navbar-right">
+							<li><a class="navItems" href="home.html">Proyects</a></li>
+							<li><a class="navItems" href="taskList.html">Tasks</a></li>
+							<li id="profileBtn"><a class="navItems glyphicon glyphicon-user" href="profile.html"><span class="profile">Profile</span></a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</header>
+		<section class="container-fluid">
+			<ol class="breadcrumb">
+				<li><a href="home.html">Home</a></li>
+				<li><a href="project.html">Project</a></li>
+				<li class="active">Edit Project</li>
+			</ol>
+			<div class="pageTitle ">
+				<h1>Edit Project</h1>
+			</div>
+			<div class="row">
+				<div class="buttons col-xs-12 col-sm-4 col-sm-offset-8">
+					<a href="home.html" class="btn" role="button">Cancel</a>
+					<a href="project.html" class="btn" role="button">Save Changes</a>
+				</div>
+			</div>
+			<article class="col-xs-12 col-sm-4">
+				<div>
+					<div class="form-group">
+					    <label for="projectTitle">Title:
+					    	<span id="projectTitleLabel">Project x</span>
+					    </label>
+					    <input class="form-control elemEditado" type="text" name="title" placeholder="Project title"  id="projectTitle">
+					    <div class="buttons">
+						    <button class="btn  glyphicon glyphicon-ok" data_Id="projectTitleLabel"></button>
+						    <button class="btn  glyphicon glyphicon-remove"></button>
+						</div>
+					</div>
+  					<div class="form-group ">
+    					<label for="date">Start Date: <span id="pStartDate">00/00/00</span></label>
+    					<input class="form-control elemEditado" type="date" name="date" placeholder="Start Date"  id="date">
+    					<div class="buttons">
+						    <button class="btn  glyphicon glyphicon-ok" data_Id="pStartDate"></button>
+						    <button class="btn  glyphicon glyphicon-remove"></button>
+						</div>
+					</div>
+				</div>
+				<div class="inCharge">
+					<h3>Edit Person in charge</h3>
+					<select class="form-control">
+						<option>Pepito</option>
+						<option>David Romero</option>
+						<option>Maria Ruíz</option>
+						<option>Andrés Blum</option>
+						<option>Karla Garcia</option>
+						<option>Zhanna Andrade</option>
+						<option>Carlos Peréz</option>
+						<option>Karla Garcia</option>
+						<option>Maria Ruíz</option>
+						<option>Andrés Blum</option>
+						<option>Karla Garcia</option>
+					</select>
+				</div>
+				<div class="status">
+					<h3> Edit Status</h3>
+					<select class="form-control">
+						<option>In Progress</option>
+						<option>Done</option>
+						<option>In Progress</option>
+						<option>Feedback</option>
+						<option>Rejected</option>
+					</select>
+				</div>
+			</article>
+			<article class="col-xs-12 col-sm-8">
+				<form>
+					<div class="form-group">
+					    <label for="pDescription">Project Description</label>
+					    <p id="pDescriptionLabel">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque quibusdam, fugiat quis rerum magnam quidem consectetur nostrum temporibus recusandae aliquam voluptatem alias explicabo. Sed repellat animi, ullam aperiam autem a.
+					    </p>
+					    <textarea class="form-control elemEditado" type="text" name="pDescription" placeholder="Edit Project description"  value="description" id="pDescription"></textarea>
+					    <div class="buttons">
+						    <button class="btn  glyphicon glyphicon-ok" data_Id="pDescriptionLabel"></button>
+						    <button class="btn  glyphicon glyphicon-remove"></button>
+						</div>
+					</div>
+  					<div class="form-group">
+    					<label for="projectNotes">Notes</label>
+    					<p id="pNotesLabel">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto facilis molestiae quaerat fuga illum sequi dolorum non iste quo voluptatibus quibusdam debitis, enim, nam quis accusamus aliquid dicta vel quidem.
+    					</p>
+    					<textarea class="form-control elemEditado" type="text" name="Notes" placeholder="Edit Project Notes" value="Notes" id="projectNotes"></textarea>
+    					<div class="buttons">
+						    <button class="btn  glyphicon glyphicon-ok" data_Id="pNotesLabel"></button>
+						    <button class="btn  glyphicon glyphicon-remove"></button>
+						</div>
+					</div>
+				</form>
+			</article>
+		</section>
+		<footer class="col-xs-12">
+			<p class="rights col-xs-12 col-sm-6 col-sm-offset-3">©2017 <span class="techG">Tech Girls </span> All Rights Reserved.</p>
+		</footer>
+	</div>
+</body>
+<script src="./js/home.js"></script>
+<script src="./js/editT.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+</html>

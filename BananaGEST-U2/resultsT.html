@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Banana GEST task results</title>
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Rock+Salt" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+	<link rel="stylesheet" href="./style/bootstrap.css">
+	<link rel="stylesheet" href="./style/style.css">
+</head>
+<body>
+	<div class="container">
+		<header>
+			<nav class="navbar navbar-default menu">
+				<div class="row">			
+					<a class="navbar-brand" href="home.html">
+						<h1 class="logo">Banana GEST</h1>
+					</a>
+				</div>
+				<div class="row">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle burgerMenu" data-toggle="collapse" data-target="#myNavbar">
+							<span class="icon-bar burgerIcon"></span>
+							<span class="icon-bar burgerIcon"></span>
+							<span class="icon-bar burgerIcon"></span>
+						</button>
+						
+					</div>
+					<div class="collapse navbar-collapse submenu" id="myNavbar">
+						<ul class="nav navbar-nav navList navbar-right">
+							<li><a class="navItems" href="home.html">Proyects</a></li>
+							<li><a class="navItems" href="taskList.html">Tasks</a></li>
+							<li id="profileBtn"><a class="navItems glyphicon glyphicon-user" href="profile.html"><span class="profile">Profile</span></a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</header>
+		<section class="container-fluid">
+			<ol class="breadcrumb">
+				<li><a href="taskList.html">TaskList</a></li>
+				<li><a href="taskList.html">Search Task</a></li>
+				<li class="active">Results</li>
+			</ol>
+			<h1>Task search's Results</h1>
+			<div class="row">
+				<div class="buttons col-xs-12 col-sm-5 col-sm-offset-7 col-md-4 col-md-offset-7">
+					<a href="searchT.html" class="btn" role="button">New Search</a>
+					<a href="taskList.html" class="btn" role="button">Back to Tasks</a>
+				</div>
+			</div>
+			<div class="row">
+				<div class="box1 linkBox col-xs-12 col-sm-6">
+					<a href="task.html">
+							<ul class="infoPro col-xs-12 col-sm-7">
+								<li class="col-xs-12">
+									<p class="">Title: 
+										<span class="">Task 1</span>
+									</p>
+								</li>
+								<li class="col-xs-12">
+									<p class="">Project: 
+										<span class="">Project x1</span>
+									</p>
+								</li>
+								<li class="col-xs-12">
+									<p class="">Start Date: 
+										<span class="">00/00/00</span>
+									</p>
+								</li>
+								<li class="col-xs-12">
+									<p class="">In Charge: 
+										<span class="">Jaimito</span>
+									</p>
+								</li>
+								<li class="col-xs-12">
+									<p class="">Status: 
+										<span class="">In progress</span>
+									</p>
+								</li>
+								<li class="col-xs-12">
+									<a class="glyphicon glyphicon-trash" href=""></a>
+								</li>
+							</ul>
+							<div class="panel panel-default col-xs-12 col-sm-5">
+								<div class="panel-heading">
+									<h3 class="panel-title">Task Description</h3>
+								</div>
+								<div class="panel-body">
+									<div class="taskDescription col-sm-12">
+										<p>
+											Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias iusto ratione omnis est, architecto sapiente libero sed, porro optio. Officiis maxime fugiat sequi tempore, dolores, laborum assumenda reiciendis nesciunt eos.
+										</p>
+									</div>
+								</div>
+							</div>
+						</a>
+				</div>
+			</div>
+			
+		</section>
+		<footer>
+			<p class="rights col-xs-12 col-sm-6 col-sm-offset-3">©2017 <span class="techG">Tech Girls </span> All Rights Reserved.</p>
+		</footer>
+	</div>
+</body>
+<script src="./js/home.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+</html>

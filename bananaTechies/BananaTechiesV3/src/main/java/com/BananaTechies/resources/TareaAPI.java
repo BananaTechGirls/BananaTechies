@@ -29,7 +29,9 @@ public interface TareaAPI {
 	@Path("/{tid}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Mensaje upDateTarea (@PathParam("tid") int tid, JSONObject UpdateTarea) throws JSONException;
+
+	public Mensaje upDateTarea (@PathParam("tid") int tid, Tarea UpdateTarea) throws JSONException;
+
 	//Actualizar/Modificar una tarea
 
 	@DELETE

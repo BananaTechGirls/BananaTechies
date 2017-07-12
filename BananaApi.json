@@ -1,0 +1,489 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Banana API",
+    "description": "Gestiona proyectos como bananas",
+    "version": "1.0.0"
+  },
+  "host": "localhost:8080",
+  "schemes": [
+    "http"
+  ],
+  "basePath": "/BananaTechies/apiApp",
+  "produces": [
+    "application/json",
+    "application/xml"
+  ],
+  "paths": {
+    "/Proyectos": {
+      "get": {
+        "summary": "Lista de proyectos de un responsable",
+        "tags": [
+          "Proyectos"
+        ],
+        "responses": {
+          "200": {
+            "description": "lista de proyectos de un responsable",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Proyecto"
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "añadir proyecto de la lista de un responsable",
+        "parameters": [
+          {
+            "name": "proyecto",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Proyecto"
+            }
+          }
+        ],
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Proyectos/{pid}": {
+      "get": {
+        "summary": "Detalle de proyecto por id",
+        "tags": [
+          "Proyecto"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "pid",
+            "required": true,
+            "type": "integer",
+            "minimum": 1,
+            "description": "Detalle de proyecto por id."
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "detalle de proyecto",
+            "schema": {
+              "$ref": "#/definitions/Proyecto"
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Actualizar proyecto en la lista del responsable",
+        "tags": [
+          "Actualiza Proyecto"
+        ],
+        "parameters": [
+          {
+            "name": "proyecto",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Proyecto"
+            },
+            "description": "El json del proyecto"
+          },
+          {
+            "name": "pid",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "minimum": 1,
+            "description": "actualizar por ID del proyecto."
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "proyecto actualizado",
+            "schema": {
+              "$ref": "#/definitions/Mensaje"
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Añadir una tarea a proyecto en la lista de un responsable",
+        "parameters": [
+          {
+            "name": "pid",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "minimum": 1,
+            "description": "Añadir tarea a un proyecto"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "tarea añadida",
+            "schema": {
+              "$ref": "#/definitions/Mensaje"
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Borrar un proyecto",
+        "parameters": [
+          {
+            "name": "pid",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "minimum": 1,
+            "description": "borrar por ID del proyecto"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "proyecto borrado",
+            "schema": {
+              "$ref": "#/definitions/Mensaje"
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Proyectos/{pid}/Tarea": {
+      "get": {
+        "summary": "Obtener Lista de tareas de un proyecto",
+        "tags": [
+          "Proyecto"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "pid",
+            "required": true,
+            "type": "integer",
+            "minimum": 1,
+            "description": "Detalle de proyecto por id."
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista de tareas de un proyecto",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Proyecto"
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Tarea/{idt}": {
+      "get": {
+        "summary": "Detalle de tarea",
+        "tags": [
+          "Tarea"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "idt",
+            "required": true,
+            "type": "integer",
+            "minimum": 1,
+            "description": "ID del tarea."
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "detalle de tarea",
+            "schema": {
+              "$ref": "#/definitions/Tarea"
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Actualizar Tarea",
+        "tags": [
+          "Actualiza Tarea"
+        ],
+        "parameters": [
+          {
+            "name": "tarea",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Tarea"
+            },
+            "description": "El json de la Tarea"
+          },
+          {
+            "name": "idt",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "minimum": 1,
+            "description": "ID de la Tarea."
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Tarea actualizada",
+            "schema": {
+              "$ref": "#/definitions/Mensaje"
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Borrar una tarea",
+        "parameters": [
+          {
+            "name": "idt",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "minimum": 1,
+            "description": "ID de la Tarea"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Mensaje"
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Proyecto": {
+      "type": "object",
+      "properties": {
+        "pid": {
+          "type": "integer",
+          "description": "Muestra el id del proyecto."
+        },
+        "titulo": {
+          "type": "string",
+          "description": "Muestra el titulo del proyecto."
+        },
+        "responsable": {
+          "$ref": "#/definitions/Usuario"
+        },
+        "fechaInicio": {
+          "type": "string",
+          "description": "Indica la fecha inicio."
+        },
+        "fechaFin": {
+          "type": "string",
+          "description": "Indica la fecha fin."
+        },
+        "descripcion": {
+          "type": "string",
+          "description": "Muestra la descripcion del proyecto."
+        },
+        "notas": {
+          "type": "string",
+          "description": "Muestra las notas del proyecto."
+        },
+        "status": {
+          "type": "boolean",
+          "description": "Muestra el status del proyecto."
+        },
+        "progreso": {
+          "$ref": "#/definitions/Progreso"
+        }
+      }
+    },
+    "Usuario": {
+      "type": "object",
+      "properties": {
+        "idu": {
+          "type": "integer"
+        },
+        "nombre": {
+          "type": "string"
+        },
+        "apellido": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "Progreso": {
+      "type": "object",
+      "properties": {
+        "idpro": {
+          "type": "integer"
+        },
+        "estado": {
+          "type": "string"
+        }
+      }
+    },
+    "Tarea": {
+      "type": "object",
+      "properties": {
+        "idt": {
+          "type": "integer",
+          "description": "Muestra el id de la tarea."
+        },
+        "titulo": {
+          "type": "string",
+          "description": "Muestra el titulo de la tareas."
+        },
+        "responsable": {
+          "$ref": "#/definitions/Usuario"
+        },
+        "fechaInicio": {
+          "type": "string",
+          "description": "Indica la fecha inicio."
+        },
+        "fechaFin": {
+          "type": "string",
+          "description": "Indica la fecha fin."
+        },
+        "status": {
+          "type": "boolean",
+          "description": "Muestra el status del proyecto."
+        },
+        "progreso": {
+          "$ref": "#/definitions/Progreso"
+        },
+        "proyecto": {
+          "$ref": "#/definitions/Proyecto"
+        }
+      }
+    },
+    "Mensaje": {
+      "type": "object",
+      "properties": {
+        "tipo": {
+          "type": "string"
+        },
+        "cuerpo": {
+          "type": "string"
+        }
+      }
+    },
+    "Error": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "fields": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

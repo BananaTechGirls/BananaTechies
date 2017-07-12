@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Banana GEST Search a task</title>
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Rock+Salt" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+	<link rel="stylesheet" href="./style/bootstrap.css">
+	<link rel="stylesheet" href="./style/style.css">
+</head>
+<body>
+	<div class="container">
+		<header>
+			<nav class="navbar navbar-default menu">
+				<div class="row">			
+					<a class="navbar-brand" href="home.html">
+						<h1 class="logo">Banana GEST</h1>
+					</a>
+				</div>
+				<div class="row">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle burgerMenu" data-toggle="collapse" data-target="#myNavbar">
+							<span class="icon-bar burgerIcon"></span>
+							<span class="icon-bar burgerIcon"></span>
+							<span class="icon-bar burgerIcon"></span>
+						</button>
+						
+					</div>
+					<div class="collapse navbar-collapse submenu" id="myNavbar">
+						<ul class="nav navbar-nav navList navbar-right">
+							<li><a class="navItems" href="home.html">Proyects</a></li>
+							<li><a class="navItems" href="taskList.html">Tasks</a></li>
+							<li id="profileBtn"><a class="navItems glyphicon glyphicon-user" href="profile.html"><span class="profile">Profile</span></a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</header>
+		<section class="container-fluid">
+			<ol class="breadcrumb">
+				<li><a href="taskList.html">TaskList</a></li>
+				<li class="active">Search Task</li>
+			</ol>
+			<div class="pageTitle col-xs-12">
+				<h1>Search Task </h1>
+			</div>
+			<form action="resultsT.html" method="get" id="searchTForm" novalidate>
+				<div class="row">
+					<div class="col-xs-12 col-sm-6 col-sm-offset-3 searchBox">
+						<div class="input-group">
+							<span class="input-group-btn">
+								<button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+							</span>
+							<input type="search" class="form-control" placeholder="Search for..." id="searchBoxT" required>
+						</div>
+						<div class="mensajes_error_searchBoxT">
+                            <div id="searchBoxT[valueMissing]" class="errorP">El campo search Task debe tener valor.</div>
+                        </div>
+						<!-- /input-group -->
+					</div>
+				</div>
+				<div class="row">
+					<div class="buttons col-xs-12 col-sm-4 col-sm-offset-8">
+						<a href="#" id="searchTask" class="btn" role="button"><span class="glyphicon glyphicon-search"></span> Search Task</a>
+					</div>
+				</div>
+			</form>
+		</section>
+		<footer class="col-xs-12">
+			<p class="rights col-xs-12 col-sm-6 col-sm-offset-3">©2017 <span class="t echG">Tech Girls </span> All Rights Reserved.</p>
+		</footer>
+	</div>
+</body>
+<script src="./js/home.js"></script>
+<script src="./js/searchT.js "></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+</html>

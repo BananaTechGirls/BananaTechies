@@ -1,24 +1,24 @@
 package com.BananaTechies.resources;
 
+
+import java.io.IOException;
 import java.lang.reflect.Field;
-import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
-import java.util.Map;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.UriInfo;
 
+import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 
@@ -33,19 +33,11 @@ import com.BananaTechies.models.Usuario;
 import com.BananaTechies.resources.ProyectosAPI;
 
 @Path("/Proyectos")
-public class ProyectosREST<pid> implements ProyectosAPI {
+public class ProyectosREST implements ProyectosAPI {
 	private static List<Proyecto> misProyectos;
 	
 	static {
 		ProyectosREST.misProyectos = new ArrayList<Proyecto>();
-		//MOCKEAR LOS DATOS ENTRADA EN VEZ DE LA BBDD < MYSQL >
-		/*for (int i=0; i < 10; i++){
-			Proyecto nuevo= new Proyecto (i+1);
-			nuevo.setEdad(nuevo.getEdad()-(i*3));
-			nuevo.setName(nuevo.getName()+(char)(65+i));
-			ProyectosREST.misUsuarios.add(nuevo);
-		}*/
-		
 	}
 	
 	@Override
@@ -53,7 +45,7 @@ public class ProyectosREST<pid> implements ProyectosAPI {
 	@Path("/") 
 	@Produces(MediaType.APPLICATION_JSON)
 	//public List<Proyecto> listaProyectoResponsables (@PathParam("uid") int uid){
-	public Object listaProyectoResponsables (){
+	public Object listaProyectoResponsables ()  throws JSONException, JsonMappingException, IOException {
 		int uid =1; //mock de token
 		Mensaje resp = new Mensaje(0,"");
 		try {
@@ -73,70 +65,138 @@ public class ProyectosREST<pid> implements ProyectosAPI {
 			return ProyectosREST.misProyectos;
 		} catch (Exception e) {
 			resp.setCuerpo(e.getMessage() +"\n- Formato erroneo en el cuerpo del objeto USUARIO.\nLease API");
-			return resp;
-			
+			return resp;			
 		}
 	}
 
 	@Override
-	public Mensaje addProyectoLista(JSONObject newProyecto) throws JSONException {
-
-		return null;
-	}
-
-	@Override
-	public Proyecto ProyectoID(int pid) {
-
-		return null;
-	}
-
-	
-	@Override
-	public Mensaje upDateProyectoLista(int uid, JSONObject modificadoProyecto) throws JSONException {
-
-		return null;
-	}
-
-	@Override
-	public Mensaje addTareaListaP(int pid, JSONObject nuevaTarea) throws JSONException {
-		     return null;
-	}
-	
-
-	
-	@Override
-	@Path("/{pid}")
-	@DELETE
+	@POST
+	@Path("/") 
+	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Mensaje borrarProyectoLista(@PathParam("uid") int uid) throws JSONException {
+	public Mensaje addProyectoLista (Proyecto newProyecto)  throws JSONException, JsonMappingException, IOException{
 
-		
+		int uid =1; //mock de token
+		Mensaje resp = new Mensaje(0,"");
+/*		try {
+			//obtener el objeto usuario completo
+			Usuario elUsuario= new Usuario();
+			// Verificar el nuevo Proyecto a introducir
+			
+			ProyectoDAO ProyDAO = (ProyectoDAO)  DAOFactory.getInstance().getDAO(elProyecto);
 
 			
-
-		return null;
+			//existe usuario uid
+			if (elUsuario!=null) {
+				System.out.println("*** < 2 > ***");
+				elProyecto = ProyDAO.getProyecto(elProyecto.getIdp(), elUsuario);
+				System.out.println("*** < 3 > ***");
+				//existe proyecto pid
+				if (elProyecto==null) {
+					resp.setCuerpo(ProyDAO.insertProyecto(elProyecto)?"":"");
+				}else {
+					throw new RuntimeException("- El proyecto ("+ elProyecto.getIdp() +") ya exite, imposible añadirlo.");
+				}				
+			}else {
+				throw new RuntimeException("- El proyecto ("+ uid +") es desconocido.");
+			}
+			return resp;
+		} catch (Exception e) {
+			resp.setCuerpo(e.getMessage() +"\n- Formato erroneo en el cuerpo del objeto Proyecto.\nLease API");
+			return resp;		
+		}*/	
+		
+		return new Mensaje(0, "Añadido un nuevo Proyecto de la lista.");
 	}
 
 	@Override
-	public Object listaTareasProyecto(int pid) {
-
-		return null;
-	}
-
-	
-	
-	
-	
-	
-	
-	/*@GET
-	@Path("/")
+	@GET
+	@Path("/{pid}") //Identificador Proyecto
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Proyecto> listaUsuarios (){
-		//Obtener DAO FACTORY La lista TODOS los USUARIOS
-		return ProyectosREST.misUsuarios;
+	public Response ProyectoID (@PathParam("pid") int pid)  throws JSONException, JsonMappingException, IOException{
+		Tarea unaTarea = null;
+		Mensaje resp= null;
+		int uid =1; //mock de token
+		try {
+			//Existe proyecto que se pide?
+			Proyecto elProyecto= new Proyecto();
+			ProyectoDAO ProyectoDAO = (ProyectoDAO)  DAOFactory.getInstance().getDAO(elProyecto);
+			elProyecto = ProyectoDAO.getProyecto(pid, null);		
+			//existe Proyecto
+			if (elProyecto!=null) {
+				return Response.status(200).entity(elProyecto).build();
+			}else {
+				throw new RuntimeException("- El Proyecto ("+ pid +") es desconocido.");
+			}
+		} catch (Exception e) {
+			resp.setCuerpo(e.getMessage() +"\n- Formato erroneo en el cuerpo del objeto Tarea.\nLease API");
+			return Response.status(499).entity(resp).build();			
+		}
 	}
 
+	
+	@Override
+	@PUT
+	@Path("/{pid}")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Mensaje upDateProyectoLista (@PathParam("pid") int pid, JSONObject UpdateProyecto)  throws JSONException, JsonMappingException, IOException{
+		// TODO Auto-generated method stub
+		return new Mensaje(0, "Actualizar/Modificar los detalles Proyecto de liata");
+	}
+
+	@Override
+	@POST
+	@Path("/{pid}") 
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Mensaje addTareaListaP (@PathParam("pid") int pid, JSONObject nuevaTarea)  throws JSONException, JsonMappingException, IOException{
+		// TODO Auto-generated method stub
+		return new Mensaje(0, "Añadido la tarea al Proyecto");
+	}
+
+	
+	@Override
+	@DELETE
+	@Path("/{pid}")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Mensaje borrarProyectoLista (@PathParam("pid") int pid)  throws JSONException, JsonMappingException, IOException{
+		// TODO Auto-generated method stub
+		return new Mensaje(0, "Borrado un proyecto de lista ");
+	}
+
+	@Override
+	@GET
+	@Path("/{pid}/tareas") //Identificador Tarea
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response listaTareasProyecto (@PathParam("pid") int pid) throws JSONException, JsonMappingException, IOException{
+		Tarea unaTarea = null;
+		Mensaje resp= null;
+		int uid =1; //mock de token
+		try {
+			//Existe proyecto que se pide?
+			Proyecto elProyecto= new Proyecto();
+			ProyectoDAO ProyectoDAO = (ProyectoDAO)  DAOFactory.getInstance().getDAO(elProyecto);
+			elProyecto = ProyectoDAO.getProyecto(pid, null);		
+			//existe Proyecto
+			if (elProyecto!=null) {
+				//Otener la lista de los proyectos de ese usuario
+				Tarea laTarea = new Tarea();
+				TareaDAO ProyDAO = (TareaDAO)  DAOFactory.getInstance().getDAO(laTarea);
+				return Response.status(200).entity(ProyDAO.getTareasList(elProyecto)).build();
+			}else {
+				throw new RuntimeException("- El Proyecto ("+ pid +") es desconocido.");
+			}
+		} catch (Exception e) {
+			resp.setCuerpo(e.getMessage() +"\n- Formato erroneo en el cuerpo del objeto Tarea.\nLease API");
+			return Response.status(499).entity(resp).build();			
+		}
+	}
+	
+	
+	
+	/*
 	@POST
 	@Path("/")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -163,71 +223,10 @@ public class ProyectosREST<pid> implements ProyectosAPI {
 			return resp;
 			
 		}
-	}
+	} throws JSONException, JsonMappingException, IOException*/
+	
+	
 
-
-	
-	public Proyecto findProyecto(int uid){
-		Proyecto ProyectoIterado = null; 
-		ListIterator<Proyecto> it = ProyectosREST.misUsuarios.listIterator();
-		while(it.hasNext()) {		 
-			ProyectoIterado = it.next();
-			if (ProyectoIterado.getUid()==uid) {break;}	
-		}
-		return ProyectoIterado.getUid()!=uid?null:ProyectoIterado;
-	}
-	
-	
-	@POST
-	@Path("/EKO/")
-	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
-	public Object ecoUsuario(JSONObject nuevoProyecto) throws JSONException  {
-		try {	
-			//Para obtener Atribitos de la clase UProyecto para separaor capa API de la Modelo
-			Field[] fieldsProyecto = Proyecto.class.getFields();
-			
-			//Dar formato de JSON a usuario sin usar JErsey para Verificar el objeto entrante
-			Proyecto elProyecto = new Proyecto(nuevoProyecto.getInt(fieldsProyecto[0].getName()), 
-											   nuevoProyecto.getString(fieldsProyecto[1].getName()), 
-											   nuevoProyecto.getString(fieldsProyecto[2].getName()),
-											   nuevoProyecto.getInt(fieldsProyecto[3].getName()));
-
-			return elProyecto;
-		} catch (Exception e) {
-			Mensaje resp = new Mensaje(e.getMensaje() +"\n- Formato erroneo en el cuerpo del objeto USUARIO.\nLease API");
-			return resp;
-		}
-	}
-
-	
-	
-	//---------------------------------------------------------
-	
-	
-	
-	
-	@POST
-	@Path("/login")
-	public boolean esProyecto(){
-		return true;
-	}
-	
-	//curl -X GET http://localhost:8080/BananaApp/rest/usuario/pepe/ruiz/33
-	@GET
-	@Path("/{nom}/{ape}/{edad}")
-	@Produces(MediaType.APPLICATION_JSON)
-	public boolean addu (@PathParam("nom") String nom, @PathParam("ape") String ape, @PathParam("edad") int edad){
-		Proyecto nuevo= new Proyecto (ProyectosREST.misUsuarios.get(ProyectosREST.misUsuarios.size() - 1).getUid()+1, nom, ape, edad);
-		ProyectosREST.misUsuarios.add(nuevo);		
-		return true;
-	}
-	
-	public boolean addProyecto (String nom, String ape, int edad){
-		Proyecto nuevo= new Proyecto (ProyectosREST.misUsuarios.get(ProyectosREST.misUsuarios.size() - 1).getUid()+1, nom, ape, edad);
-		ProyectosREST.misUsuarios.add(nuevo);		
-		return true;
-	}*/
 }
 
 

@@ -12,7 +12,7 @@ public abstract class TareaDAO extends DAO {
 	public abstract List<Tarea> getTareasList(Proyecto proy);
 	public abstract boolean delTarea(int idt) throws Exception;
 	public abstract boolean insertTarea(Tarea tarea);
-	public abstract boolean updateTarea(Tarea tarea);
+	public abstract boolean updateTarea(int idt, Tarea tarea) throws Exception;
 }
 	
 	

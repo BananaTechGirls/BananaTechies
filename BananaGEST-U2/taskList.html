@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Banana GEST Tasks list</title>
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Rock+Salt" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+	<link rel="stylesheet" href="./style/bootstrap.css">
+	<link rel="stylesheet" href="./style/style.css">
+</head>
+<body>
+	<div class="container">
+		<header>
+			<nav class="navbar navbar-default menu">
+				<div class="row">			
+					<a class="navbar-brand" href="home.html">
+						<h1 class="logo">Banana GEST</h1>
+					</a>
+				</div>
+				<div class="row">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle burgerMenu" data-toggle="collapse" data-target="#myNavbar">
+							<span class="icon-bar burgerIcon"></span>
+							<span class="icon-bar burgerIcon"></span>
+							<span class="icon-bar burgerIcon"></span>
+						</button>
+						
+					</div>
+					<div class="collapse navbar-collapse submenu" id="myNavbar">
+						<ul class="nav navbar-nav navList navbar-right">
+							<li><a class="navItems" href="home.html">Proyects</a></li>
+							<li class="projectListActive"><a class="navItems" href="taskList.html">Tasks</a></li>
+							<li id="profileBtn"><a class="navItems glyphicon glyphicon-user" href="profile.html"><span class="profile">Profile</span></a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</header>
+		<section class="container-fluid">
+			<ol class="breadcrumb">
+				<li><a href="home.html">Home</a></li>
+				<li class="active">Task List</li>
+			</ol>
+			<h1>Task's list</h1>
+			<div class="row">
+				<div class="buttons">
+					<a href="searchT.html" class="btn" role="button"><span class="glyphicon glyphicon-search"></span> Search Task</a>
+					<a href="createT.html" class="btn" role="button">Create Task</a>
+				</div>
+			</div>	
+			<div class="container-fluid">	
+				<ul class="row">
+					<li class="box1 linkBox col-xs-12 col-sm-6" id="task1Id">
+						<a href="task.html">
+							<ul class="infoPro col-xs-12 col-sm-7">
+								<li class="col-xs-12">
+									<p class="">Title: 
+										<span class="">Task 1</span>
+									</p>
+								</li>
+								<li class="col-xs-12">
+									<p class="">Project: 
+										<span class="">Project x1</span>
+									</p>
+								</li>
+								<li class="col-xs-12">
+									<p class="">Start Date: 
+										<span class="">00/00/00</span>
+									</p>
+								</li>
+								<li class="col-xs-12">
+									<p class="">In Charge: 
+										<span class="">Jaimito</span>
+									</p>
+								</li>
+								<li class="col-xs-12">
+									<p class="">Status: 
+										<span class="">In progress</span>
+									</p>
+								</li>
+								<li class="col-xs-12">
+									<a class="btn_del_Task glyphicon glyphicon-trash" href="#" data_Id="task1Id"></a>
+								</li>
+							</ul>
+							<div class="panel panel-default col-xs-12 col-sm-5">
+								<div class="panel-heading">
+									<h3 class="panel-title">Task Description</h3>
+								</div>
+								<div class="panel-body">
+									<div class="taskDescription col-sm-12">
+										<p>
+											Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias iusto ratione omnis est, architecto sapiente libero sed, porro optio. Officiis maxime fugiat sequi tempore, dolores, laborum assumenda reiciendis nesciunt eos.
+										</p>
+									</div>
+								</div>
+							</div>
+						</a>
+					</li>
+					<li class="box1 linkBox col-xs-12 col-sm-6" id="task2Id">
+						<a href="task.html">
+							<ul class="infoPro col-xs-12 col-sm-7">
+								<li class="col-xs-12">
+									<p class="">Title: 
+										<span class="">Task 2</span>
+									</p>
+								</li>
+								<li class="col-xs-12">
+									<p class="">Project: 
+										<span class="">Project x2</span>
+									</p>
+								</li>
+								<li class="col-xs-12">
+									<p class="">Start Date: 
+										<span class="">00/00/00</span>
+									</p>
+								</li>
+								<li class="col-xs-12">
+									<p class="">In Charge: 
+										<span class="">Jaimito</span>
+									</p>
+								</li>
+								<li class="col-xs-12">
+									<p class="">Status: 
+										<span class="">In progress</span>
+									</p>
+								</li>
+								<li class="col-xs-12">
+									<a class="btn_del_Task glyphicon glyphicon-trash" href="#" data_Id="task2Id"></a>
+								</li>
+							</ul>
+							<div class="panel panel-default col-xs-12 col-sm-5">
+							<div class="panel-heading">
+								<h3 class="panel-title">Task Description</h3>
+							</div>
+							<div class="panel-body">
+								<div class="taskDescription col-sm-12">
+									<p>
+										Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet minus omnis magni corporis, repellat nam. Facilis veniam sit magnam, ipsum ad commodi placeat, eum, quae temporibus voluptatum delectus porro pariatur?
+									</p>
+								</div>
+							</div>
+							</div>
+						</a>
+					</li>
+					<li class="box1 linkBox col-xs-12 col-sm-6" id="task3Id"">
+						<a href="task.html">
+							<ul class="infoPro col-xs-12 col-sm-7">
+								<li class="col-xs-12">
+									<p class="">Title: 
+										<span class="">Task 3</span>
+									</p>
+								</li>
+								<li class="col-xs-12">
+									<p class="">Project: 
+										<span class="">Project x3</span>
+									</p>
+								</li>
+								<li class="col-xs-12">
+									<p class="">Start Date: 
+										<span class="">00/00/00</span>
+									</p>
+								</li>
+								<li class="col-xs-12">
+									<p class="">In Charge: 
+										<span class="">Jaimito</span>
+									</p>
+								</li>
+								<li class="col-xs-12">
+									<p class="">Status: 
+										<span class="">In progress</span>
+									</p>
+								</li>
+								<li class="col-xs-12">
+									<a class="btn_del_Task glyphicon glyphicon-trash" href="#" data_Id="task3Id"></a>
+								</li>
+							</ul>
+							<div class="panel panel-default col-xs-12 col-sm-5">
+							<div class="panel-heading">
+								<h3 class="panel-title">Task Description</h3>
+							</div>
+							<div class="panel-body">
+								<div class="taskDescription col-sm-12">
+									<p>
+										Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat labore laudantium qui quidem quasi blanditiis, soluta, quam velit explicabo, ratione non sed dignissimos! Labore culpa atque, soluta officiis nobis eaque.
+									</p>
+								</div>
+							</div>
+							</div>
+						</a>
+					</li>
+					<li class="box1 linkBox col-xs-12 col-sm-6" id="task4Id">
+						<a href="task.html">
+							<ul class="infoPro col-xs-12 col-sm-7">
+								<li class="col-xs-12">
+									<p class="">Title: 
+										<span class="">Task 4</span>
+									</p>
+								</li>
+								<li class="col-xs-12">
+									<p class="">Project: 
+										<span class="">Project x4</span>
+									</p>
+								</li>
+								<li class="col-xs-12">
+									<p class="">Start Date: 
+										<span class="">00/00/00</span>
+									</p>
+								</li>
+								<li class="col-xs-12">
+									<p class="">In Charge: 
+										<span class="">Jaimito</span>
+									</p>
+								</li>
+								<li class="col-xs-12">
+									<p class="">Status: 
+										<span class="">In progress</span>
+									</p>
+								</li>
+								<li class="col-xs-12">
+									<a class="btn_del_Task glyphicon glyphicon-trash" href="#" data_Id="task4Id"></a>
+								</li>
+							</ul>
+							<div class="panel panel-default col-xs-12 col-sm-5">
+							<div class="panel-heading">
+								<h3 class="panel-title">Task Description</h3>
+							</div>
+							<div class="panel-body">
+								<div class="taskDescription col-sm-12">
+									<p>
+										Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi doloremque numquam voluptatibus ab ratione est facilis vero tempore voluptatem! Explicabo in nemo dolores expedita fuga cum, sed minus, error atque.
+									</p>
+								</div>
+							</div>
+							</div>
+						</a>
+					</li>
+					<li class="box1 linkBox col-xs-12 col-sm-6" id="task5Id">
+						<a href="task.html">
+							<ul class="infoPro col-xs-12 col-sm-7">
+								<li class="col-xs-12">
+									<p class="">Title: 
+										<span class="">Task 5</span>
+									</p>
+								</li>
+								<li class="col-xs-12">
+									<p class="">Project: 
+										<span class="">Project x5</span>
+									</p>
+								</li>
+								<li class="col-xs-12">
+									<p class="">Start Date: 
+										<span class="">00/00/00</span>
+									</p>
+								</li>
+								<li class="col-xs-12">
+									<p class="">In Charge: 
+										<span class="">Jaimito</span>
+									</p>
+								</li>
+								<li class="col-xs-12">
+									<p class="">Status: 
+										<span class="">In progress</span>
+									</p>
+								</li>
+								<li class="col-xs-12">
+									<a class="btn_del_Task glyphicon glyphicon-trash" href="#" data_Id="task5Id"></a>
+								</li>
+							</ul>
+							<div class="panel panel-default col-xs-12 col-sm-5">
+							<div class="panel-heading">
+								<h3 class="panel-title">Task Description</h3>
+							</div>
+							<div class="panel-body">
+								<div class="taskDescription col-sm-12">
+									<p>
+										Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed iusto in, sunt non tempora necessitatibus vel modi, sint. Neque sed aperiam ratione est tempora error libero, sit! Fugiat, vel, quas?
+									</p>
+								</div>
+							</div>
+							</div>
+						</a>
+					</li>
+					<li class="box1 linkBox col-xs-12 col-sm-6" id="task6Id">
+						<a href="task.html">
+							<ul class="infoPro col-xs-12 col-sm-7">
+								<li class="col-xs-12">
+									<p class="">Title: 
+										<span class="">Task 6</span>
+									</p>
+								</li>
+								<li class="col-xs-12">
+									<p class="">Project: 
+										<span class="">Project x6</span>
+									</p>
+								</li>
+								<li class="col-xs-12">
+									<p class="">Start Date: 
+										<span class="">00/00/00</span>
+									</p>
+								</li>
+								<li class="col-xs-12">
+									<p class="">In Charge: 
+										<span class="">Jaimito</span>
+									</p>
+								</li>
+								<li class="col-xs-12">
+									<p class="">Status: 
+										<span class="">In progress</span>
+									</p>
+								</li>
+								<li class="col-xs-12">
+									<a class="btn_del_Task glyphicon glyphicon-trash" href="#" data_Id="task6Id"></a>
+								</li>
+							</ul>
+							<div class="panel panel-default col-xs-12 col-sm-5">
+							<div class="panel-heading">
+								<h3 class="panel-title">Task Description</h3>
+							</div>
+							<div class="panel-body">
+								<div class="taskDescription col-sm-12">
+									<p>
+										Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non eius maxime eos porro, beatae voluptatem similique eligendi, autem debitis ea. Laudantium tempora optio, neque illo nobis aspernatur ea. Dolorum, quod.
+									</p>
+								</div>
+							</div>
+							</div>
+						</a>
+					</li>
+					<li class="box1 linkBox col-xs-12 col-sm-6" id="task6Id">
+						<a href="task.html">
+							<ul class="infoPro col-xs-12 col-sm-7">
+								<li class="col-xs-12">
+									<p class="">Title: 
+										<span class="">Task 7</span>
+									</p>
+								</li>
+								<li class="col-xs-12">
+									<p class="">Project: 
+										<span class="">Project x7</span>
+									</p>
+								</li>
+								<li class="col-xs-12">
+									<p class="">Start Date: 
+										<span class="">00/00/00</span>
+									</p>
+								</li>
+								<li class="col-xs-12">
+									<p class="">In Charge: 
+										<span class="">Jaimito</span>
+									</p>
+								</li>
+								<li class="col-xs-12">
+									<p class="">Status: 
+										<span class="">In progress</span>
+									</p>
+								</li>
+								<li class="col-xs-12">
+									<a class="btn_del_Task glyphicon glyphicon-trash" href="#" data_Id="task6Id"></a>
+								</li>
+							</ul>
+							<div class="panel panel-default col-xs-12 col-sm-5">
+							<div class="panel-heading">
+								<h3 class="panel-title">Task Description</h3>
+							</div>
+							<div class="panel-body">
+								<div class="taskDescription col-sm-12">
+									<p>
+										Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis molestiae facilis quisquam cum, accusamus quae obcaecati tempora, tempore autem. Consequatur eaque, sunt, ab hic temporibus vero cumque cum animi commodi?
+									</p>
+								</div>
+							</div>
+							</div>
+						</a>
+					</li>
+					<li class="box1 linkBox col-xs-12 col-sm-6" id="task7Id">
+						<a href="task.html">
+							<ul class="infoPro col-xs-12 col-sm-7">
+								<li class="col-xs-12">
+									<p class="">Title: 
+										<span class="">Task 8</span>
+									</p>
+								</li>
+								<li class="col-xs-12">
+									<p class="">Project: 
+										<span class="">Project x8</span>
+									</p>
+								</li>
+								<li class="col-xs-12">
+									<p class="">Start Date: 
+										<span class="">00/00/00</span>
+									</p>
+								</li>
+								<li class="col-xs-12">
+									<p class="">In Charge: 
+										<span class="">Jaimito</span>
+									</p>
+								</li>
+								<li class="col-xs-12">
+									<p class="">Status: 
+										<span class="">In progress</span>
+									</p>
+								</li>
+								<li class="col-xs-12">
+									<a class="btn_del_Task glyphicon glyphicon-trash" href="#" data_Id="task7Id"></a>
+								</li>
+							</ul>
+							<div class="panel panel-default col-xs-12 col-sm-5">
+							<div class="panel-heading">
+								<h3 class="panel-title">Task Description</h3>
+							</div>
+							<div class="panel-body">
+								<div class="taskDescription col-sm-12">
+									<p>
+										Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus vitae tempore corporis odit pariatur sint! Quia ullam, voluptatibus facere optio veniam fugit quibusdam illo adipisci quam consequatur. Nobis, quasi, aliquam.
+									</p>
+								</div>
+							</div>
+							</div>
+						</a>
+					</li>
+					<li class="box1 linkBox col-xs-12 col-sm-6" id="task8Id">
+						<a href="task.html">
+							<ul class="infoPro col-xs-12 col-sm-7">
+								<li class="col-xs-12">
+									<p class="">Title: 
+										<span class="">Task 9</span>
+									</p>
+								</li>
+								<li class="col-xs-12">
+									<p class="">Project: 
+										<span class="">Project x9</span>
+									</p>
+								</li>
+								<li class="col-xs-12">
+									<p class="">Start Date: 
+										<span class="">00/00/00</span>
+									</p>
+								</li>
+								<li class="col-xs-12">
+									<p class="">In Charge: 
+										<span class="">Jaimito</span>
+									</p>
+								</li>
+								<li class="col-xs-12">
+									<p class="">Status: 
+										<span class="">In progress</span>
+									</p>
+								</li>
+								<li class="col-xs-12">
+									<a class="btn_del_Task glyphicon glyphicon-trash" href="#" data_Id="task8Id"></a>
+								</li>
+							</ul>
+							<div class="panel panel-default col-xs-12 col-sm-5">
+							<div class="panel-heading">
+								<h3 class="panel-title">Task Description</h3>
+							</div>
+							<div class="panel-body">
+								<div class="taskDescription col-sm-12">
+									<p>
+										Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium ullam voluptate veniam, reprehenderit cum, incidunt quasi veritatis. Numquam illum rem, mollitia assumenda voluptates iste omnis. Quisquam voluptates atque sint, incidunt?
+									</p>
+								</div>
+							</div>
+							</div>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</section>
+		<footer>
+			<p class="rights col-xs-12 col-sm-6 col-sm-offset-3">©2017 <span class="techG">Tech Girls </span> All Rights Reserved.</p>
+		</footer>
+	</div>
+</body>
+<script src="./js/home.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+</html>
+

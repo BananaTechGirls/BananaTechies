@@ -3,6 +3,7 @@ package com.BananaTechies.db;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
@@ -58,7 +59,7 @@ public final class ProyectoDAOImpl extends ProyectoDAO {
 			conn.close();
 
 		} catch (Exception e) {
-			logger.severe("Error en la conexi髇 de BBDD:" + e);
+			logger.severe("Error en la conexi贸n de BBDD:" + e);
 			ProyectoADevolver = null;
 		}
 
@@ -72,9 +73,37 @@ public final class ProyectoDAOImpl extends ProyectoDAO {
 	}
 
 	@Override
-	public boolean insertProyecto(Proyecto proyecto) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean insertProyecto(Proyecto proyecto) throws Exception {
+		boolean estaInsertado = false;
+		PreparedStatement pstm = null;
+		Connection conn = null;
+		try {
+			conn = this.datasource.getConnection();
+
+			//String query = " insert into users (first_name, last_name, date_created, is_admin, num_points) values (?, ?, ?, ?, ?)";
+			String query = "INSERT INTO `bananatechies`.`proyecto` (`titulo`, `responsable`, `fechaInicio`, `descripcion`, `nota`, `status`, `progreso`) VALUES ('GBProyecto', '1', '2017-07-10 10:39:04', 'Ex partem placerat sea, porro commodo ex eam. Por Gabriel', '***', '0', '1')";
+
+			pstm = conn.prepareStatement(query);
+			/*pstm.setString(1, "Barney");
+			pstm.setString(2, "Rubble");
+			pstm.setDate(3, startDate);
+			pstm.setBoolean(4, false);
+			pstm.setInt(5, 5000);*/
+
+			// execute the preparedstatement
+			pstm.executeUpdate();
+			if (pstm.getUpdateCount() == 0) {
+				throw new Exception(MessageFormat.format("Nigun Objeto insertado \"{0}\"", query));
+			} else {
+				estaInsertado = true;
+				logger.info("Conexi锟絥 exitosa insertProyecto");
+			}
+			pstm.close();
+			conn.close();	
+		} catch (Exception e) {
+			logger.severe("Error en la conexi锟絥 de BBDD:" + e);
+		} 
+		return estaInsertado;
 	}
 
 	@Override
@@ -115,10 +144,12 @@ public final class ProyectoDAOImpl extends ProyectoDAO {
 
 			conn.close();
 
-			logger.info("Conexi髇 exitosa getUserProyecto");
+
+			logger.info("Conexi贸n exitosa getUserProyecto");
+
 
 		} catch (Exception e) {
-			logger.severe("Error en la conexi髇 de BBDD:" + e);
+			logger.severe("Error en la conexi贸n de BBDD:" + e);
 			listADevolver = null;
 		}
 
@@ -156,10 +187,12 @@ public final class ProyectoDAOImpl extends ProyectoDAO {
 
 			conn.close();
 
-			logger.info("Conexi髇 exitosa <getProyectosList>");
+
+			logger.info("Conexi贸n exitosa <getProyectosList>");
+
 
 		} catch (Exception e) {
-			logger.severe("Error en la conexi髇 de BBDD:" + e);
+			logger.severe("Error en la conexi贸n de BBDD:" + e);
 			listADevolver = null;
 		}
 
