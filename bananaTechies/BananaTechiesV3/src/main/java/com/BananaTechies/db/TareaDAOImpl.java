@@ -129,7 +129,7 @@ public final class TareaDAOImpl extends TareaDAO {
 			conn=this.datasource.getConnection();
 			String sql ="DELETE FROM tarea WHERE idt=?;";
 			pstm=conn.prepareStatement(sql);
-			pstm.setInt(1, 1);
+			pstm.setInt(1, idt);
 			
 			pstm.executeUpdate();
 			if(pstm.getUpdateCount()==0){				

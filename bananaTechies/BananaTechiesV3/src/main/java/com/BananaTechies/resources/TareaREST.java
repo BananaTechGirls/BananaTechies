@@ -90,6 +90,9 @@ public class TareaREST implements TareaAPI {
 	@Override
 	public Mensaje borrarTarea(int tid) throws JSONException {
 		// TODO Auto-generated method stub
+		/*if (delTarea(int tid){
+			response convertir
+		}*/
 		return null;
 	}
 
