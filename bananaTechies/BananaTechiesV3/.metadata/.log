@@ -1,0 +1,180 @@
+!SESSION 2017-07-03 18:24:41.290 -----------------------------------------------
+eclipse.buildId=4.6.3.M20170301-0400
+java.version=1.8.0_131
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=es_ES
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.ui 2 0 2017-07-03 18:25:23.126
+!MESSAGE Warnings while parsing the images from the 'org.eclipse.ui.commandImages' extension point.
+!SUBENTRY 1 org.eclipse.ui 2 0 2017-07-03 18:25:23.126
+!MESSAGE Cannot bind to an undefined command: plug-in='com.genuitec.eclipse.theming.ui', id='com.genuitec.myeclipse.help.darktheme.commandid'
+
+!ENTRY com.genuitec.eclipse.theming.ui 1 0 2017-07-03 18:25:24.954
+!MESSAGE Darkest Dark theme is being activated on this workspace; preparing colors and configuration
+
+!ENTRY com.genuitec.eclipse.theming.ui 1 0 2017-07-03 18:25:26.144
+!MESSAGE Darkest Dark has archived current color configurations to alternate preferences - will be restored when switching out of Darkest Dark theme
+
+!ENTRY com.genuitec.eclipse.theming.ui 1 0 2017-07-03 18:25:26.871
+!MESSAGE Darkest Dark detected colors from an earlier Eclipse Color Theme install that are being cleaned up to avoid workspace pollution
+
+!ENTRY org.eclipse.egit.ui 2 0 2017-07-03 18:25:31.709
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\A4Alumno'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY com.genuitec.eclipse.monitor 4 0 2017-07-03 18:26:06.337
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Exception in com.genuitec.eclipse.monitor.internal.MonitorPlugin.stop() of bundle com.genuitec.eclipse.monitor.
+	at org.eclipse.osgi.internal.framework.BundleContextImpl.stop(BundleContextImpl.java:850)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle.stopWorker0(EquinoxBundle.java:946)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle$EquinoxModule.stopWorker(EquinoxBundle.java:314)
+	at org.eclipse.osgi.container.Module.doStop(Module.java:636)
+	at org.eclipse.osgi.container.Module.stop(Module.java:498)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.decStartLevel(ModuleContainer.java:1661)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1580)
+	at org.eclipse.osgi.container.SystemModule.stopWorker(SystemModule.java:270)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle$SystemBundle$EquinoxSystemModule.stopWorker(EquinoxBundle.java:147)
+	at org.eclipse.osgi.container.Module.doStop(Module.java:636)
+	at org.eclipse.osgi.container.Module.stop(Module.java:498)
+	at org.eclipse.osgi.container.SystemModule.stop(SystemModule.java:202)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle$SystemBundle$EquinoxSystemModule$1.run(EquinoxBundle.java:165)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.ExceptionInInitializerError
+	at com.jniwrapper.util.ProcessorInfo.b(SourceFile:95)
+	at com.jniwrapper.util.ProcessorInfo.getInstance(SourceFile:88)
+	at com.genuitec.eclipse.core.activation.SystemIdFactory.D(Unknown Source)
+	at com.genuitec.eclipse.core.activation.SystemIdFactory.create(Unknown Source)
+	at com.genuitec.eclipse.core.LicenseUtil.getSystemId(Unknown Source)
+	at com.genuitec.eclipse.monitor.internal.collector.server.ServerMetricsCollector.getSystemId(ServerMetricsCollector.java:521)
+	at com.genuitec.eclipse.monitor.internal.collector.server.ServerMetricsCollector.saveToFile(ServerMetricsCollector.java:361)
+	at com.genuitec.eclipse.monitor.internal.collector.server.ServerMetricsCollector.stopMonitoring(ServerMetricsCollector.java:222)
+	at com.genuitec.eclipse.monitor.internal.MetricsManager.stopMonitoring(MetricsManager.java:239)
+	at com.genuitec.eclipse.monitor.internal.MetricsManager.dispose(MetricsManager.java:161)
+	at com.genuitec.eclipse.monitor.internal.MonitorPlugin.stop(MonitorPlugin.java:71)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl$4.run(BundleContextImpl.java:830)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl$4.run(BundleContextImpl.java:1)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl.stop(BundleContextImpl.java:823)
+	... 13 more
+Caused by: com.jniwrapper.LibraryNotFoundException: Cannot find JNIWrapper native library (jniwrap64.dll) in java.library.path: C:\Vero\eclipse\eclipse;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:/Program Files/Java/jre1.8.0_131/bin/server;C:/Program Files/Java/jre1.8.0_131/bin;C:/Program Files/Java/jre1.8.0_131/lib/amd64;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Java\jdk1.8.0_131\bin;C:\WINDOWS\system32\config\systemprofile\.dnx\bin;C:\Program Files\Microsoft DNX\Dnvm\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\Microsoft\Web Platform Installer\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\130\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\Microsoft SQL Server\130\DTS\Binn\;C:\xampp\php;C:\ProgramData\ComposerSetup\bin;C:\Program Files\SlikSvn\bin;C:\Program Files\Git\cmd;C:\xampp\php;C:\Users\A4Alumno\AppData\Roaming\Composer\vendor\bin;C:\Users\A4Alumno\AppData\Local\Microsoft\WindowsApps;;C:\Vero\eclipse\eclipse;;.
+Root exception:
+java.lang.ExceptionInInitializerError
+	at com.jniwrapper.util.ProcessorInfo.b(SourceFile:95)
+	at com.jniwrapper.util.ProcessorInfo.getInstance(SourceFile:88)
+	at com.genuitec.eclipse.core.activation.SystemIdFactory.D(Unknown Source)
+	at com.genuitec.eclipse.core.activation.SystemIdFactory.create(Unknown Source)
+	at com.genuitec.eclipse.core.LicenseUtil.getSystemId(Unknown Source)
+	at com.genuitec.eclipse.monitor.internal.collector.server.ServerMetricsCollector.getSystemId(ServerMetricsCollector.java:521)
+	at com.genuitec.eclipse.monitor.internal.collector.server.ServerMetricsCollector.saveToFile(ServerMetricsCollector.java:361)
+	at com.genuitec.eclipse.monitor.internal.collector.server.ServerMetricsCollector.stopMonitoring(ServerMetricsCollector.java:222)
+	at com.genuitec.eclipse.monitor.internal.MetricsManager.stopMonitoring(MetricsManager.java:239)
+	at com.genuitec.eclipse.monitor.internal.MetricsManager.dispose(MetricsManager.java:161)
+	at com.genuitec.eclipse.monitor.internal.MonitorPlugin.stop(MonitorPlugin.java:71)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl$4.run(BundleContextImpl.java:830)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl$4.run(BundleContextImpl.java:1)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl.stop(BundleContextImpl.java:823)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle.stopWorker0(EquinoxBundle.java:946)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle$EquinoxModule.stopWorker(EquinoxBundle.java:314)
+	at org.eclipse.osgi.container.Module.doStop(Module.java:636)
+	at org.eclipse.osgi.container.Module.stop(Module.java:498)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.decStartLevel(ModuleContainer.java:1661)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1580)
+	at org.eclipse.osgi.container.SystemModule.stopWorker(SystemModule.java:270)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle$SystemBundle$EquinoxSystemModule.stopWorker(EquinoxBundle.java:147)
+	at org.eclipse.osgi.container.Module.doStop(Module.java:636)
+	at org.eclipse.osgi.container.Module.stop(Module.java:498)
+	at org.eclipse.osgi.container.SystemModule.stop(SystemModule.java:202)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle$SystemBundle$EquinoxSystemModule$1.run(EquinoxBundle.java:165)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: com.jniwrapper.LibraryNotFoundException: Cannot find JNIWrapper native library (jniwrap64.dll) in java.library.path: C:\Vero\eclipse\eclipse;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:/Program Files/Java/jre1.8.0_131/bin/server;C:/Program Files/Java/jre1.8.0_131/bin;C:/Program Files/Java/jre1.8.0_131/lib/amd64;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Java\jdk1.8.0_131\bin;C:\WINDOWS\system32\config\systemprofile\.dnx\bin;C:\Program Files\Microsoft DNX\Dnvm\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\Microsoft\Web Platform Installer\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\130\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\Microsoft SQL Server\130\DTS\Binn\;C:\xampp\php;C:\ProgramData\ComposerSetup\bin;C:\Program Files\SlikSvn\bin;C:\Program Files\Git\cmd;C:\xampp\php;C:\Users\A4Alumno\AppData\Roaming\Composer\vendor\bin;C:\Users\A4Alumno\AppData\Local\Microsoft\WindowsApps;;C:\Vero\eclipse\eclipse;;.
+!SESSION 2017-07-03 18:26:06.747 -----------------------------------------------
+eclipse.buildId=4.6.3.M20170301-0400
+java.version=1.8.0_131
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=es_ES
+Framework arguments:  -product org.eclipse.epp.package.jee.product -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product -data C:\Vero\GIT\bananaTechies\BananaTechiesV3 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2017-07-03 18:26:18.175
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\A4Alumno'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.egit.ui 4 0 2017-07-03 18:27:12.640
+!MESSAGE Invalid project description.
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Invalid project description.
+	at org.eclipse.core.internal.resources.Project.checkDescription(Project.java:169)
+	at org.eclipse.core.internal.resources.Project.assertCreateRequirements(Project.java:53)
+	at org.eclipse.core.internal.resources.Project.create(Project.java:263)
+	at org.eclipse.core.internal.resources.Project.create(Project.java:247)
+	at org.eclipse.egit.ui.internal.clone.ProjectUtils.createExistingProject(ProjectUtils.java:180)
+	at org.eclipse.egit.ui.internal.clone.ProjectUtils.access$0(ProjectUtils.java:141)
+	at org.eclipse.egit.ui.internal.clone.ProjectUtils$1.run(ProjectUtils.java:99)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2240)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2262)
+	at org.eclipse.egit.ui.internal.clone.ProjectUtils.createProjects(ProjectUtils.java:133)
+	at org.eclipse.egit.ui.internal.clone.ProjectUtils.createProjects(ProjectUtils.java:60)
+	at org.eclipse.egit.ui.internal.clone.GitImportWizard.importProjects(GitImportWizard.java:254)
+	at org.eclipse.egit.ui.internal.clone.GitImportWizard.access$2(GitImportWizard.java:236)
+	at org.eclipse.egit.ui.internal.clone.GitImportWizard$4.run(GitImportWizard.java:206)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+Contains: OK
+Contains: C:\Vero\GIT\bananaTechies\BananaTechiesV3 overlaps the workspace location: C:\Vero\GIT\bananaTechies\BananaTechiesV3
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2017-07-03 18:27:12.641
+!MESSAGE Invalid project description.
+!SUBENTRY 2 unknown 0 0 2017-07-03 18:27:12.641
+!MESSAGE OK
+!SUBENTRY 2 org.eclipse.core.resources 4 77 2017-07-03 18:27:12.641
+!MESSAGE C:\Vero\GIT\bananaTechies\BananaTechiesV3 overlaps the workspace location: C:\Vero\GIT\bananaTechies\BananaTechiesV3
+
+!ENTRY org.eclipse.egit.ui 4 0 2017-07-03 18:27:19.924
+!MESSAGE Invalid project description.
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Invalid project description.
+	at org.eclipse.core.internal.resources.Project.checkDescription(Project.java:169)
+	at org.eclipse.core.internal.resources.Project.assertCreateRequirements(Project.java:53)
+	at org.eclipse.core.internal.resources.Project.create(Project.java:263)
+	at org.eclipse.core.internal.resources.Project.create(Project.java:247)
+	at org.eclipse.egit.ui.internal.clone.ProjectUtils.createExistingProject(ProjectUtils.java:180)
+	at org.eclipse.egit.ui.internal.clone.ProjectUtils.access$0(ProjectUtils.java:141)
+	at org.eclipse.egit.ui.internal.clone.ProjectUtils$1.run(ProjectUtils.java:99)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2240)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2262)
+	at org.eclipse.egit.ui.internal.clone.ProjectUtils.createProjects(ProjectUtils.java:133)
+	at org.eclipse.egit.ui.internal.clone.ProjectUtils.createProjects(ProjectUtils.java:60)
+	at org.eclipse.egit.ui.internal.clone.GitImportWizard.importProjects(GitImportWizard.java:254)
+	at org.eclipse.egit.ui.internal.clone.GitImportWizard.access$2(GitImportWizard.java:236)
+	at org.eclipse.egit.ui.internal.clone.GitImportWizard$4.run(GitImportWizard.java:206)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+Contains: OK
+Contains: C:\Vero\GIT\bananaTechies\BananaTechiesV3 overlaps the workspace location: C:\Vero\GIT\bananaTechies\BananaTechiesV3
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2017-07-03 18:27:19.925
+!MESSAGE Invalid project description.
+!SUBENTRY 2 unknown 0 0 2017-07-03 18:27:19.925
+!MESSAGE OK
+!SUBENTRY 2 org.eclipse.core.resources 4 77 2017-07-03 18:27:19.925
+!MESSAGE C:\Vero\GIT\bananaTechies\BananaTechiesV3 overlaps the workspace location: C:\Vero\GIT\bananaTechies\BananaTechiesV3
+!SESSION 2017-07-04 15:05:31.851 -----------------------------------------------
+eclipse.buildId=4.6.3.M20170301-0400
+java.version=1.8.0_131
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=es_ES
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2017-07-04 15:07:08.359
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\A4Alumno'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.

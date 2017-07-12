@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>  
+<!DOCTYPE hibernate-mapping PUBLIC  
+ "-//Hibernate/Hibernate Mapping DTD 3.0//EN"  
+ "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.BananaTechies.models.Usuario" table="usuario">
+		<id name="uid" column="idu">
+			<generator class="identity"></generator>
+		</id>
+
+		<property name="nombre"></property>
+		<property name="apellido"></property>
+		<property name="email"></property>
+		<property name="password"></property>		
+       
+    </class>
+	
+
+</hibernate-mapping>  

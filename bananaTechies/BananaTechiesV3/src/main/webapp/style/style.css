@@ -80,11 +80,11 @@ video{
 }
  #logOutBtn a{
   font-family:'glyphicons';
-  top:18px;
+  top:12px;
  }
  #logOutBtn>a>span{
  		position:relative;
- 		bottom:10px;
+ 		bottom:11px;
  }
 .menu .burgerMenu .burgerIcon{
   background-color:#e6e600;
@@ -202,7 +202,6 @@ section a:hover {
 }
 section{
   background: #fff;
-  height: 100%;
   color:#595959;
   font-size: 12px;
 }
@@ -298,12 +297,14 @@ td>.btn{
 }
 div.panel>div.panel-heading>.panel-title{
   color: #595959;
+  font-weight: 600;
 }
 div.panel-body{
   padding:8px; 
 }
 .panel-default > .panel-heading{
   background: #fff;
+  margin-top:10px;
 }
 
 .pInfo {
@@ -460,3 +461,11 @@ textarea.form-control{
 
 .mensajes_error_EditT div{display: none;}
 .mensajes_error_EditT div.show{display: block;}
+
+
+
+
+tbody>tr>td, thead>tr>th{
+	color:#595959;
+	font-size: 14px;
+}

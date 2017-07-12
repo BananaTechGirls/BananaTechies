@@ -33,7 +33,7 @@
 			<form action="login" method="post" id="loginForm" novalidate>
 				<div>
 					<label for="email">Email: </label> 
-						<input type="email" name="Email" id="email" placeholder="email@ejemplo.com"  required>
+						<input type="email" name="Email" id="email" placeholder="email@ejemplo.com" value="juana@e.es"  required>
 					<div class="mensajes_error">
 						<div id="email[valueMissing]" class="${errorclass}">Introduzca sus datos.</div>
 						<div id="email[typeMismatch]" class="${errorclass}">El formato no se corresponde con un email.</div>
@@ -41,7 +41,7 @@
 				</div>
 				<div>
 					<label for="password">Password: </label> 
-					<input type="password" name="Password" id="password" placeholder="password" minlength="6" pattern="[a-z 0-9]*"  required>
+					<input type="password" name="Password" id="password" placeholder="password" minlength="6" pattern="[a-z 0-9]*" value="juanason_1" required>
 				
 						
 					<div class="mensajes_error">

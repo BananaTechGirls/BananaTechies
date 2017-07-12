@@ -3,6 +3,7 @@ package com.BananaTechies.db;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
@@ -30,7 +31,7 @@ public final class TareaDAOImpl extends TareaDAO {
 		try {
 			Connection conn = this.datasource.getConnection();
 			// ordenes sql
-			String sql = "SELECT t.* FROM bananatechies.tarea t WHERE t.idt=? LIMIT 1";
+			String sql = "SELECT t.idt, t.titulo, t.proyecto, t.responsable, t.status, o.estado As Progreso, DATE_FORMAT(t.fechaInicio, '%m/%d/%Y') as fechaInicio, DATE_FORMAT(t.fechaFinal, '%m/%d/%Y') as fechaFinal FROM bananatechies.tarea t left join bananatechies.progreso o on t.progreso= o.idpro WHERE t.idt=1 LIMIT 1";
 			PreparedStatement pstm = conn.prepareStatement(sql);
 			pstm.setInt(1, idt);	
 			
@@ -39,16 +40,16 @@ public final class TareaDAOImpl extends TareaDAO {
 
 			if (rs.next()) {
 
-/*				TareaADevolver = new Tarea(
+				TareaADevolver = new Tarea(
 						rs.getInt("idt"), 
 						rs.getString("titulo"),
-						pDAO.getProyecto(rs.getInt("proyecto ")),
-						rs.getString("responsable"),											
+						null,
+						rs.getString("Responsable"),										
 						rs.getBoolean("status"),
 						rs.getString("Progreso"),
 						rs.getString("fechaInicio"),
 						rs.getString("fechaFinal")
-						);*/
+						);
 			}
 
 			pstm.close();
@@ -75,19 +76,27 @@ public final class TareaDAOImpl extends TareaDAO {
 			
 
 			// ordenes sql
-			String sql = "SELECT t.idt,t.proyecto,u.nombre,t.status,o.estado As progreso,DATE_FORMAT(p.fechaInicio, '%m/%d/%Y') as fechaInicio, DATE_FORMAT(p.fechaFinal, '%m/%d/%Y') as fechaFinal,FROM bananatechies.tarea t left join bananatechies.progreso o on t.progreso= o.idpro, left join bananatechies.usuario u on t.responsable=u.idu WHERE t.responsable=?,order by p.status desc;";  
+			String sql = "SELECT t.idt, t.titulo, t.proyecto, concat(u.nombre, ' ' , u.apellido) As Responsable, t.status, o.estado As Progreso, DATE_FORMAT(t.fechaInicio, '%m/%d/%Y') as fechaInicio, DATE_FORMAT(t.fechaFinal, '%m/%d/%Y') as fechaFinal FROM bananatechies.tarea t left join bananatechies.progreso o on t.progreso= o.idpro left join bananatechies.usuario u on t.responsable=u.idu WHERE t.proyecto=? order by t.status desc;";
 			PreparedStatement pstm = conn.prepareStatement(sql);
 			pstm.setInt(1, elProyecto.getIdp());
 			
-			
 			ResultSet rs = pstm.executeQuery();
+			
+			/*//Obtenet lineas RS
+			int rowcount = 0;
+			if (rs.last()) {
+			  rowcount = rs.getRow();
+			  rs.beforeFirst(); // not rs.first() because the rs.next() below will move on, missing the first element
+			}
+
+			logger.info("!---------------getTareasList >>>>> executeQuery >>>> numero de lineas: "+ rowcount);*/
 
 			while (rs.next()) {
 				listADevolver.add(new Tarea(
 						rs.getInt("idt"), 
 						rs.getString("titulo"),
 						elProyecto,
-						rs.getString("responsable"),										
+						rs.getString("Responsable"),										
 						rs.getBoolean("status"),
 						rs.getString("Progreso"),
 						rs.getString("fechaInicio"),
@@ -99,7 +108,7 @@ public final class TareaDAOImpl extends TareaDAO {
 
 			conn.close();
 
-			logger.info("Conexi�n exitosa");
+			logger.info("Conexi�n exitosa <getTareasList>");
 
 		} catch (Exception e) {
 			logger.severe("Error en la conexi�n de BBDD:" + e);
@@ -111,9 +120,33 @@ public final class TareaDAOImpl extends TareaDAO {
 		
 
 	@Override
-	public boolean delaTarea(int idt) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean delTarea(int idt) throws Exception{
+		boolean estaBorrado= false;
+		PreparedStatement pstm = null;
+		Connection conn=null;
+		
+		try{
+			conn=this.datasource.getConnection();
+			String sql ="DELETE FROM tarea WHERE idt=?;";
+			pstm=conn.prepareStatement(sql);
+			pstm.setInt(1, 1);
+			
+			pstm.executeUpdate();
+			if(pstm.getUpdateCount()==0){				
+				throw new Exception(MessageFormat.format("Objeto sin borrar",sql));			
+			}else{
+				estaBorrado=true;
+				logger.info("conexion exitosa borrar proyecto");
+			}
+			
+		}catch(Exception e){
+			logger.severe("Error en la conexion"+e);
+		}finally{
+			pstm.close();
+
+			conn.close();
+		};
+		return estaBorrado;
 	}
 
 	@Override

@@ -1,22 +1,32 @@
 package com.BananaTechies.models;
 
-//import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "usuario")
 public class Usuario {
+	
 	private	int	uid;
 	private String nombre;
 	private String apellido;
 	private String email;
 	private String password;
 	
-	//private String foto;
-	//private String video;
+
 
 	// CONSTRUCTOR SIN PARAMETROS
-	public Usuario(){}
+	public Usuario(){
+		super();
+	}
 	
 	// CONSTRUCTOR CON TODOS PARAMETROS (no password)
-	public Usuario(int uid, String nombre, String apellido, String email,String password/*, String foto, String video*/) {
+	public Usuario(int uid, String nombre, String apellido, String email,String password) {
+		super();
 		this.uid=uid;
 		this.nombre=nombre;
 		this.apellido=apellido;
@@ -26,13 +36,26 @@ public class Usuario {
 	}
 
 	// CONSTRUCTOR CON PARAMETROS (creado por el cliente)
-	// ??????????????????????????????????????????????????
 	public Usuario(int uid, String nombre, String apellido) {
+		super();
 		this.uid=uid;
 		this.nombre=nombre;
 		this.apellido=apellido;		
 	}
 
+	// CONSTRUCTOR COPIA
+	public Usuario(Usuario copia){
+		super();
+		this.uid=copia.uid;
+		this.nombre=copia.nombre;
+		this.apellido=copia.apellido;
+		this.email=copia.email;
+		this.password = copia.password;
+	}
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name = "idu")
 	public int getUid() {
 		return uid;
 	}
@@ -73,36 +96,4 @@ public class Usuario {
 		this.password = password;
 	}
 
-	/*public String getVideo() {
-		return video;
-	}
-
-	public void setVideo(String video) {
-		this.video = video;
-	}
-
-	public String getFoto() {
-		return foto;
-	}
-
-	public void setFoto(String foto) {
-		this.foto = foto;
-	}*/
-	
-
-	/*public List<Proyecto> getProyectoAsignado() {
-		return proyectoAsignado;
-	}
-
-	public void setProyectoAsignado(List<Proyecto> proyectoAsignado) {
-		this.proyectoAsignado = proyectoAsignado;
-	}
-
-	public List<Tarea> getTareaAsignada() {
-		return tareaAsignada;
-	}
-
-	public void setTareaAsignada(List<Tarea> tareaAsignada) {
-		this.tareaAsignada = tareaAsignada;
-	}*/
 }

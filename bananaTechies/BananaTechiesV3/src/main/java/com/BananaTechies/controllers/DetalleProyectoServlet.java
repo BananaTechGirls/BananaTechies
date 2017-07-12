@@ -31,19 +31,15 @@ public class DetalleProyectoServlet extends HttpServlet {
 		
 		Usuario elUsuario=(Usuario) misession.getAttribute("idUsuario");
 				
-		if( elUsuario!=null ){				
-			ProyectoDAO pDAO=(ProyectoDAO) DAOFactory.getInstance().getDAO(elProyecto);
-
-			//System.out.println(elUsuario.getNombre() +"IdP ->"+request.getParameter("idp"));
-			
+		if( elUsuario!=null ){
+			// Pasamos el proyecto selecionada
+			ProyectoDAO pDAO=(ProyectoDAO) DAOFactory.getInstance().getDAO(elProyecto);	
 			elProyecto= pDAO.getProyecto(Integer.parseInt(request.getParameter("idp")), elUsuario);
-			
-			TareaDAO tDAO=(TareaDAO) DAOFactory.getInstance().getDAO(laTarea);
-			
-			
-			List<Tarea> listaTareas = tDAO.getTareasList(elProyecto);
-			
 			request.setAttribute("DetalleProyecto", elProyecto);
+		
+			// Pasamos la lista tareas
+			TareaDAO tDAO=(TareaDAO) DAOFactory.getInstance().getDAO(laTarea);
+			List<Tarea> listaTareas = tDAO.getTareasList(elProyecto);
 			request.setAttribute("listaTareaAMostrar", listaTareas);
 			
 			request.getRequestDispatcher("detalleProyecto.jsp").forward(request, response);

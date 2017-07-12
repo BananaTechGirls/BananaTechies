@@ -41,7 +41,6 @@ public class LoginServlet extends HttpServlet {
 		String contrasena = request.getParameter("Password");
 		Usuario elUsuario = new Usuario();
 		
-		//DBConnector dbc= DBConnector.getInstance();
 		UsuarioDAO userDAO = (UsuarioDAO)  DAOFactory.getInstance().getDAO(elUsuario);	
 		
 		elUsuario = userDAO.getUsuario(email, contrasena);//null point exeption

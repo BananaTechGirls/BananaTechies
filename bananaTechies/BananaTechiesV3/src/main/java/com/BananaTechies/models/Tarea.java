@@ -42,6 +42,7 @@ public class Tarea {
 
 
 		public void setTitulo(String titulo) {
+			
 			this.titulo = titulo;
 		}
 

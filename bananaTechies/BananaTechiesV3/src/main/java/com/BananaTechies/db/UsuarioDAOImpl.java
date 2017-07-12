@@ -22,7 +22,7 @@ public final class UsuarioDAOImpl extends UsuarioDAO {
 	@Override
 	public Usuario getUsuario(String email, String password) {
 		Usuario usuarioADevolver = null;
-		logger.info("!--------------->>>>> getUsuario");
+
 		try {
 			
 			Connection conn = datasource.getConnection();
@@ -33,13 +33,6 @@ public final class UsuarioDAOImpl extends UsuarioDAO {
 			pstm.setString(2, password);	
 			ResultSet rs = pstm.executeQuery();
 
-			int rowcount = 0;
-			if (rs.last()) {
-			  rowcount = rs.getRow();
-			  rs.beforeFirst(); // not rs.first() because the rs.next() below will move on, missing the first element
-			}
-
-			logger.info("!--------------->>>>> executeQuery >>>> numero de lineas: "+ rowcount);
 			
 			if (rs.next()) {
 				usuarioADevolver = new Usuario(
@@ -48,15 +41,11 @@ public final class UsuarioDAOImpl extends UsuarioDAO {
 						rs.getString("apellido"),
 						rs.getString("email"), 
 						rs.getString("password")
-						//rs.getString("foto"),
-						//rs.getString("video")
 						);
 			}
 
 			pstm.close();
 			conn.close();
-
-			logger.info("Conexión exitosa");
 
 		} catch (Exception e) {
 			logger.severe("Error en la conexión de BBDD:" + e);
@@ -91,11 +80,22 @@ public final class UsuarioDAOImpl extends UsuarioDAO {
 		try {
 			Connection conn = datasource.getConnection();
 			// ordenes sql
-			String sql = "SELECT u.* FROM bananatechies.usuario u WHERE u.uid=?LIMIT 1";
+			String sql = "SELECT u.* FROM bananatechies.usuario u WHERE u.idu=? LIMIT 1";
 			PreparedStatement pstm = conn.prepareStatement(sql);
 			pstm.setInt(1, uid);
 
 			ResultSet rs = pstm.executeQuery();
+			
+			//Obtenet lineas RS
+			System.out.println(" ********** getUsuario("+uid+")");
+			System.out.println(" ********************************");
+			int rowcount = 0;
+			if (rs.last()) {
+			  rowcount = rs.getRow();
+			  rs.beforeFirst(); // not rs.first() because the rs.next() below will move on, missing the first element
+			}
+
+			logger.info("!---------------getTareasList >>>>> executeQuery >>>> numero de lineas: "+ rowcount);
 
 			if (rs.next()) {
 
@@ -105,15 +105,12 @@ public final class UsuarioDAOImpl extends UsuarioDAO {
 						rs.getString("apellido"),
 						rs.getString("email"),
 						rs.getString("password")
-						//rs.getString("foto"),
-						//rs.getString("video")
+						
 						);
 			}
 
 			pstm.close();
 			conn.close();
-
-			logger.info("Conexión exitosa");
 
 		} catch (Exception e) {
 			logger.severe("Error en la conexión de BBDD:" + e);
