@@ -23,9 +23,7 @@ import com.BananaTechies.db.TareaDAO;
 import com.BananaTechies.models.Mensaje;
 import com.BananaTechies.models.Proyecto;
 import com.BananaTechies.models.Tarea;
-import com.BananaTechies.models.Tarea;
 import com.BananaTechies.resources.ProyectosAPI;
-import com.netmind.models.User;
 
 @Path("/Tarea")
 public class TareaREST implements TareaAPI {

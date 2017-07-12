@@ -1,5 +1,6 @@
 package com.BananaTechies.resources;
 
+import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,12 +15,15 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
+import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 
 import com.BananaTechies.db.DAOFactory;
 import com.BananaTechies.db.ProyectoDAO;
+import com.BananaTechies.db.TareaDAO;
 import com.BananaTechies.db.UsuarioDAO;
 import com.BananaTechies.models.Mensaje;
 import com.BananaTechies.models.Proyecto;
@@ -40,7 +44,7 @@ public class ProyectosREST implements ProyectosAPI {
 	@Path("/") 
 	@Produces(MediaType.APPLICATION_JSON)
 	//public List<Proyecto> listaProyectoResponsables (@PathParam("uid") int uid){
-	public Object listaProyectoResponsables (){
+	public Object listaProyectoResponsables ()  throws JSONException, JsonMappingException, IOException {
 		int uid =1; //mock de token
 		Mensaje resp = new Mensaje(0,"");
 		try {
@@ -69,7 +73,38 @@ public class ProyectosREST implements ProyectosAPI {
 	@Path("/") 
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Mensaje addProyectoLista (JSONObject newProyecto) throws JSONException{
+	public Mensaje addProyectoLista (Proyecto newProyecto)  throws JSONException, JsonMappingException, IOException{
+
+		int uid =1; //mock de token
+		Mensaje resp = new Mensaje(0,"");
+/*		try {
+			//obtener el objeto usuario completo
+			Usuario elUsuario= new Usuario();
+			// Verificar el nuevo Proyecto a introducir
+			
+			ProyectoDAO ProyDAO = (ProyectoDAO)  DAOFactory.getInstance().getDAO(elProyecto);
+
+			
+			//existe usuario uid
+			if (elUsuario!=null) {
+				System.out.println("*** < 2 > ***");
+				elProyecto = ProyDAO.getProyecto(elProyecto.getIdp(), elUsuario);
+				System.out.println("*** < 3 > ***");
+				//existe proyecto pid
+				if (elProyecto==null) {
+					resp.setCuerpo(ProyDAO.insertProyecto(elProyecto)?"":"");
+				}else {
+					throw new RuntimeException("- El proyecto ("+ elProyecto.getIdp() +") ya exite, imposible añadirlo.");
+				}				
+			}else {
+				throw new RuntimeException("- El proyecto ("+ uid +") es desconocido.");
+			}
+			return resp;
+		} catch (Exception e) {
+			resp.setCuerpo(e.getMessage() +"\n- Formato erroneo en el cuerpo del objeto Proyecto.\nLease API");
+			return resp;		
+		}*/	
+		
 		return new Mensaje(0, "Añadido un nuevo Proyecto de la lista.");
 	}
 
@@ -77,9 +112,25 @@ public class ProyectosREST implements ProyectosAPI {
 	@GET
 	@Path("/{pid}") //Identificador Proyecto
 	@Produces(MediaType.APPLICATION_JSON)
-	public Proyecto ProyectoID (@PathParam("pid") int pid){
-		// TODO Auto-generated method stub
-		return new Proyecto();
+	public Response ProyectoID (@PathParam("pid") int pid)  throws JSONException, JsonMappingException, IOException{
+		Tarea unaTarea = null;
+		Mensaje resp= null;
+		int uid =1; //mock de token
+		try {
+			//Existe proyecto que se pide?
+			Proyecto elProyecto= new Proyecto();
+			ProyectoDAO ProyectoDAO = (ProyectoDAO)  DAOFactory.getInstance().getDAO(elProyecto);
+			elProyecto = ProyectoDAO.getProyecto(pid, null);		
+			//existe Proyecto
+			if (elProyecto!=null) {
+				return Response.status(200).entity(elProyecto).build();
+			}else {
+				throw new RuntimeException("- El Proyecto ("+ pid +") es desconocido.");
+			}
+		} catch (Exception e) {
+			resp.setCuerpo(e.getMessage() +"\n- Formato erroneo en el cuerpo del objeto Tarea.\nLease API");
+			return Response.status(499).entity(resp).build();			
+		}
 	}
 
 	
@@ -88,7 +139,7 @@ public class ProyectosREST implements ProyectosAPI {
 	@Path("/{pid}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Mensaje upDateProyectoLista (@PathParam("pid") int pid, JSONObject UpdateProyecto) throws JSONException{
+	public Mensaje upDateProyectoLista (@PathParam("pid") int pid, JSONObject UpdateProyecto)  throws JSONException, JsonMappingException, IOException{
 		// TODO Auto-generated method stub
 		return new Mensaje(0, "Actualizar/Modificar los detalles Proyecto de liata");
 	}
@@ -98,7 +149,7 @@ public class ProyectosREST implements ProyectosAPI {
 	@Path("/{pid}") 
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Mensaje addTareaListaP (@PathParam("pid") int pid, JSONObject nuevaTarea) throws JSONException{
+	public Mensaje addTareaListaP (@PathParam("pid") int pid, JSONObject nuevaTarea)  throws JSONException, JsonMappingException, IOException{
 		// TODO Auto-generated method stub
 		return new Mensaje(0, "Añadido la tarea al Proyecto");
 	}
@@ -109,7 +160,7 @@ public class ProyectosREST implements ProyectosAPI {
 	@Path("/{pid}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Mensaje borrarProyectoLista (@PathParam("pid") int pid) throws JSONException{
+	public Mensaje borrarProyectoLista (@PathParam("pid") int pid)  throws JSONException, JsonMappingException, IOException{
 		// TODO Auto-generated method stub
 		return new Mensaje(0, "Borrado un proyecto de lista ");
 	}
@@ -118,9 +169,28 @@ public class ProyectosREST implements ProyectosAPI {
 	@GET
 	@Path("/{pid}/tareas") //Identificador Tarea
 	@Produces(MediaType.APPLICATION_JSON)
-	public Object listaTareasProyecto (@PathParam("pid") int pid){
-		// TODO Auto-generated method stub
-		return new ArrayList<Tarea>();
+	public Response listaTareasProyecto (@PathParam("pid") int pid) throws JSONException, JsonMappingException, IOException{
+		Tarea unaTarea = null;
+		Mensaje resp= null;
+		int uid =1; //mock de token
+		try {
+			//Existe proyecto que se pide?
+			Proyecto elProyecto= new Proyecto();
+			ProyectoDAO ProyectoDAO = (ProyectoDAO)  DAOFactory.getInstance().getDAO(elProyecto);
+			elProyecto = ProyectoDAO.getProyecto(pid, null);		
+			//existe Proyecto
+			if (elProyecto!=null) {
+				//Otener la lista de los proyectos de ese usuario
+				Tarea laTarea = new Tarea();
+				TareaDAO ProyDAO = (TareaDAO)  DAOFactory.getInstance().getDAO(laTarea);
+				return Response.status(200).entity(ProyDAO.getTareasList(elProyecto)).build();
+			}else {
+				throw new RuntimeException("- El Proyecto ("+ pid +") es desconocido.");
+			}
+		} catch (Exception e) {
+			resp.setCuerpo(e.getMessage() +"\n- Formato erroneo en el cuerpo del objeto Tarea.\nLease API");
+			return Response.status(499).entity(resp).build();			
+		}
 	}
 	
 	
@@ -152,42 +222,7 @@ public class ProyectosREST implements ProyectosAPI {
 			return resp;
 			
 		}
-	}
-
-
-	
-	public Proyecto findProyecto(int uid){
-		Proyecto ProyectoIterado = null; 
-		ListIterator<Proyecto> it = ProyectosREST.misUsuarios.listIterator();
-		while(it.hasNext()) {		 
-			ProyectoIterado = it.next();
-			if (ProyectoIterado.getUid()==uid) {break;}	
-		}
-		return ProyectoIterado.getUid()!=uid?null:ProyectoIterado;
-	}
-	
-	
-	@POST
-	@Path("/EKO/")
-	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
-	public Object ecoUsuario(JSONObject nuevoProyecto) throws JSONException  {
-		try {	
-			//Para obtener Atribitos de la clase UProyecto para separaor capa API de la Modelo
-			Field[] fieldsProyecto = Proyecto.class.getFields();
-			
-			//Dar formato de JSON a usuario sin usar JErsey para Verificar el objeto entrante
-			Proyecto elProyecto = new Proyecto(nuevoProyecto.getInt(fieldsProyecto[0].getName()), 
-											   nuevoProyecto.getString(fieldsProyecto[1].getName()), 
-											   nuevoProyecto.getString(fieldsProyecto[2].getName()),
-											   nuevoProyecto.getInt(fieldsProyecto[3].getName()));
-
-			return elProyecto;
-		} catch (Exception e) {
-			Mensaje resp = new Mensaje(e.getMensaje() +"\n- Formato erroneo en el cuerpo del objeto USUARIO.\nLease API");
-			return resp;
-		}
-	}*/
+	} throws JSONException, JsonMappingException, IOException*/
 	
 	
 }

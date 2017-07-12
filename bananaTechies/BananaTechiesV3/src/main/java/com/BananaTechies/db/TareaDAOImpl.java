@@ -137,7 +137,7 @@ public final class TareaDAOImpl extends TareaDAO {
 		PreparedStatement pstm = null;
 		Connection conn = null;
 		
-		conn = this.datasource.getConnection();
+		/*conn = this.datasource.getConnection();
 		String query = "UPDATE bananatechies.tarea SET "+
 		     "idt=?,"+ 
 		     "titulo=?, "+
@@ -173,7 +173,7 @@ public final class TareaDAOImpl extends TareaDAO {
 			pstm.setString(2, "Rubble");
 			pstm.setDate(3, startDate);
 			pstm.setBoolean(4, false);
-			pstm.setInt(5, 5000);*/
+			pstm.setInt(5, 5000);
 
 			// execute the preparedstatement
 			pstm.executeUpdate();
