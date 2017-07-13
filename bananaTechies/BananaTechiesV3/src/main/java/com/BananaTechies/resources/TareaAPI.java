@@ -7,11 +7,12 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 
-import com.BananaTechies.models.Mensaje;
+import com.BananaTechies.models.StatusMensaje;
 import com.BananaTechies.models.Tarea;
 
 
@@ -30,7 +31,7 @@ public interface TareaAPI {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 
-	public Mensaje upDateTarea (@PathParam("tid") int tid, Tarea UpdateTarea) throws JSONException;
+	public StatusMensaje upDateTarea (@PathParam("tid") int tid, Tarea UpdateTarea) throws JSONException;
 
 	//Actualizar/Modificar una tarea
 
@@ -38,7 +39,7 @@ public interface TareaAPI {
 	@Path("/{tid}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Mensaje borrarTarea (@PathParam("tid") int tid) throws JSONException;
+	public Response borrarTarea (@PathParam("tid") int tid) throws JSONException;
 	//Borrar un tarea 
 	
 
