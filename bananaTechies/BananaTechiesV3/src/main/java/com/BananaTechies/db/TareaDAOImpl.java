@@ -161,63 +161,39 @@ public final class TareaDAOImpl extends TareaDAO {
 		PreparedStatement pstm = null;
 		Connection conn = null;
 		
-		/*conn = this.datasource.getConnection();
-		String query = "UPDATE bananatechies.tarea SET "+
-		     "idt=?,"+ 
+		conn = this.datasource.getConnection();
+		String sql = "UPDATE bananatechies.tarea SET "+
 		     "titulo=?, "+
-		     "fecha de inicio=?, "+
-		     "fecha final='2018-06-23 00:00:00', "+ 
-		     "status=0, "+ 
-		     "progreso=2, "+
-		     "responsable=2, "+
-		     "proyecto`=3 "+ 
-		     "WHERE idt="+ idt +";";
+		     "status=?, "+ 
+		     "progreso=?, "+
+		     "responsable=?, "+
+		     "proyecto=? "+ 
+		     "WHERE idt=?";
 		
-		pstm = conn.prepareStatement(query);
-		pstm.setInt(1, tarea.getIdt());
-		pstm.setString(2, tarea.getTitulo());	
-		pstm.setDate(3, (Date)tarea.getFechaInicio());
-		pstm.setDate(3, (Date)tarea.getFechaFinal());
-		pstm.setBoolean(4, false);
-		pstm.setInt(5, 5000);
+		pstm = conn.prepareStatement(sql);
+		pstm.setString(1, tarea.getTitulo());	
+		pstm.setInt(2,tarea.getStatus());
+		pstm.setInt(3,tarea.getProgreso);
+		pstm.setUsuario(4,tarea.getResponsable);
+		pstm.setsetInt(5,tarea.getProyecto);
 		
-/*
- 	public boolean insertProyecto(Proyecto proyecto) throws Exception {
-		boolean estaInsertado = false;
-		PreparedStatement pstm = null;
-		Connection conn = null;
-		try {
-			conn = this.datasource.getConnection();
-
-			//String query = " insert into users (first_name, last_name, date_created, is_admin, num_points) values (?, ?, ?, ?, ?)";
-			
-
-			pstm = conn.prepareStatement(query);
-			/*pstm.setString(1, "Barney");
-			pstm.setString(2, "Rubble");
-			pstm.setDate(3, startDate);
-			pstm.setBoolean(4, false);
-			pstm.setInt(5, 5000);
-
-			// execute the preparedstatement
-			pstm.executeUpdate();
-			if (pstm.getUpdateCount() == 0) {
-				throw new Exception(MessageFormat.format("Nigun Objeto insertado \"{0}\"", query));
-			} else {
-				estaInsertado = true;
-				logger.info("Conexi�n exitosa insertProyecto");
-			}
-			pstm.close();
-			conn.close();	
-		} catch (Exception e) {
-			logger.severe("Error en la conexi�n de BBDD:" + e);
-		} 
-		return estaInsertado;
+		
+		pstm.executeUpdate();
+		if (pstm.getUpdateCount() == 0) {
+			throw new Exception(MessageFormat.format("Nigun Objeto esta actualizado \"{0}\"", query));
+		} else {
+			estaActualizado = true;
+			logger.info("Conexi�n exitosa updateTarea");
+		}
+		pstm.close();
+		conn.close();	
+	} catch (Exception e) {
+		logger.severe("Error en la conexi�n de BBDD:" + e);
+	} 
+		
+		return estaActualizado;
 	}
- */
-		// TODO Auto-generated method stub
-		return false;
-	}
+ 	
 
 	@Override
 	public List<Tarea> getUserTarea(Usuario user) {
