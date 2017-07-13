@@ -26,7 +26,7 @@ public interface TareaAPI {
 	@GET
 	@Path("/{tid}") 
 	@Produces(MediaType.APPLICATION_JSON)
-	public Object TareaID (@PathParam("tid") int tid);
+	public Response TareaID( @PathParam("tid")int tid ,@HeaderParam("token") String token) throws JSONException, JsonMappingException, IOException;
 	//Mostrar Detalles de la Tarea
 
 

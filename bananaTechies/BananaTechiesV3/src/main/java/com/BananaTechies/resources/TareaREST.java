@@ -50,8 +50,17 @@ public class TareaREST extends JSONService implements TareaAPI {
 	@GET
 	@Path("/{tid}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Object TareaID(int tid) {
-		StatusMensaje resp = new StatusMensaje(0, "");
+	public Response TareaID( @PathParam("tid")int tid ,@HeaderParam("token") String token) throws JSONException, JsonMappingException, IOException {
+		String userEmail = this.getUserEmailFromToken(token);
+		Response mResponse = null;
+		StatusMensaje statusMensaje = null;
+		if (userEmail == null) {
+			statusMensaje = new StatusMensaje(Status.FORBIDDEN.getStatusCode(),
+					"Access Denied for this functionality !!!");
+			mResponse = Response.status(Status.FORBIDDEN.getStatusCode()).entity(statusMensaje).build();
+			return mResponse;
+		}
+		
 		try {
 			// obtener el objeto Tarea completo
 			Tarea laTarea = new Tarea();
@@ -59,15 +68,16 @@ public class TareaREST extends JSONService implements TareaAPI {
 			laTarea = tareaDAO.getTarea(tid);
 			// existe tarea tid
 			if (laTarea != null) {
-				TareaREST.miTarea = laTarea;
-				return TareaREST.miTarea;
+				return Response.status(200).entity(laTarea).build();
 			} else {
 				throw new RuntimeException("- La tarea (" + tid + ") es desconocida.");
 			}
 		} catch (Exception e) {
-			resp.setCuerpo(e.getMessage() + "\n- Formato erroneo en el cuerpo del objeto TAREA.\nLease API");
-			return resp;
+			statusMensaje = new StatusMensaje(Status.FORBIDDEN.getStatusCode(),
+					"\n" + e.getMessage() + "\n- Formato erroneo en el cuerpo del objeto Tarea.\nLease API");
+			mResponse = Response.status(499).entity(statusMensaje).build();
 		}
+		return mResponse;
 	}
 
 	@Override
@@ -75,21 +85,34 @@ public class TareaREST extends JSONService implements TareaAPI {
 	@Path("/{tid}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response upDateTarea(@PathParam("tid") int tid, Tarea UpdateTarea, @HeaderParam("token") String token) throws JsonMappingException, IOException {
-		StatusMensaje respuesta = null;
-		try {
-			TareaDAO tDAO = (TareaDAO) DAOFactory.getInstance().getDAO(UpdateTarea);
-			if (tDAO.updateTarea(tid, UpdateTarea)) {
-				respuesta = new StatusMensaje(0, "Tarea actualizada");
-			} else {
-				respuesta = new StatusMensaje(0, "Operacion sin actualizar");
-			}
-
-		} catch (Exception e) {
-			// TODO: handle exception
+	public Response upDateTarea(@PathParam("tid") int tid, Tarea updateTarea, @HeaderParam("token") String token) throws JsonMappingException, IOException {
+		String userEmail = this.getUserEmailFromToken(token);
+		StatusMensaje statusMensaje = null;
+		Response mResponse = null;
+		if (userEmail == null) {
+			statusMensaje = new StatusMensaje(Status.FORBIDDEN.getStatusCode(),
+					"Access Denied for this functionality !!!");
+			mResponse = Response.status(Status.FORBIDDEN.getStatusCode()).entity(statusMensaje).build();
+			return mResponse;
 		}
-		return Response.status(200).entity(respuesta).build();
+		
+		try {
+			// actualizara tarea 
+			Tarea laTarea = new Tarea();
+			TareaDAO TareaDAO = (TareaDAO) DAOFactory.getInstance().getDAO(laTarea);
+			if (!(TareaDAO.updateTarea(tid,updateTarea))) {
+				statusMensaje = new StatusMensaje(Status.FORBIDDEN.getStatusCode(),	"Access Denied for this functionality !!!");
+				mResponse = Response.status(Status.FORBIDDEN.getStatusCode()).entity(statusMensaje).build();
+				return mResponse;
+			}
+		} catch (Exception e) {
+			StatusMensaje StatusMensaje = new StatusMensaje(Status.CREATED.getStatusCode(), "Tarea actualizada!!!");
+			mResponse = Response.status(200).entity(StatusMensaje).build();
+		}
+
+		return mResponse;
 	}
+		
 
 	@Override
 	@Path("/{tid}")
