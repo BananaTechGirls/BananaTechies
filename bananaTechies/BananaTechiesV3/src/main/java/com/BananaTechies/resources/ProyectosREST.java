@@ -52,8 +52,7 @@ public class ProyectosREST extends JSONService implements ProyectosAPI {
 		StatusMensaje statusMensaje = null;
 
 		if (userEmail == null) {
-			statusMensaje = new StatusMensaje(Status.FORBIDDEN.getStatusCode(),
-					"Access Denied for this functionality !!!");
+			statusMensaje = new StatusMensaje(Status.FORBIDDEN.getStatusCode(),	"Access Denied for this functionality !!!");
 			mResponse = Response.status(Status.FORBIDDEN.getStatusCode()).entity(statusMensaje).build();
 			return mResponse;
 		}
@@ -75,8 +74,7 @@ public class ProyectosREST extends JSONService implements ProyectosAPI {
 			mResponse = Response.status(200).entity(ProyectosREST.misProyectos).build();
 			return mResponse;
 		} catch (Exception e) {
-			mResponse = Response.status(200)
-					.entity(e.getMessage() + "\n- Formato erroneo en el cuerpo del objeto USUARIO.\nLease API").build();
+			mResponse = Response.status(Status.FORBIDDEN.getStatusCode()).entity(e.getMessage() + "\n- Formato erroneo en el cuerpo del objeto USUARIO.\nLease API").build();
 			return mResponse;
 		}
 	}
@@ -86,45 +84,40 @@ public class ProyectosREST extends JSONService implements ProyectosAPI {
 	@Path("/")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response addProyectoLista(@HeaderParam("token") String token, Proyecto newProyecto) throws JSONException, JsonMappingException, IOException {
+	public Response addProyectoLista(@HeaderParam("token") String token, Proyecto newProyecto)
+			throws JSONException, JsonMappingException, IOException {
 		String userEmail = this.getUserEmailFromToken(token);
 		Response mResponse = null;
 		StatusMensaje statusMensaje = null;
 
 		if (userEmail == null) {
-			statusMensaje = new StatusMensaje(Status.FORBIDDEN.getStatusCode(),
-					"Access Denied for this functionality !!!");
+			statusMensaje = new StatusMensaje(Status.FORBIDDEN.getStatusCode(),	"Access Denied for this functionality !!!");
 			mResponse = Response.status(Status.FORBIDDEN.getStatusCode()).entity(statusMensaje).build();
 			return mResponse;
 		}
 
-		/*
-		 * try { //obtener el objeto usuario completo Usuario elUsuario= new
-		 * Usuario(); // Verificar el nuevo Proyecto a introducir
-		 * 
-		 * ProyectoDAO ProyDAO = (ProyectoDAO)
-		 * DAOFactory.getInstance().getDAO(elProyecto);
-		 * 
-		 * 
-		 * //existe usuario uid if (elUsuario!=null) {
-		 * System.out.println("*** < 2 > ***"); elProyecto =
-		 * ProyDAO.getProyecto(elProyecto.getIdp(), elUsuario);
-		 * System.out.println("*** < 3 > ***"); //existe proyecto pid if
-		 * (elProyecto==null) {
-		 * resp.setCuerpo(ProyDAO.insertProyecto(elProyecto)?"":""); }else {
-		 * throw new RuntimeException("- El proyecto ("+ elProyecto.getIdp()
-		 * +") ya exite, imposible añadirlo."); } }else { throw new
-		 * RuntimeException("- El proyecto ("+ uid +") es desconocido."); }
-		 * return resp; } catch (Exception e) { resp.setCuerpo(e.getMessage()
-		 * +"\n- Formato erroneo en el cuerpo del objeto Proyecto.\nLease API");
-		 * return resp; }
-		 */
 		try {
+			// obtener el objeto usuario completo
+			Usuario elUsuario = new Usuario();
+			UsuarioDAO userDAO = (UsuarioDAO) DAOFactory.getInstance().getDAO(elUsuario);
+			elUsuario = userDAO.getUsuario(userEmail, null);
+			if (elUsuario != null) {
+				Proyecto elProyecto = new Proyecto();
+				ProyectoDAO ProyDAO = (ProyectoDAO) DAOFactory.getInstance().getDAO(elProyecto);
+				if (ProyDAO.insertProyecto(newProyecto)) {
+					mResponse = Response.status(200).entity("El poryecto esta añadido").build();
+				} else {
+					mResponse = Response.status(Status.FORBIDDEN.getStatusCode()).entity("Operacion sin actualizar").build();
+				}
+			} else {
+				mResponse = Response.status(Status.FORBIDDEN.getStatusCode()).entity("El responsable no existe").build();
+			}
+
 		} catch (Exception e) {
-			mResponse = Response.status(499).entity(e.getMessage() + "\n- Formato erroneo en el cuerpo del objeto USUARIO.\nLease API").build();
+			mResponse = Response.status(Status.FORBIDDEN.getStatusCode()).entity(e.getMessage() + "\n- Formato erroneo en el cuerpo del objeto Proyecto.\nLease API")
+					.build();
 			return mResponse;
 		}
-		mResponse = Response.status(200).entity("\n- Añadido un nuevo Proyecto de la lista.").build();
 		return mResponse;
 	}
 
@@ -132,15 +125,15 @@ public class ProyectosREST extends JSONService implements ProyectosAPI {
 	@GET
 	@Path("/{pid}") // Identificador Proyecto
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response ProyectoID(@HeaderParam("token") String token, @PathParam("pid") int pid) throws JSONException, JsonMappingException, IOException {
+	public Response ProyectoID(@HeaderParam("token") String token, @PathParam("pid") int pid)
+			throws JSONException, JsonMappingException, IOException {
 
 		String userEmail = this.getUserEmailFromToken(token);
 		Response mResponse = null;
 		StatusMensaje statusMensaje = null;
 
 		if (userEmail == null) {
-			statusMensaje = new StatusMensaje(Status.FORBIDDEN.getStatusCode(),
-					"Access Denied for this functionality !!!");
+			statusMensaje = new StatusMensaje(Status.FORBIDDEN.getStatusCode(),	"Access Denied for this functionality !!!");
 			mResponse = Response.status(Status.FORBIDDEN.getStatusCode()).entity(statusMensaje).build();
 			return mResponse;
 		}
@@ -156,9 +149,8 @@ public class ProyectosREST extends JSONService implements ProyectosAPI {
 				throw new RuntimeException("- El Proyecto (" + pid + ") es desconocido.");
 			}
 		} catch (Exception e) {
-			statusMensaje = new StatusMensaje(Status.FORBIDDEN.getStatusCode(),
-					"\n" + e.getMessage() + "\n- Formato erroneo en el cuerpo del objeto Tarea.\nLease API");
-			mResponse = Response.status(499).entity(statusMensaje).build();
+			statusMensaje = new StatusMensaje(Status.FORBIDDEN.getStatusCode(),	"\n" + e.getMessage() + "\n- Formato erroneo en el cuerpo del objeto Tarea.\nLease API");
+			mResponse = Response.status(Status.FORBIDDEN.getStatusCode()).entity(statusMensaje).build();
 		}
 		return mResponse;
 	}
@@ -168,25 +160,36 @@ public class ProyectosREST extends JSONService implements ProyectosAPI {
 	@Path("/{pid}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response upDateProyectoLista(@HeaderParam("token") String token, @PathParam("pid") int pid, JSONObject UpdateProyecto) throws JSONException, JsonMappingException, IOException {
-		String userEmail = this.getUserEmailFromToken(token);
+	public Response upDateProyectoLista(@HeaderParam("token") String token, @PathParam("pid") int pid,
+			JSONObject UpdateProyecto) throws JSONException, JsonMappingException, IOException {String userEmail = this.getUserEmailFromToken(token);
 		Response mResponse = null;
 		StatusMensaje statusMensaje = null;
 
 		if (userEmail == null) {
-			statusMensaje = new StatusMensaje(Status.FORBIDDEN.getStatusCode(),
-					"Access Denied for this functionality !!!");
+			statusMensaje = new StatusMensaje(Status.FORBIDDEN.getStatusCode(),	"Access Denied for this functionality !!!");
 			mResponse = Response.status(Status.FORBIDDEN.getStatusCode()).entity(statusMensaje).build();
 			return mResponse;
 		}
-
-		// TODO Auto-generated method stub
 		try {
+			// Existe proyecto que se pide?
+			Proyecto elProyecto = new Proyecto();
+			ProyectoDAO ProyectoDAO = (ProyectoDAO) DAOFactory.getInstance().getDAO(elProyecto);
+			elProyecto = ProyectoDAO.getProyecto(pid, null);
+			// existe Proyecto
+
+			if (elProyecto != null) {
+				if (ProyectoDAO.updateProyecto(elProyecto)) {
+					mResponse = Response.status(200).entity("\n- Modificado Proyecto de la lista.").build();
+				} else {
+					mResponse = Response.status(Status.FORBIDDEN.getStatusCode()).entity("\n- La modificado del Proyecto ha sido cancelada.").build();
+				}
+			} else {
+				mResponse = Response.status(Status.FORBIDDEN.getStatusCode()).entity("\n- El proyecto (" + pid + ") es inecsitente").build();
+			}
 		} catch (Exception e) {
-			mResponse = Response.status(499).entity(e.getMessage() + "\n- Formato erroneo en el cuerpo del objeto USUARIO.\nLease API").build();
+			mResponse = Response.status(Status.FORBIDDEN.getStatusCode()).entity(e.getMessage() + "\n- Formato erroneo en el cuerpo del objeto USUARIO.\nLease API").build();
 			return mResponse;
 		}
-		mResponse = Response.status(200).entity("\n- Añadido un nuevo Proyecto de la lista.").build();
 		return mResponse;
 	}
 
@@ -195,24 +198,43 @@ public class ProyectosREST extends JSONService implements ProyectosAPI {
 	@Path("/{pid}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response addTareaListaP(@HeaderParam("token") String token, @PathParam("pid") int pid, JSONObject nuevaTarea) throws JSONException, JsonMappingException, IOException {
+	public Response addTareaListaP(@HeaderParam("token") String token, @PathParam("pid") int pid, Tarea nuevaTarea) throws JSONException, JsonMappingException, IOException {
 		String userEmail = this.getUserEmailFromToken(token);
 		Response mResponse = null;
 		StatusMensaje statusMensaje = null;
 
 		if (userEmail == null) {
-			statusMensaje = new StatusMensaje(Status.FORBIDDEN.getStatusCode(),
-					"Access Denied for this functionality !!!");
+			statusMensaje = new StatusMensaje(Status.FORBIDDEN.getStatusCode(),	"Access Denied for this functionality !!!");
 			mResponse = Response.status(Status.FORBIDDEN.getStatusCode()).entity(statusMensaje).build();
 			return mResponse;
 		}
-		// TODO Auto-generated method stub
 		try {
-		} catch (Exception e) {
-			mResponse = Response.status(499).entity(e.getMessage() + "\n- Formato erroneo en el cuerpo del objeto USUARIO.\nLease API").build();
-			return mResponse;
-		}
-		mResponse = Response.status(200).entity("\n- Añadido un nuevo Proyecto de la lista.").build();
+			// obtener el objeto usuario completo
+			Usuario elUsuario = new Usuario();
+			UsuarioDAO userDAO = (UsuarioDAO) DAOFactory.getInstance().getDAO(elUsuario);
+			elUsuario = userDAO.getUsuario(userEmail, null);
+			if (elUsuario != null) {
+				// Existe proyecto que se pide?
+				Proyecto elProyecto = new Proyecto();
+				ProyectoDAO ProyectoDAO = (ProyectoDAO) DAOFactory.getInstance().getDAO(elProyecto);
+				elProyecto = ProyectoDAO.getProyecto(pid, elUsuario);
+				// existe Proyecto
+				if (elProyecto != null) {
+					Tarea laTarea = new Tarea();
+					TareaDAO tareaDAO = (TareaDAO) DAOFactory.getInstance().getDAO(laTarea);		
+					if (tareaDAO.insertTarea(nuevaTarea)) {
+						mResponse = Response.status(200).entity("\n- Modificado Proyecto de la lista.").build();
+					} else {
+						mResponse = Response.status(Status.FORBIDDEN.getStatusCode()).entity("\n- La modificado del Proyecto ha sido cancelada.").build();
+					}
+				} else {
+					mResponse = Response.status(Status.FORBIDDEN.getStatusCode()).entity("\n- El proyecto (" + pid + ") es inecsitente").build();
+				}
+			}
+			} catch (Exception e) {
+				mResponse = Response.status(Status.FORBIDDEN.getStatusCode()).entity(e.getMessage() + "\n- Formato erroneo en el cuerpo del objeto USUARIO.\nLease API").build();
+				return mResponse;
+			}
 		return mResponse;
 	}
 
@@ -221,21 +243,28 @@ public class ProyectosREST extends JSONService implements ProyectosAPI {
 	@Path("/{pid}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response borrarProyectoLista(@HeaderParam("token") String token, @PathParam("pid") int pid) throws JSONException, JsonMappingException, IOException {
+	public Response borrarProyectoLista(@HeaderParam("token") String token, @PathParam("pid") int pid)
+			throws JSONException, JsonMappingException, IOException {
 		String userEmail = this.getUserEmailFromToken(token);
 		Response mResponse = null;
 		StatusMensaje statusMensaje = null;
 
 		if (userEmail == null) {
-			statusMensaje = new StatusMensaje(Status.FORBIDDEN.getStatusCode(),
-					"Access Denied for this functionality !!!");
+			statusMensaje = new StatusMensaje(Status.FORBIDDEN.getStatusCode(),	"Access Denied for this functionality !!!");
 			mResponse = Response.status(Status.FORBIDDEN.getStatusCode()).entity(statusMensaje).build();
 			return mResponse;
 		}
-		// TODO Auto-generated method stub
 		try {
+			// Borara tarea que nos pid?
+			Proyecto elProyecto = new Proyecto();
+			ProyectoDAO ProyectoDAO = (ProyectoDAO) DAOFactory.getInstance().getDAO(elProyecto);
+			if (!(ProyectoDAO.delProyecto(pid))) {
+				statusMensaje = new StatusMensaje(Status.FORBIDDEN.getStatusCode(),	"Borrado el proyecto");
+				mResponse = Response.status(Status.FORBIDDEN.getStatusCode()).entity(statusMensaje).build();
+				return mResponse;
+			}			
 		} catch (Exception e) {
-			mResponse = Response.status(499).entity(e.getMessage() + "\n- Formato erroneo en el cuerpo del objeto USUARIO.\nLease API").build();
+			mResponse = Response.status(Status.FORBIDDEN.getStatusCode()).entity(e.getMessage() + "\n- Formato erroneo en el cuerpo del objeto USUARIO.\nLease API").build();
 			return mResponse;
 		}
 		mResponse = Response.status(200).entity("\n- Añadido un nuevo Proyecto de la lista.").build();
@@ -246,14 +275,14 @@ public class ProyectosREST extends JSONService implements ProyectosAPI {
 	@GET
 	@Path("/{pid}/tareas") // Identificador Tarea
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response listaTareasProyecto(@HeaderParam("token") String token, @PathParam("pid") int pid) throws JSONException, JsonMappingException, IOException {
+	public Response listaTareasProyecto(@HeaderParam("token") String token, @PathParam("pid") int pid)
+			throws JSONException, JsonMappingException, IOException {
 		String userEmail = this.getUserEmailFromToken(token);
 		Response mResponse = null;
 		StatusMensaje statusMensaje = null;
 
 		if (userEmail == null) {
-			statusMensaje = new StatusMensaje(Status.FORBIDDEN.getStatusCode(),
-					"Access Denied for this functionality !!!");
+			statusMensaje = new StatusMensaje(Status.FORBIDDEN.getStatusCode(),	"Access Denied for this functionality !!!");
 			mResponse = Response.status(Status.FORBIDDEN.getStatusCode()).entity(statusMensaje).build();
 			return mResponse;
 		}
@@ -272,7 +301,8 @@ public class ProyectosREST extends JSONService implements ProyectosAPI {
 				throw new RuntimeException("- El Proyecto (" + pid + ") es desconocido.");
 			}
 		} catch (Exception e) {
-			mResponse = Response.status(499).entity(e.getMessage() + "\n- Formato erroneo en el cuerpo del objeto USUARIO.\nLease API").build();
+			mResponse = Response.status(499)
+					.entity(e.getMessage() + "\n- Formato erroneo en el cuerpo del objeto USUARIO.\nLease API").build();
 			return mResponse;
 		}
 	}

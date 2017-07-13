@@ -20,6 +20,7 @@ import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 
 import com.BananaTechies.models.StatusMensaje;
+import com.BananaTechies.models.Tarea;
 import com.BananaTechies.models.Proyecto;
 
 
@@ -56,7 +57,7 @@ public interface ProyectosAPI {
 	@Path("/{pid}") 
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response addTareaListaP(@HeaderParam("token") String token, @PathParam("pid") int pid, JSONObject nuevaTarea) throws JSONException, JsonMappingException, IOException;
+	public Response addTareaListaP(@HeaderParam("token") String token, @PathParam("pid") int pid, Tarea nuevaTarea) throws JSONException, JsonMappingException, IOException;
 	//Añadir una tarea aun Proyecto de la lista de un Responsable por Token
 
 	@DELETE
