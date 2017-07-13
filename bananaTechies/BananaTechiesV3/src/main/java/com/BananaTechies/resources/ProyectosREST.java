@@ -31,7 +31,6 @@ import com.BananaTechies.models.Proyecto;
 import com.BananaTechies.models.Tarea;
 import com.BananaTechies.models.Usuario;
 import com.BananaTechies.resources.ProyectosAPI;
-import com.BananaTechies.services.JSONService;
 import com.sun.jersey.api.client.ClientResponse.Status;
 
 @Path("/Proyectos")
@@ -46,20 +45,19 @@ public class ProyectosREST extends JSONService implements ProyectosAPI {
 	@GET
 	@Path("/")
 	@Produces(MediaType.APPLICATION_JSON)
-	// public List<Proyecto> listaProyectoResponsables (@PathParam("uid") int
-	// uid){
-	public Response listaProyectoResponsables(@HeaderParam("token") String token) throws JSONException, JsonMappingException, IOException {
+	public Response listaProyectoResponsables(@HeaderParam("token") String token) throws JsonMappingException, IOException {
 		
 		String userEmail = this.getUserEmailFromToken(token);
 		Response mResponse=null;
-
+		StatusMensaje statusMensaje= null;
+		
+		
 		if (userEmail == null) {
-			StatusMensaje statusMensaje = new StatusMensaje(Status.FORBIDDEN.getStatusCode(),"Access Denied for this functionality !!!");
+			statusMensaje = new StatusMensaje(Status.FORBIDDEN.getStatusCode(),"Access Denied for this functionality !!!");
 			mResponse=Response.status(Status.FORBIDDEN.getStatusCode()).entity(statusMensaje).build();
 			return mResponse;
 		}
 		
-		StatusMensaje resp ;//= new StatusMensaje(0, "");
 		try {
 			// obtener el objeto usuario completo
 			Usuario elUsuario = new Usuario();

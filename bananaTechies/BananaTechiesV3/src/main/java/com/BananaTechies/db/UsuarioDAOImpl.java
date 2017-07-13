@@ -43,7 +43,7 @@ public final class UsuarioDAOImpl extends UsuarioDAO {
 			
 			if (rs.next()) {
 				usuarioADevolver = new Usuario(rs.getInt("idu"), rs.getString("nombre"), rs.getString("apellido"),
-						rs.getString("email"), rs.getString("password"));
+						rs.getString("email"), (password == null)?"":rs.getString("password"));
 			}
 
 			pstm.close();

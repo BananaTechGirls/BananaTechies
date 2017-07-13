@@ -29,7 +29,7 @@ public interface ProyectosAPI {
 	@GET
 	@Path("/") 
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response listaProyectoResponsables(@HeaderParam("token") String token) throws JSONException, JsonMappingException, IOException;
+	public Response listaProyectoResponsables(@HeaderParam("token") String token) throws JsonMappingException, IOException;
 	//Mostrar lista de Proyectos de un Responsable por Token
 	
 	@POST

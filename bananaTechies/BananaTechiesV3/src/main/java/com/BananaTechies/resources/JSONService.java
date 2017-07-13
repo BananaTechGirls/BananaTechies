@@ -1,4 +1,4 @@
-package com.BananaTechies.services;
+package com.BananaTechies.resources;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -58,7 +58,7 @@ public class JSONService {
 	}
 
 	
-
+    // No se deve hacer y no se necesita
 	@GET
 	@Path("/owndata")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -105,7 +105,7 @@ public class JSONService {
 
 			// Validate Token's authenticity and check claims
 			JwtConsumer jwtConsumer = new JwtConsumerBuilder().setRequireExpirationTime()
-					.setAllowedClockSkewInSeconds(30).setRequireSubject().setExpectedIssuer("netmind.com")
+					.setAllowedClockSkewInSeconds(30).setRequireSubject().setExpectedIssuer("Techies.com")
 					.setVerificationKey(jwk.getKey()).build();
 
 			// Validate the JWT and process it to the Claims
@@ -118,5 +118,33 @@ public class JSONService {
 
 		return userEmail;
 	}
+	
+	// Crea el token en Jws...
+	protected JsonWebSignature crearJWT( RsaJsonWebKey senderJwk, String email) {
+		//RsaJsonWebKey senderJwk = (RsaJsonWebKey) jwkList.get(0);
+
+		senderJwk.setKeyId("1");
+		logger.info("JWK (1) ===> " + senderJwk.toJson());
+
+		// Create the Claims, which will be the content of the JWT
+		JwtClaims claims = new JwtClaims();
+		claims.setIssuer("Techies.com"); // who creates the token and signs it
+		claims.setExpirationTimeMinutesInTheFuture(10); // token will expire (10 minutes from now)
+		claims.setGeneratedJwtId(); // a unique identifier for the token
+		claims.setIssuedAtToNow(); // when the token was issued/created (now)
+		claims.setNotBeforeMinutesInThePast(2); // time before which the token is not yet valid (2 minutes ago)
+		claims.setSubject(email); // the subject/principal is whom the token is about
+		claims.setStringListClaim("roles", "Admin"); // multi-valued claims for roles
+		JsonWebSignature jws = new JsonWebSignature();
+
+		jws.setPayload(claims.toJson());
+
+		jws.setKeyIdHeaderValue(senderJwk.getKeyId());
+		jws.setKey(senderJwk.getPrivateKey());
+
+		jws.setAlgorithmHeaderValue(AlgorithmIdentifiers.RSA_USING_SHA256);
+		return jws;
+	}
+
 
 }

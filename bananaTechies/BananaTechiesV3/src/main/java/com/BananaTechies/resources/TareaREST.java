@@ -1,5 +1,6 @@
 package com.BananaTechies.resources;
 
+import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,22 +18,26 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 
 import com.BananaTechies.db.DAOFactory;
 import com.BananaTechies.db.ProyectoDAO;
 import com.BananaTechies.db.TareaDAO;
+import com.BananaTechies.db.UsuarioDAO;
 import com.BananaTechies.models.StatusMensaje;
 import com.BananaTechies.models.Proyecto;
 import com.BananaTechies.models.Tarea;
+import com.BananaTechies.models.Usuario;
 import com.BananaTechies.resources.ProyectosAPI;
 //import com.sun.jersey.api.client.ClientResponse.Status;
+import com.sun.jersey.api.client.ClientResponse.Status;
 
 //import com.sun.jersey.api.client.ClientResponse.Status;
 
 @Path("/Tarea")
-public class TareaREST implements TareaAPI {
+public class TareaREST extends JSONService implements TareaAPI {
 	private static Tarea miTarea;
 
 	static {
@@ -70,7 +75,7 @@ public class TareaREST implements TareaAPI {
 	@Path("/{tid}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public StatusMensaje upDateTarea(@PathParam("tid") int tid, Tarea UpdateTarea) throws JSONException {
+	public Response upDateTarea(@PathParam("tid") int tid, Tarea UpdateTarea, @HeaderParam("token") String token) throws JsonMappingException, IOException {
 		StatusMensaje respuesta = null;
 		try {
 			TareaDAO tDAO = (TareaDAO) DAOFactory.getInstance().getDAO(UpdateTarea);
@@ -83,7 +88,7 @@ public class TareaREST implements TareaAPI {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		return respuesta;
+		return Response.status(200).entity(respuesta).build();
 	}
 
 	@Override
@@ -91,53 +96,32 @@ public class TareaREST implements TareaAPI {
 	@DELETE
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response borrarTarea(@PathParam("tid")int tid//,@HeaderParam("token") String token
-			) throws JSONException {
-		//String userEmail = this.getUserEmailFromToken(token);
-		Response mResponse=null;
-		
-		/*try {	
-		  	
-			TareaDAO tDAO=(TareaDAO) DAOFactory.getInstance().getDAO(delTarea);
-			if (tDAO.delTarea(tid)=null) {
-				 StatusMensaje = new StatusMensaje(Status.FORBIDDEN.getStatusCode(),"Access Denied for this functionality !!!");
-				mResponse=Response.status(Status.FORBIDDEN.getStatusCode()).entity(StatusMensaje).build();
-			}
-			}catch(Exception e){
-			StatusMensaje StatusMensaje = new StatusMensaje(Status.CREATED.getStatusCode(),"Tarea borrada!!!");
-			mResponse=Response.status(200).entity(StatusMensaje).build();
-			}
-		}
-		
-		return mResponse;*/
-		return null;
-	}
-	
-	/*@Path("/{uid}")
-	@DELETE
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response deleteUsuario(@PathParam("uid") int uid,@HeaderParam("token") String token) {
-		
+	public Response borrarTarea(@PathParam("tid") int tid, @HeaderParam("token") String token)
+			throws JsonMappingException, IOException {
 		String userEmail = this.getUserEmailFromToken(token);
-		Response mResponse=null;
-
+		StatusMensaje statusMensaje = null;
+		Response mResponse = null;
 		if (userEmail == null) {
-			StatusMessage statusMessage = new StatusMessage(Status.FORBIDDEN.getStatusCode(),"Access Denied for this functionality !!!");
-			mResponse=Response.status(Status.FORBIDDEN.getStatusCode()).entity(statusMessage).build();
-		}else  {
-			for (Usuario user : misUsuarios) {
-				if(user.getUid()==uid){
-					misUsuarios.remove(user);
-					break;
-				}
-			}
-			StatusMessage statusMessage = new StatusMessage(Status.CREATED.getStatusCode(),"Usuario borrado!!!");
-			mResponse=Response.status(200).entity(statusMessage).build();
+			statusMensaje = new StatusMensaje(Status.FORBIDDEN.getStatusCode(),
+					"Access Denied for this functionality !!!");
+			mResponse = Response.status(Status.FORBIDDEN.getStatusCode()).entity(statusMensaje).build();
+			return mResponse;
 		}
-		
-		return mResponse;
-		
-	}*/
 
+		try {
+			// Borara tarea que nos pid?
+			Tarea laTarea = new Tarea();
+			TareaDAO TareaDAO = (TareaDAO) DAOFactory.getInstance().getDAO(laTarea);
+			if (!(TareaDAO.delTarea(tid))) {
+				statusMensaje = new StatusMensaje(Status.FORBIDDEN.getStatusCode(),	"Access Denied for this functionality !!!");
+				mResponse = Response.status(Status.FORBIDDEN.getStatusCode()).entity(statusMensaje).build();
+				return mResponse;
+			}
+		} catch (Exception e) {
+			StatusMensaje StatusMensaje = new StatusMensaje(Status.CREATED.getStatusCode(), "Tarea borrada!!!");
+			mResponse = Response.status(200).entity(StatusMensaje).build();
+		}
+
+		return mResponse;
+	}
 }

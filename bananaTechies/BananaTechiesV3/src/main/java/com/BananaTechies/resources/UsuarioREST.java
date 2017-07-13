@@ -20,9 +20,6 @@ import javax.ws.rs.core.Response;
 
 import com.BananaTechies.models.StatusMensaje;
 import com.BananaTechies.models.Usuario;
-import com.BananaTechies.services.JSONService;
-
-
 import com.sun.jersey.api.client.ClientResponse.Status;
 
 @Path("/usuarios")

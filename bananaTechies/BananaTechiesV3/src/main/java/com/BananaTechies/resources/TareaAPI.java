@@ -1,7 +1,10 @@
 package com.BananaTechies.resources;
+import java.io.IOException;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
+import javax.ws.rs.HeaderParam;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -14,6 +17,7 @@ import org.codehaus.jettison.json.JSONObject;
 
 import com.BananaTechies.models.StatusMensaje;
 import com.BananaTechies.models.Tarea;
+import com.fasterxml.jackson.databind.JsonMappingException;
 
 
 public interface TareaAPI {
@@ -30,16 +34,14 @@ public interface TareaAPI {
 	@Path("/{tid}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-
-	public StatusMensaje upDateTarea (@PathParam("tid") int tid, Tarea UpdateTarea) throws JSONException;
-
+	public Response upDateTarea(@PathParam("tid") int tid, Tarea UpdateTarea, @HeaderParam("token") String token) throws JsonMappingException, IOException;
 	//Actualizar/Modificar una tarea
 
 	@DELETE
 	@Path("/{tid}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response borrarTarea (@PathParam("tid") int tid) throws JSONException;
+	public Response borrarTarea (@PathParam("tid")int tid, @HeaderParam("token") String token) throws JsonMappingException, IOException;
 	//Borrar un tarea 
 	
 
