@@ -1,11 +1,9 @@
 package com.BananaTechies.resources;
 
 
-import java.lang.reflect.Field;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ListIterator;
-
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -25,10 +23,8 @@ import com.sun.jersey.api.client.ClientResponse.Status;
 @Path("/usuarios")
 public class UsuarioREST extends JSONService implements UsuarioAPI {
 	private static List<Usuario> misUsuarios;//actua como un singleton todas las llamadas responden a este atributo
-	
 	static{misUsuarios=new ArrayList<Usuario>();}
-	
-	
+
 	@Override
 	@Path("/")
 	@GET

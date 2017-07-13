@@ -6,7 +6,7 @@ public class Tarea {
 		private String titulo;
 		private Proyecto proyecto;
 		private String responsable;
-		private boolean status;
+		private int status;
 		private String progreso;
 		private String fechaInicio;
 		private String fechaFinal;
@@ -14,7 +14,7 @@ public class Tarea {
 		public Tarea(){}
 	
 		
-		public Tarea(int idt,String titulo,Proyecto proyecto,String responsable,boolean status,String progreso,String fechaInicio,String fechaFinal){
+		public Tarea(int idt,String titulo,Proyecto proyecto,String responsable,int status,String progreso,String fechaInicio,String fechaFinal){
 			this.idt=idt;
 			this.titulo=titulo;
 			this.proyecto=proyecto;
@@ -65,12 +65,12 @@ public class Tarea {
 		}
 
 		
-		public boolean isStatus() {
+		public int getStatus() {
 			return status;
 		}
 
 
-		public void setStatus(boolean status) {
+		public void setStatus(int status) {
 			this.status = status;
 		}
 

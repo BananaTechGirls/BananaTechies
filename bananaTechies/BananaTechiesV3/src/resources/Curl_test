@@ -1,0 +1,18 @@
+#GET
+curl GET http://localhost:8080/BananaTechies/apiApp/get 
+
+#POST
+#curl -X POST -H "Content-Type: application/json" -d '{"key":"val"}' URL
+curl -X POST -H "Content-Type: application/json" -d "{\"singer\":\"Metallica\",\"title\":\"Fade To Black\"}" http://localhost:8080/BananaTechies/apiApp/post
+
+#AUTENTICACIÓN 
+curl -H "Content-Type: application/json" -H "username: juana@e.es" -H "password: juanason_1" -v -X GET  http://localhost:8080/BananaTechies/apiApp/authenticate
+
+#Envio de token para acceder a zona restringida
+curl -H "Content-Type: application/json" -H "token: 
+//token aqui
+" -v -X GET http://localhost:8080/BananaTechies/apiApp/json/owndata
+
+#PUT
+
+curl -X PUT -H "Content-Type: application/json" -d '{"key1":"value"}' http://localhost:8080/BananaTechies/apiApp/authenticate
