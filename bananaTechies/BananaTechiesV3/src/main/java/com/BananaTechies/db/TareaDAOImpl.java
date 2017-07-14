@@ -145,16 +145,17 @@ public final class TareaDAOImpl extends TareaDAO {
 		Connection conn = null;
 
 		conn = this.datasource.getConnection();
-		String sql = "UPDATE bananatechies.tarea SET " + "titulo=?, " + "status=?, " + "progreso=?, "
-				+ "responsable=?, " + "proyecto=? " + "WHERE idt=?";
+		String sql = "UPDATE bananatechies.tarea SET " + "status=?, " + "progreso=?, " + "responsable=?, "
+				+ "proyecto=? " + "WHERE idt=?";
 
 		pstm = conn.prepareStatement(sql);
 
+		pstm = conn.prepareStatement(sql);
 		pstm.setString(1, tarea.getTitulo());
 		pstm.setInt(2, tarea.getStatus());
-		pstm.setString(3, tarea.getProgreso());
-		pstm.setString(4, tarea.getResponsable());
-		// pstm.setProyecto(5, tarea.getProyecto());
+		pstm.setInt(3, tarea.getProgreso);
+		pstm.setUsuario(4, tarea.getResponsable);
+		pstm.setsetInt(5, tarea.getProyecto);
 
 		pstm.executeUpdate();
 		try {
