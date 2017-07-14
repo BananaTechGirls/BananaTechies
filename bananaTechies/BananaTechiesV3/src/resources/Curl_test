@@ -1,17 +1,28 @@
-#GET
-curl GET http://localhost:8080/BananaTechies/apiApp/get 
-
-#POST
-#curl -X POST -H "Content-Type: application/json" -d '{"key":"val"}' URL
-curl -X POST -H "Content-Type: application/json" -d "{\"singer\":\"Metallica\",\"title\":\"Fade To Black\"}" http://localhost:8080/BananaTechies/apiApp/post
 
 #AUTENTICACIÓN 
 curl -H "Content-Type: application/json" -H "username: juana@e.es" -H "password: juanason_1" -v -X GET  http://localhost:8080/BananaTechies/apiApp/authenticate
 
+#eco
+curl http://localhost:8080/BananaTechies/apiApp/Proyectos/eco
+
 #Envio de token para acceder a zona restringida
-curl -H "Content-Type: application/json" -H "token: 
-//token aqui
-" -v -X GET http://localhost:8080/BananaTechies/apiApp/json/owndata
+#GET proyectos 
+curl -H "Content-Type: application/json" -H "token: eyJraWQiOiIxIiwiYWxnIjoiUlMyNTYifQ.eyJpc3MiOiJUZWNoaWVzLmNvbSIsImV4cCI6MTUwMDA0NTM2NSwianRpIjoiVW80QmFZTVJ6WnlWYUUwdE51SmJuUSIsImlhdCI6MTUwMDA0MjM2NSwibmJmIjoxNTAwMDQyMjQ1LCJzdWIiOiJqdWFuYUBlLmVzIiwicm9sZXMiOlsiQWRtaW4iXX0.MfSZ0zdAPgOtEtUXpEf7v8Y-CFe4uL32T005O0H426nlAX7Szt4j3lbcKP0ski-Y7eACFPMG7-iOaTqttWcuYZVU7XtM6WgYklAE80n-K27oJfk88Lc8U2A29BVW-nHUGP0deuxNhSKlju9KvaIFV3uBU208x0CkKvV1S8f6IzfORD62ssNxVW8eWCBEeU3EkX5CQKcPaVxo1CsaDMIvgTPnxqfxpP7h-W20b4j2E9ZtsSgeWYVvFc-Y9Vnw8SfikrYh9NRtvWBd6L2SH6jSpcOQZM9hAS108opg7Br5vAsztd-AjW6erOg4gEXShSgeJChFHo7QyZdHwuUzWmS0lw" -v -X GET http://localhost:8080/BananaTechies/apiApp/Proyectos/
+
+-d '{"status":false,"fechaFinal":"06/10/2018","responsable":null,"titulo":"proyecto1","progreso":"1","fechaInicio":"06/01/2017","descripcion":"Expetenda tincidunt in sed ex partem placerat sea porro commodo ex eam. ","notas":"Lorem ipsum dolor sit amet, consectetuer adipiscing elit sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.","idp":1}'
+
+#Envio de token para acceder a zona restringida
+#POST proyectos 
+curl -X POST -H "Content-Type: application/json" -H "token: eyJraWQiOiIxIiwiYWxnIjoiUlMyNTYifQ.eyJpc3MiOiJUZWNoaWVzLmNvbSIsImV4cCI6MTUwMDA0NTM2NSwianRpIjoiVW80QmFZTVJ6WnlWYUUwdE51SmJuUSIsImlhdCI6MTUwMDA0MjM2NSwibmJmIjoxNTAwMDQyMjQ1LCJzdWIiOiJqdWFuYUBlLmVzIiwicm9sZXMiOlsiQWRtaW4iXX0.MfSZ0zdAPgOtEtUXpEf7v8Y-CFe4uL32T005O0H426nlAX7Szt4j3lbcKP0ski-Y7eACFPMG7-iOaTqttWcuYZVU7XtM6WgYklAE80n-K27oJfk88Lc8U2A29BVW-nHUGP0deuxNhSKlju9KvaIFV3uBU208x0CkKvV1S8f6IzfORD62ssNxVW8eWCBEeU3EkX5CQKcPaVxo1CsaDMIvgTPnxqfxpP7h-W20b4j2E9ZtsSgeWYVvFc-Y9Vnw8SfikrYh9NRtvWBd6L2SH6jSpcOQZM9hAS108opg7Br5vAsztd-AjW6erOg4gEXShSgeJChFHo7QyZdHwuUzWmS0lw" -d '{\"status\":false,\"fechaFinal\":\"06/10/2018\",\"responsable\":null,\"titulo\":\"proyecto1\",\"progreso\":\"1\",\"fechaInicio\":\"06/01/2017\",\"descripcion\":\"Expetenda tincidunt in sed ex partem placerat sea porro commodo ex eam. \",\"notas\":\"Lorem ipsum dolorvolutpat.\",\"idp\":101}' -v http://localhost:8080/BananaTechies/apiApp/Proyectos/
+
+
+#Envio de token para acceder a zona restringida
+#GET proyectos 
+curl -H "Content-Type: application/json" -H "token: eyJraWQiOiIxIiwiYWxnIjoiUlMyNTYifQ.eyJpc3MiOiJUZWNoaWVzLmNvbSIsImV4cCI6MTUwMDA0NTM2NSwianRpIjoiVW80QmFZTVJ6WnlWYUUwdE51SmJuUSIsImlhdCI6MTUwMDA0MjM2NSwibmJmIjoxNTAwMDQyMjQ1LCJzdWIiOiJqdWFuYUBlLmVzIiwicm9sZXMiOlsiQWRtaW4iXX0.MfSZ0zdAPgOtEtUXpEf7v8Y-CFe4uL32T005O0H426nlAX7Szt4j3lbcKP0ski-Y7eACFPMG7-iOaTqttWcuYZVU7XtM6WgYklAE80n-K27oJfk88Lc8U2A29BVW-nHUGP0deuxNhSKlju9KvaIFV3uBU208x0CkKvV1S8f6IzfORD62ssNxVW8eWCBEeU3EkX5CQKcPaVxo1CsaDMIvgTPnxqfxpP7h-W20b4j2E9ZtsSgeWYVvFc-Y9Vnw8SfikrYh9NRtvWBd6L2SH6jSpcOQZM9hAS108opg7Br5vAsztd-AjW6erOg4gEXShSgeJChFHo7QyZdHwuUzWmS0lw" -v -X GET http://localhost:8080/BananaTechies/apiApp/Proyectos/
+
+#Envio de token para acceder a zona restringida
+#GET proyectos idp=2
+curl -H "Content-Type: application/json" -H "token: eyJraWQiOiIxIiwiYWxnIjoiUlMyNTYifQ.eyJpc3MiOiJUZWNoaWVzLmNvbSIsImV4cCI6MTUwMDA0NTM2NSwianRpIjoiVW80QmFZTVJ6WnlWYUUwdE51SmJuUSIsImlhdCI6MTUwMDA0MjM2NSwibmJmIjoxNTAwMDQyMjQ1LCJzdWIiOiJqdWFuYUBlLmVzIiwicm9sZXMiOlsiQWRtaW4iXX0.MfSZ0zdAPgOtEtUXpEf7v8Y-CFe4uL32T005O0H426nlAX7Szt4j3lbcKP0ski-Y7eACFPMG7-iOaTqttWcuYZVU7XtM6WgYklAE80n-K27oJfk88Lc8U2A29BVW-nHUGP0deuxNhSKlju9KvaIFV3uBU208x0CkKvV1S8f6IzfORD62ssNxVW8eWCBEeU3EkX5CQKcPaVxo1CsaDMIvgTPnxqfxpP7h-W20b4j2E9ZtsSgeWYVvFc-Y9Vnw8SfikrYh9NRtvWBd6L2SH6jSpcOQZM9hAS108opg7Br5vAsztd-AjW6erOg4gEXShSgeJChFHo7QyZdHwuUzWmS0lw" -v -X GET http://localhost:8080/BananaTechies/apiApp/Proyectos/2
 
 #PUT
 

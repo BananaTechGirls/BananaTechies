@@ -84,12 +84,14 @@ public final class ProyectoDAOImpl extends ProyectoDAO {
 			String query = "INSERT INTO `bananatechies`.`proyecto` (`titulo`, `responsable`, `fechaInicio`, `descripcion`, `nota`, `status`, `progreso`) VALUES ('GBProyecto', '1', '2017-07-10 10:39:04', 'Ex partem placerat sea, porro commodo ex eam. Por Gabriel', '***', '0', '1')";
 
 			pstm = conn.prepareStatement(query);
-			/*pstm.setString(1, "Barney");
-			pstm.setString(2, "Rubble");
-			pstm.setDate(3, startDate);
-			pstm.setBoolean(4, false);
-			pstm.setInt(5, 5000);*/
-
+			pstm.setString(1, proyecto.getTitulo());
+			pstm.setInt(2, proyecto.getResponsable().getUid());
+			pstm.setString(3, proyecto.getFechaInicio());
+			pstm.setString(4, proyecto.getDescripcion());
+			pstm.setString(5, proyecto.getNotas());
+			pstm.setBoolean(6, proyecto.getStatus());
+			pstm.setString(7, proyecto.getProgreso());
+						
 			// execute the preparedstatement
 			pstm.executeUpdate();
 			if (pstm.getUpdateCount() == 0) {

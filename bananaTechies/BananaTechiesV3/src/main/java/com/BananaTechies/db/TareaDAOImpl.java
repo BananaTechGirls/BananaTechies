@@ -153,9 +153,9 @@ public final class TareaDAOImpl extends TareaDAO {
 		pstm = conn.prepareStatement(sql);
 		pstm.setString(1, tarea.getTitulo());
 		pstm.setInt(2, tarea.getStatus());
-		pstm.setInt(3, tarea.getProgreso);
-		pstm.setUsuario(4, tarea.getResponsable);
-		pstm.setsetInt(5, tarea.getProyecto);
+		pstm.setInt(3, Integer.parseInt(tarea.getProgreso()));
+		pstm.setInt(4, Integer.parseInt(tarea.getResponsable()));
+		pstm.setInt(5, tarea.getProyecto().getIdp());
 
 		pstm.executeUpdate();
 		try {

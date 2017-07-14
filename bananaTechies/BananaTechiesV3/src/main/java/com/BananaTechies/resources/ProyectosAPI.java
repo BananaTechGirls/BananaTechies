@@ -74,4 +74,9 @@ public interface ProyectosAPI {
 
 	//Mostrar lista de Tareas de un proyecto
 	
+	@GET
+	@Path("/eco") // Identificador Proyecto
+	@Produces(MediaType.APPLICATION_JSON)
+	public Object eko()throws JSONException, JsonMappingException, IOException;
+	
 }

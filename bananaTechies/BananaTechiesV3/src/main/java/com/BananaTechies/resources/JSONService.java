@@ -129,7 +129,7 @@ public class JSONService {
 		// Create the Claims, which will be the content of the JWT
 		JwtClaims claims = new JwtClaims();
 		claims.setIssuer("Techies.com"); // who creates the token and signs it
-		claims.setExpirationTimeMinutesInTheFuture(10); // token will expire (10 minutes from now)
+		claims.setExpirationTimeMinutesInTheFuture(50); // token will expire (10 minutes from now)
 		claims.setGeneratedJwtId(); // a unique identifier for the token
 		claims.setIssuedAtToNow(); // when the token was issued/created (now)
 		claims.setNotBeforeMinutesInThePast(2); // time before which the token is not yet valid (2 minutes ago)

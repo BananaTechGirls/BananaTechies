@@ -105,7 +105,7 @@ public class ProyectosREST extends JSONService implements ProyectosAPI {
 				Proyecto elProyecto = new Proyecto();
 				ProyectoDAO ProyDAO = (ProyectoDAO) DAOFactory.getInstance().getDAO(elProyecto);
 				if (ProyDAO.insertProyecto(newProyecto)) {
-					mResponse = Response.status(200).entity("El poryecto esta añadido").build();
+					mResponse = Response.status(200).entity("El proyecto esta insertado").build();
 				} else {
 					mResponse = Response.status(Status.FORBIDDEN.getStatusCode()).entity("Operacion sin actualizar").build();
 				}
@@ -306,4 +306,19 @@ public class ProyectosREST extends JSONService implements ProyectosAPI {
 			return mResponse;
 		}
 	}
+
+	@Override
+	@GET
+	@Path("/eco") // Identificador Proyecto
+	@Produces(MediaType.APPLICATION_JSON)
+	public Object eko()throws JSONException, JsonMappingException, IOException {
+		// Existe proyecto que se pide?
+		Proyecto elProyecto = new Proyecto();
+		ProyectoDAO ProyectoDAO = (ProyectoDAO) DAOFactory.getInstance().getDAO(elProyecto);
+		elProyecto = ProyectoDAO.getProyecto(1, null);
+		return elProyecto;
+	}
+
+
 }
+
